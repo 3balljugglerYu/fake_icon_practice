@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
             create: (context) => PerformanceModel())
       ],
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Fake Icon',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),

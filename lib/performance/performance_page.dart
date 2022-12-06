@@ -8,29 +8,34 @@ class PerformancePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final PerformanceModel performanceModel = Provider.of<PerformanceModel>(context, listen: true);
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Flutter Demo Home Page"),
-      ),
-      body:Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                const Text(
-                  'You have pushed the button this many times:',
+    return Stack(
+      children: [
+        SizedBox(
+          child: Image.asset('images/performance-page.jpg',
+            fit: BoxFit.fill,
+            height: double.infinity,
+            width: double.infinity,
+          ),
+        ),
+        Positioned(
+          left: 170,
+          top: 580,
+          child: SizedBox(
+            width: 60,
+            height: 60,
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.red,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10)
                 ),
-                Text(
-                  performanceModel.counter.toString(),
-                  style: Theme.of(context).textTheme.headline4,
-                ),
-              ],
+              ),
+              child: const Text('Button'),
+              onPressed: (){},
             ),
           ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: performanceModel.incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+        )
+      ],
     );
   }
 }
