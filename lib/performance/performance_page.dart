@@ -1,4 +1,5 @@
 import 'package:fake_icon_practice/performance/performance_model.dart';
+import 'package:fake_icon_practice/setting_top/setting_top_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -7,7 +8,7 @@ class PerformancePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final PerformanceModel performanceModel = Provider.of<PerformanceModel>(context, listen: true);
+    // final PerformanceModel performanceModel = Provider.of<PerformanceModel>(context, listen: true);
     return Stack(
       children: [
         SizedBox(
@@ -31,7 +32,9 @@ class PerformancePage extends StatelessWidget {
                 ),
               ),
               child: const Text('Button'),
-              onPressed: (){},
+              onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => SettingTopPage()));
+              },
             ),
           ),
         )
