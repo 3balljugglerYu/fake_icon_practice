@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'setting_top_model.dart';
@@ -22,7 +21,7 @@ class SettingTopPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.baseline,
                 textBaseline: TextBaseline.alphabetic,
-                children: [
+                children: const [
                   Icon(
                     FontAwesomeIcons.gears,
                     size: 35,
@@ -41,19 +40,19 @@ class SettingTopPage extends StatelessWidget {
           body: Stack(
             children: [
               SizedBox(
+                height: double.infinity,
+                width: double.infinity,
                 child: ImageFiltered(
                   imageFilter: ImageFilter.blur(sigmaX: 5,sigmaY: 5),
                   child: Image.asset("images/performance-page.jpg",
                   fit: BoxFit.fill,
                   ),
                 ),
-                height: double.infinity,
-                width: double.infinity,
               ),
               Center(
                 child: Column(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 5.0,
                     ),
                     SizedBox(
@@ -64,7 +63,7 @@ class SettingTopPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10.0),
                         ),
                         child: Column(
-                          children: [
+                          children: const [
                             SizedBox(
                               height: 10.0,
                             ),
@@ -86,7 +85,58 @@ class SettingTopPage extends StatelessWidget {
                         ),
                       ),
                     ),
-
+                    SizedBox(
+                      height: 150,
+                      child: Card(
+                        shadowColor: Colors.black,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        child: Column(
+                          children: const [
+                            SizedBox(
+                              height: 10.0,
+                            ),
+                            ListTile(
+                              leading: Icon(
+                                FontAwesomeIcons.ship,
+                                size: 35,
+                              ),
+                              title: Text(
+                                "Splash App 設定",
+                                style: TextStyle(fontSize: 18.0),
+                              ),
+                              subtitle: Text(
+                                "ロゴや背景画像の変更、ロゴを消失させた後に表示させるタイミング等を設定することができます。",
+                                style: TextStyle(fontSize: 13.0),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 30.0,
+                    ),
+                    SizedBox(
+                      height: 45.0,
+                      width: 250.0,
+                      child: ElevatedButton(
+                        onPressed: (){
+                          Navigator.pop(context);
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.black,
+                          foregroundColor: Colors.white,
+                        ),
+                        child: const Text('完了',
+                          style: TextStyle(
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               )
