@@ -99,6 +99,36 @@ class SettingTopPage extends StatelessWidget {
                             ),
                             ListTile(
                               leading: Icon(
+                                FontAwesomeIcons.icons,
+                                size: 35,
+                              ),
+                              title: Text(
+                                "アイコンの配置変更",
+                                style: TextStyle(fontSize: 18.0),
+                              ),
+                              subtitle: Text(
+                                "背景画像の設定後、アイコンの位置を決める設定を行います。任意の位置に配置することが可能です。",
+                                style: TextStyle(fontSize: 13.0),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 150,
+                      child: Card(
+                        shadowColor: Colors.black,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        child: Column(
+                          children: const [
+                            SizedBox(
+                              height: 10.0,
+                            ),
+                            ListTile(
+                              leading: Icon(
                                 FontAwesomeIcons.ship,
                                 size: 35,
                               ),
