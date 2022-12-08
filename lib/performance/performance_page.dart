@@ -18,11 +18,12 @@ class PerformancePage extends StatelessWidget {
             return Stack(
               children: [
                 SizedBox(
+                  height: double.infinity,
+                  width: double.infinity,
                   child: Utils.backgroundImageFile == null ? Image.asset('images/splash-app-1.png',
                     fit: BoxFit.fill,
                   ) : Image.file(
                     Utils.backgroundImageFile!,
-                    fit: BoxFit.fill,
                   ),
                 ),
                 Positioned(
