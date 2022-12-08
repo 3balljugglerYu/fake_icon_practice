@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'setting_top_model.dart';
@@ -39,20 +41,21 @@ class SettingTopPage extends StatelessWidget {
           ),
           body: Consumer<SettingTopModel>(
             builder: (context, model, child){
-
-
             return Stack(
               children: [
                 SizedBox(
                   height: double.infinity,
                   width: double.infinity,
                   child: Utils.backgroundImageFile == null ? null : Image.file(Utils.backgroundImageFile!,fit: BoxFit.fill,)
-                  // child: ImageFiltered(
-                  //   imageFilter: ImageFilter.blur(sigmaX: 5,sigmaY: 5),
-                  //   child: Image.asset("images/performance-page.jpg",
-                  //   fit: BoxFit.fill,
-                  //   ),
-                  // ),
+                ),
+                BackdropFilter(
+                  filter: ImageFilter.blur(
+                    sigmaX: 5,
+                    sigmaY: 5,
+                  ),
+                  child: Container(
+                    color: Colors.black.withOpacity(0),
+                  ),
                 ),
                 Center(
                   child: Column(
@@ -77,7 +80,14 @@ class SettingTopPage extends StatelessWidget {
                               try {
                                 await model.getImage();
                               } catch (e){
-
+                                if (e.toString() != 'Null check operator used on a null value'){
+                                  await showDialog(context: context, builder: (BuildContext context){
+                                    return const AlertDialog(
+                                      title: Text('写真の設定'),
+                                      content: Text('画像の設定には端末の設定から写真へのアクセスを許可して下さい。'),
+                                    );
+                                  });
+                                }
                               }
                             },
                             child: Column(
@@ -188,7 +198,7 @@ class SettingTopPage extends StatelessWidget {
                       ),
                     ],
                   ),
-                )
+                ),
               ],
             );
             },
