@@ -3,13 +3,15 @@ import 'package:fake_icon_practice/setting_top/setting_top_page.dart';
 import 'package:fake_icon_practice/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:fake_icon_practice/position_model.dart';
 
 class PerformancePage extends StatelessWidget {
   const PerformancePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // final PerformanceModel performanceModel = Provider.of<PerformanceModel>(context, listen: true);
+    Position.defaultPosition(context);
+
     return Scaffold(
       body: ChangeNotifierProvider(
         create: (BuildContext context) => PerformanceModel(),
@@ -27,8 +29,8 @@ class PerformancePage extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  left: 170,
-                  top: 580,
+                  left: Utils.settingPosition.x,
+                  top: Utils.settingPosition.y,
                   child: SizedBox(
                     width: 60,
                     height: 60,
