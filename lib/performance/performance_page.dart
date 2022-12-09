@@ -29,6 +29,27 @@ class PerformancePage extends StatelessWidget {
                   ),
                 ),
                 Positioned(
+                  left: Utils.splashPosition.x,
+                  top: Utils.splashPosition.y,
+                  child: SizedBox(
+                    width: 60,
+                    height: 60,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.red,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10)
+                        ),
+                      ),
+                      child: const Text('Splash'),
+                      onPressed: () async {
+                        await Navigator.push(context, MaterialPageRoute(builder: (context) => SettingTopPage()));
+                        model.notifyListeners();
+                      },
+                    ),
+                  ),
+                ),
+                Positioned(
                   left: Utils.settingPosition.x,
                   top: Utils.settingPosition.y,
                   child: SizedBox(
@@ -48,7 +69,7 @@ class PerformancePage extends StatelessWidget {
                       },
                     ),
                   ),
-                )
+                ),
               ],
             );
           },

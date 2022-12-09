@@ -14,6 +14,7 @@ class Position {
       screenSize = Size(MediaQuery.of(context).size.width, MediaQuery.of(context).size.height);
 
       Utils.settingPosition = Position(x: screenSize.width / 2 - 30, y: screenSize.height / 3 + 30);
+      Utils.splashPosition = Position(x: screenSize.width/2 - 30, y: screenSize.height / 2 - 30);
 
     } catch (e) {
       print('エラー');

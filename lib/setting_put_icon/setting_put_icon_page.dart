@@ -47,6 +47,16 @@ class SettingPutIconPage extends StatelessWidget {
           ),
         ),
         ReusableMoveIcon(
+          x: Utils.splashPosition.x,
+          y: Utils.splashPosition.y,
+          icon: FontAwesomeIcons.ship,
+          iconColor: Colors.grey,
+          iconBackgroundColor: Colors.black,
+          onDragEnd: (dragDetails){
+            model.dragEnd(dragDetails, Utils.splashPosition);
+          },
+        ),
+        ReusableMoveIcon(
           x: Utils.settingPosition.x,
           y: Utils.settingPosition.y,
           icon: FontAwesomeIcons.gear,
