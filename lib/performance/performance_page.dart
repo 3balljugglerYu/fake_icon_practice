@@ -24,7 +24,7 @@ class PerformancePage extends StatelessWidget {
                 SizedBox(
                   height: double.infinity,
                   width: double.infinity,
-                  child: Utils.backgroundImageFile == null ? Image.asset('images/splash-app-1.png',
+                  child: Utils.backgroundImageFile == null ? Image.asset('images/performance-page.jpg',
                     fit: BoxFit.fill,
                   ) : Image.file(
                     Utils.backgroundImageFile!,
@@ -49,7 +49,31 @@ class PerformancePage extends StatelessWidget {
                         child: Text('splash'),
                         onPressed: () async {
                           await model.onPressed();
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => FakePage()));
+                          Navigator.of(context).push(
+                              PageRouteBuilder(
+                                  pageBuilder: (context, animation, secondaryAnimation){
+                                    return ChangeNotifierProvider<SplashModel>(
+                                        create: (context) => SplashModel(),
+                                      child: SplashPage(),
+                                    );
+                                  },
+                                transitionsBuilder: (context, animation, secondaryAnimation, child){
+                                    final double begin = 0.0;
+                                    final double end = 1.0;
+                                    final Animatable<double> tween =
+                                        Tween(begin: begin, end: end).chain(
+                                          CurveTween(
+                                              curve: Curves.easeInOut)
+                                        );
+                                    final Animation<double> doubleAnimation = animation.drive(tween);
+                                    return FadeTransition(
+                                        opacity: doubleAnimation,
+                                      child: child,
+                                    );
+                                },
+                              ),
+                          );
+                          // Navigator.push(context, MaterialPageRoute(builder: (context) => FakePage()));
                         },
                       ),
                     ),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-class SplashModel extends StatelessWidget {
-  const SplashModel({Key? key}) : super(key: key);
+class SplashModel extends ChangeNotifier {
 
   @override
   Widget build(BuildContext context) {
