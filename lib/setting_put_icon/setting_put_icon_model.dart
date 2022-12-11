@@ -7,6 +7,7 @@ class SettingPutIconModel extends ChangeNotifier {
   void dragEnd(dragDetails, Position position) {
     position.x = dragDetails.offset.dx;
     position.y = dragDetails.offset.dy;
+    Position.isChange = true;
     notifyListeners();
   }
 }

@@ -13,8 +13,7 @@ class PerformancePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Position.defaultPosition(context);
-
+    if(!Position.isChange) Position.defaultPosition(context);
     return Scaffold(
       body: ChangeNotifierProvider(
         create: (BuildContext context) => PerformanceModel(),
