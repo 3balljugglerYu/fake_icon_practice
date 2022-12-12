@@ -89,25 +89,28 @@ class PerformancePage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(4),
                       color: Colors.red.withOpacity(0.8),
                     ),
-                    child: TextButton(
-                      style: ButtonStyle(
-                        shape: MaterialStateProperty.all(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(1),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TextButton(
+                        style: ButtonStyle(
+                          shape: MaterialStateProperty.all(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(1),
+                            ),
                           ),
                         ),
+                        // style: ElevatedButton.styleFrom(
+                        //   backgroundColor: Colors.red,
+                        //   shape: RoundedRectangleBorder(
+                        //       borderRadius: BorderRadius.circular(10)
+                        //   ),
+                        // ),
+                        child: const Text('Button'),
+                        onPressed: () async {
+                          await Navigator.push(context, MaterialPageRoute(builder: (context) => SettingTopPage()));
+                          model.notifyListeners();
+                        },
                       ),
-                      // style: ElevatedButton.styleFrom(
-                      //   backgroundColor: Colors.red,
-                      //   shape: RoundedRectangleBorder(
-                      //       borderRadius: BorderRadius.circular(10)
-                      //   ),
-                      // ),
-                      child: const Text('Button'),
-                      onPressed: () async {
-                        await Navigator.push(context, MaterialPageRoute(builder: (context) => SettingTopPage()));
-                        model.notifyListeners();
-                      },
                     ),
                   ),
                 ),
