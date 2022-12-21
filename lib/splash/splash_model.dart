@@ -47,7 +47,8 @@ class SplashModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  void transitionScreen(BuildContext context)  {
+  Future<void> transitionScreen(BuildContext context) async {
+    await Future.delayed(Duration(seconds: Utils.transitionSecond));
     Navigator.push(context, MaterialPageRoute(builder: (context) => FakePage()));
   }
 
