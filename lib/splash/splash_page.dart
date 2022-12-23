@@ -23,6 +23,12 @@ class SplashPage extends StatelessWidget {
 
           if(model.isSetUpFinish){
             model.setUp();
+            if (Utils.setUpNumber < Utils.frequencyNumber) {
+              Utils.setUpNumber++;
+              model.transitionScreen(context);
+            } else {
+              Utils.setUpNumber = 0;
+            }
           }
 
           return Stack(
