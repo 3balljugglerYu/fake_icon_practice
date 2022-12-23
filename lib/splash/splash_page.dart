@@ -22,14 +22,24 @@ class SplashPage extends StatelessWidget {
           model.measureDisplaySize(displaySize);
 
           if(model.isSetUpFinish){
-            model.setUp();
-            if (Utils.setUpNumber < Utils.frequencyNumber) {
-              Utils.setUpNumber++;
-              model.transitionScreen(context);
-            } else {
-              Utils.setUpNumber = 0;
-            }
+            model.setUp().then((value){
+              if (Utils.setUpNumber < Utils.frequencyNumber) {
+                Utils.setUpNumber++;
+                model.transitionScreen(context);
+              } else {
+                Utils.setUpNumber = 0;
+              }
+            });
           }
+          // if(model.isSetUpFinish){
+          //   model.setUp();
+          //   if (Utils.setUpNumber < Utils.frequencyNumber) {
+          //     Utils.setUpNumber++;
+          //     model.transitionScreen(context);
+          //   } else {
+          //     Utils.setUpNumber = 0;
+          //   }
+          // }
 
           return Stack(
             children: [
