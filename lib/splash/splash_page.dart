@@ -19,9 +19,12 @@ class SplashPage extends StatelessWidget {
             model,
             Widget? child,
         ){
+
           model.measureDisplaySize(displaySize);
 
-          if(model.isSetUpFinish){
+          if(model.isSetUpFinish) {
+            Future.delayed(const Duration(seconds: 1));
+
             model.setUp().then((value){
               if (Utils.setUpNumber < Utils.frequencyNumber) {
                 Utils.setUpNumber++;
@@ -31,15 +34,7 @@ class SplashPage extends StatelessWidget {
               }
             });
           }
-          // if(model.isSetUpFinish){
-          //   model.setUp();
-          //   if (Utils.setUpNumber < Utils.frequencyNumber) {
-          //     Utils.setUpNumber++;
-          //     model.transitionScreen(context);
-          //   } else {
-          //     Utils.setUpNumber = 0;
-          //   }
-          // }
+
 
           return Stack(
             children: [
@@ -53,10 +48,12 @@ class SplashPage extends StatelessWidget {
                 left: model.logoPosition.x,
                 top: model.logoPosition.y,
                 child: Draggable(
-                  onDragEnd: (details) {
-                    model.changeLogoPosition(details);
+                  onDragEnd: (details) async {
+                    await model.changeLogoPosition(details);
                       if (model.isLogoVisibility == false) {
-                         model.comeBackLogo();
+                         await model.comeBackLogo();
+                         await Future.delayed(Duration(seconds: Utils.transitionSecond));
+                         // ignore: use_build_context_synchronously
                          model.transitionScreen(context);
                       }
                   },
