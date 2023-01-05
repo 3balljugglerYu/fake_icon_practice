@@ -68,12 +68,12 @@ class PerformancePage extends StatelessWidget {
                     child: AnimatedContainer(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(4),
-                        color: Colors.yellow.withOpacity(0.8),
+                        color: Colors.yellow.withOpacity(0),
                       ),
                       duration: const Duration(milliseconds: 200),
                       child: TextButton(
                         child:
-                        Text('splash'),
+                        Text(''),
                         onPressed: () async {
                           await model.onPressed();
                           Navigator.of(context).push(
@@ -114,7 +114,7 @@ class PerformancePage extends StatelessWidget {
                     height: 60,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(4),
-                      color: Colors.red.withOpacity(0.8),
+                      color: Colors.red.withOpacity(0),
                     ),
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -132,7 +132,7 @@ class PerformancePage extends StatelessWidget {
                         //       borderRadius: BorderRadius.circular(10)
                         //   ),
                         // ),
-                        child: const Text('Button'),
+                        child: const Text(''),
                         onPressed: () async {
                           await Navigator.of(context).push(MaterialPageRoute(builder: (context) => SettingTopPage()));
                           model.notifyListeners();
