@@ -14,8 +14,8 @@ class SplashPage extends StatelessWidget {
     return Scaffold(
       body: Consumer<SplashModel>(
         builder: (BuildContext context, model, Widget? child,){
+
           model.measureDisplaySize(displaySize);
-          Duration animationMilliseconds = const Duration(milliseconds: 300);
 
           if(!model.isSetUpFinish) {
             Future.delayed(const Duration(seconds: 1));
@@ -31,47 +31,60 @@ class SplashPage extends StatelessWidget {
 
           return Stack(
             children: [
-              SizedBox(
-                child: Image.asset("images/performance-page.jpg"),
+              SizedBox( //背景
+                child: Utils.backgroundImageFile == null
+                    ? Image.asset("images/performance-page.jpg",fit: BoxFit.fill,)
+                    : Image.file(Utils.backgroundImageFile! ,fit: BoxFit.fill,),
               ),
-              AnimatedContainer(
+              AnimatedContainer( //splash_screenの動き
                 onEnd: (){
                   model.isAnimationFinish = true;
                   model.notifyListeners();
                 },
-                curve: Curves.easeInOutCirc,
-                duration: const Duration(milliseconds: 300),
-                padding: EdgeInsets.only(
+                curve: Curves.easeInOutQuart,
+                duration: const Duration(milliseconds: 500),
+                padding: EdgeInsets.only( //isSetUpFinishがtrueになったとき、paddingが0になる。
                   top: !model.isSetUpFinish ? Utils.splashPosition.y : 0,
                   left: !model.isSetUpFinish ? Utils.splashPosition.x : 0,
-                  right: !model.isSetUpFinish ? model.displaySize.width - Utils.splashPosition.x - 80 : 0,
-                  bottom: !model.isSetUpFinish ? model.displaySize.height - Utils.splashPosition.y - 80 : 0,
+                  right: !model.isSetUpFinish ? model.displaySize.width - Utils.splashPosition.x - 60 : 0,
+                  bottom: !model.isSetUpFinish ? model.displaySize.height - Utils.splashPosition.y - 60 : 0,
                 ),
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
-                    image: const DecorationImage(
-                      image: AssetImage("images/line-background.png"),
-                      fit: BoxFit.fill,
-                    ),
+                    image: Utils.splashBackgroundImageFile == null
+                        ? const DecorationImage(image: AssetImage("images/line-background.png"), fit: BoxFit.fill,)
+                        : DecorationImage(image: FileImage(Utils.splashBackgroundImageFile!,), fit: BoxFit.fill),
                   ),
                   child: Center(
-                    child: SizedBox(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        image: Utils.splashLogoImageFile == null
+                            ? const DecorationImage(image: AssetImage("images/line-logo.png"), fit: BoxFit.fill,)
+                            : DecorationImage(image: FileImage(Utils.splashLogoImageFile!,), fit: BoxFit.fill),
+                      ),
                       height: model.logoSize.height,
                       width: model.logoSize.width,
-                      child: Image.asset("images/line-logo.png"),
                     ),
                   )
                 ),
               ),
+              //起動アニメーションが終了。ロゴは戻ってきていない。
               if (model.isAnimationFinish && !model.isComeBackLogo)
-                SizedBox(
-                  child: Image.asset("images/line-background.png"),
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    image: Utils.splashBackgroundImageFile == null
+                        ? const DecorationImage(image: AssetImage("images/line-background.png"), fit: BoxFit.fill,)
+                        : DecorationImage(image: FileImage(Utils.splashBackgroundImageFile!,), fit: BoxFit.fill),
+                  ),
                 ),
+              //起動アニメーションが終了。ロゴは存在している。ロゴは戻ってきていない。
               if (model.isAnimationFinish &&
                   model.isLogoVisibility &&
                   !model.isComeBackLogo)
-
+              //ロゴを動かすアニメーション
               Positioned(
                 left: model.logoPosition.x,
                 top: model.logoPosition.y,
@@ -87,15 +100,25 @@ class SplashPage extends StatelessWidget {
                     }
                   },
                   childWhenDragging: Container(), //ドラッグしている時のドラッグ前のwidgetの見え方
-                  feedback: SizedBox( //ドラッグしている時の見え方
+                  feedback: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      image: Utils.splashLogoImageFile == null
+                          ? const DecorationImage(image: AssetImage("images/line-logo.png"), fit: BoxFit.fill,)
+                          : DecorationImage(image: FileImage(Utils.splashLogoImageFile!,), fit: BoxFit.fill),
+                    ),
                     height: model.logoSize.height,
                     width: model.logoSize.width,
-                    child: Image.asset('images/line-logo.png'),
                   ),
-                  child: SizedBox(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      image: Utils.splashLogoImageFile == null
+                          ? const DecorationImage(image: AssetImage("images/line-logo.png"), fit: BoxFit.fill,)
+                          : DecorationImage(image: FileImage(Utils.splashLogoImageFile!,), fit: BoxFit.fill),
+                    ),
                     height: model.logoSize.height,
                     width: model.logoSize.width,
-                    child: Image.asset('images/line-logo.png'),
                   ),
                 ),
               )

@@ -64,10 +64,10 @@ class FakePage extends StatelessWidget {
                           child: SizedBox(
                             height: double.infinity,
                             width: double.infinity,
-                            child: Utils.fakeImageFile == null ? Image.asset('images/default_fake_page.png',
+                            child: Utils.fakeBackgroundImageFile == null ? Image.asset('images/default_fake_page.png',
                             fit: BoxFit.fill,
                             ) : Image.file(
-                              Utils.fakeImageFile!,
+                              Utils.fakeBackgroundImageFile!,
                               fit: BoxFit.fill,
                             ),
                           ),

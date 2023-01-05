@@ -5,6 +5,7 @@ import 'setting_top_model.dart';
 import 'package:fake_icon_practice/utils.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fake_icon_practice/setting_put_icon/setting_put_icon_page.dart';
+import 'package:fake_icon_practice/setting_splash/setting_splash_page.dart';
 
 class SettingTopPage extends StatelessWidget {
   @override
@@ -46,7 +47,10 @@ class SettingTopPage extends StatelessWidget {
                 SizedBox(
                   height: double.infinity,
                   width: double.infinity,
-                  child: Utils.backgroundImageFile == null ? null : Image.file(Utils.backgroundImageFile!,fit: BoxFit.fill,)
+                  child: Utils.backgroundImageFile == null 
+                      ? Image.asset("images/performance-page.jpg", fit: BoxFit.fill,)
+                      : Image.file(Utils.backgroundImageFile!,fit: BoxFit.fill,
+                  ),
                 ),
                 BackdropFilter(
                   filter: ImageFilter.blur(
@@ -165,26 +169,32 @@ class SettingTopPage extends StatelessWidget {
                           margin: const EdgeInsets.symmetric(
                             vertical: 10.0, horizontal: 25.0,
                           ),
-                          child: Column(
-                            children: const [
-                              SizedBox(
-                                height: 10.0,
-                              ),
-                              ListTile(
-                                leading: Icon(
-                                  FontAwesomeIcons.ship,
-                                  size: 35,
+                          child: InkWell(
+                            splashColor: Colors.blue.withAlpha(30),
+                            onTap: (){
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => SettingSplashPage()));
+                            },
+                            child: Column(
+                              children: const [
+                                SizedBox(
+                                  height: 10.0,
                                 ),
-                                title: Text(
-                                  "Splash App 設定",
-                                  style: TextStyle(fontSize: 18.0),
-                                ),
-                                subtitle: Text(
-                                  "ロゴや背景画像の変更、ロゴを消失させた後に表示させるタイミング等を設定することができます。",
-                                  style: TextStyle(fontSize: 13.0),
-                                ),
-                              )
-                            ],
+                                ListTile(
+                                  leading: Icon(
+                                    FontAwesomeIcons.ship,
+                                    size: 35,
+                                  ),
+                                  title: Text(
+                                    "Splash App 設定",
+                                    style: TextStyle(fontSize: 18.0),
+                                  ),
+                                  subtitle: Text(
+                                    "ロゴや背景画像の変更、ロゴを消失させた後に表示させるタイミング等を設定することができます。",
+                                    style: TextStyle(fontSize: 13.0),
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       ),

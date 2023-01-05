@@ -24,11 +24,37 @@ class PerformancePage extends StatelessWidget {
                 SizedBox(
                   height: double.infinity,
                   width: double.infinity,
-                  child: Utils.backgroundImageFile == null ? Image.asset('images/performance-page.jpg',
-                    fit: BoxFit.fill,
-                  ) : Image.file(
-                    Utils.backgroundImageFile!,
-                  ),
+                  child: Utils.backgroundImageFile == null
+                      ? Image.asset('images/performance-page.jpg', fit: BoxFit.fill,)
+                      : Image.file(Utils.backgroundImageFile!, fit: BoxFit.fill,),
+                ),
+                Column(
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      height: MediaQuery.of(context).padding.top * 1.1,
+                      color: Colors.black,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          height: 100,
+                          width: 100,
+                          child: CustomPaint(
+                            painter: RightPainter(),
+                          ),
+                        ),
+                        Container(
+                          height: 100,
+                          width: 100,
+                          child: CustomPaint(
+                            painter: LeftPainter(),
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
                 ),
                 Positioned(
                   left: Utils.splashPosition.x,
@@ -46,7 +72,8 @@ class PerformancePage extends StatelessWidget {
                       ),
                       duration: const Duration(milliseconds: 200),
                       child: TextButton(
-                        child: Text('splash'),
+                        child:
+                        Text('splash'),
                         onPressed: () async {
                           await model.onPressed();
                           Navigator.of(context).push(
@@ -67,7 +94,7 @@ class PerformancePage extends StatelessWidget {
                                         );
                                     final Animation<double> doubleAnimation = animation.drive(tween);
                                     return FadeTransition(
-                                        opacity: doubleAnimation,
+                                      opacity: doubleAnimation,
                                       child: child,
                                     );
                                 },
@@ -107,7 +134,7 @@ class PerformancePage extends StatelessWidget {
                         // ),
                         child: const Text('Button'),
                         onPressed: () async {
-                          await Navigator.push(context, MaterialPageRoute(builder: (context) => SettingTopPage()));
+                          await Navigator.of(context).push(MaterialPageRoute(builder: (context) => SettingTopPage()));
                           model.notifyListeners();
                         },
                       ),
@@ -120,6 +147,64 @@ class PerformancePage extends StatelessWidget {
           ),
         ),
     );
-
   }
+}
+
+class RightPain extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    var paint1 = Paint()
+      ..color = Colors.black
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 120;
+    canvas.drawArc(
+        const Rect.fromLTRB(-60, -60, 80, 80),
+        3.14, //radians
+        1.6, //radians
+        false,
+        paint1);
+  }
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => true;
+}
+
+
+class RightPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    var paint1 = Paint()
+      ..color = Colors.black
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 120;
+    canvas.drawArc(
+        const Rect.fromLTRB(-60, -60, 80, 80),
+        3.14, //radians
+        1.6, //radians
+        false,
+        paint1);
+  }
+
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => true;
+}
+
+class LeftPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    var paint1 = Paint()
+      ..color = Colors.black
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 120;
+    canvas.drawArc(
+        const Rect.fromLTRB(20, -60, 160, 80),
+        4.70, //radians
+        1.6, //radians
+        false,
+        paint1);
+  }
+
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => false;
 }

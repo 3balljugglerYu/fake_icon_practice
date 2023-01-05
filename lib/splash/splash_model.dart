@@ -99,7 +99,7 @@ class SplashModel extends ChangeNotifier {
 
   //isSetUpはアプリ起動の再現が行われたかの判断
   bool isSetUpFinish = false;
-  bool isAnimationFinish = false;
+  bool isAnimationFinish = false; //true=アニメーション終了
   bool isLogoVisibility = true;
   bool isComeBackLogo = false;  //true=ロゴが戻ってきた
 

@@ -10,8 +10,8 @@ class SettingSplashModel extends ChangeNotifier {
   // late SharedPreferences prefs;
 
   final frequencyNum = List.generate(11, (index) => "$index");
-  final comeSec = List.generate(60, (index) => "${index + 1}");
-  final transitionSec = List.generate(60, (index) => "${index + 1}");
+  final comebackLogoSec = List.generate(61, (index) => "$index");
+  final transitionSec = List.generate(61, (index) => "$index");
   final setUpSec = List.generate(11, (index) => "$index");
 
   List<Center> freNum = [];
@@ -23,17 +23,17 @@ class SettingSplashModel extends ChangeNotifier {
     freNum = frequencyNum.map((number) => Center(child: Text(number))).toList();
   }
 
-  onSelectedItemChanged(int value) {
+  onSelectedFrequencyNumChanged(int value) {
     Utils.frequencyNumber = int.parse(frequencyNum[value]);
     notifyListeners();
   }
 
   comSecToStr() {
-    comSec = comeSec.map((number) => Center(child: Text(number))).toList();
+    comSec = comebackLogoSec.map((number) => Center(child: Text(number))).toList();
   }
 
-  onSelectedItemChanged2(int value) {
-    Utils.comeBackSecond = int.parse(comeSec[value]);
+  onSelectedComebackLogoNumChanged(int value) {
+    Utils.comeBackSecond = int.parse(comebackLogoSec[value]);
     notifyListeners();
   }
 
@@ -42,7 +42,7 @@ class SettingSplashModel extends ChangeNotifier {
         transitionSec.map((number) => Center(child: Text(number))).toList();
   }
 
-  onSelectedItemChanged3(int value) {
+  onSelectedTransitionNumChanged(int value) {
     Utils.transitionSecond = int.parse(transitionSec[value]);
     notifyListeners();
   }
@@ -51,35 +51,35 @@ class SettingSplashModel extends ChangeNotifier {
     setSec = setUpSec.map((number) => Center(child: Text(number))).toList();
   }
 
-  onSelectedItemChanged4(int value) {
+  onSelectedNotifyNumChanged(int value) {
     Utils.notifySecond = int.parse(setUpSec[value]);
     notifyListeners();
   }
 
-  Future getLogo() async {
+  Future getSplashLogoImageFile() async {
     final picker = ImagePicker();
     final pickedFile = await picker.pickImage(
       source: ImageSource.gallery,
     );
-    Utils.logoImageFile = File(pickedFile!.path);
+    Utils.splashLogoImageFile = File(pickedFile!.path);
     notifyListeners();
   }
 
-  Future getFakeColor() async {
+  Future getSplashBackgroundImageFile() async {
     final picker = ImagePicker();
     final pickedFile = await picker.pickImage(
       source: ImageSource.gallery,
     );
-    Utils.fakeColorFile = File(pickedFile!.path);
+    Utils.splashBackgroundImageFile = File(pickedFile!.path);
     notifyListeners();
   }
 
-  Future getFakeImage() async {
+  Future getFakeBackgroundImageFile() async {
     final picker = ImagePicker();
     final pickedFile = await picker.pickImage(
       source: ImageSource.gallery,
     );
-    Utils.fakeImageFile = File(pickedFile!.path);
+    Utils.fakeBackgroundImageFile = File(pickedFile!.path);
     notifyListeners();
   }
 

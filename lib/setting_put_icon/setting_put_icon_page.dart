@@ -33,9 +33,9 @@ class SettingPutIconPage extends StatelessWidget {
         Container(
           height: double.infinity,
           width: double.infinity,
-          child: Utils.backgroundImageFile == null ? Container(
-            color: Colors.white,
-          ) : Image.file(Utils.backgroundImageFile!)
+          child: Utils.backgroundImageFile == null
+              ? Image.asset("images/performance-page.jpg", fit: BoxFit.fill,)
+              : Image.file(Utils.backgroundImageFile!, fit: BoxFit.fill,)
         ),
         BackdropFilter(
           filter: ImageFilter.blur(
