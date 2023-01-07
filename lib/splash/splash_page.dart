@@ -1,3 +1,4 @@
+import 'package:fake_icon_practice/notchDisplay.dart';
 import 'package:fake_icon_practice/position_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -124,7 +125,8 @@ class SplashPage extends StatelessWidget {
                     width: model.logoSize.width,
                   ),
                 ),
-              )
+              ),
+              const NotchDisplay(),
             ],
           );
         },

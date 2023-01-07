@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:fake_icon_practice/notchDisplay.dart';
 import 'package:fake_icon_practice/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -75,7 +76,8 @@ class FakePage extends StatelessWidget {
                       ),
                     ),
                   ),
-                )
+                ),
+                const NotchDisplay(),
               ],
             );
           },
