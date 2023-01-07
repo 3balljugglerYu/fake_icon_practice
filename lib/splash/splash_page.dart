@@ -31,10 +31,13 @@ class SplashPage extends StatelessWidget {
 
           return Stack(
             children: [
-              SizedBox( //背景
-                child: Utils.backgroundImageFile == null
-                    ? Image.asset("images/performance-page.jpg",fit: BoxFit.fill,)
-                    : Image.file(Utils.backgroundImageFile! ,fit: BoxFit.fill,),
+              Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    image: Utils.backgroundImageFile == null
+                        ? const DecorationImage(image: AssetImage("images/performance-page.jpg"), fit: BoxFit.fill,)
+                        : DecorationImage(image: FileImage(Utils.backgroundImageFile!,), fit: BoxFit.fill),
+                  ),
               ),
               AnimatedContainer( //splash_screenの動き
                 onEnd: (){
