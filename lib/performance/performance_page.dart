@@ -5,6 +5,7 @@ import 'package:fake_icon_practice/splash/splash_model.dart';
 import 'package:fake_icon_practice/splash/splash_page.dart';
 import 'package:fake_icon_practice/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:fake_icon_practice/position_model.dart';
 

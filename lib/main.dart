@@ -11,17 +11,21 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider<PerformanceModel>(
-            create: (context) => PerformanceModel())
-      ],
-      child: MaterialApp(
-        title: 'Fake Icon',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: const PerformancePage(),
+    return ChangeNotifierProvider(
+      create: (context) => PerformanceModel(),
+      child: Consumer<PerformanceModel>(
+        builder: (context,theme,_){
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            theme: ThemeData(
+              primarySwatch: Colors.blue,
+            ),
+            darkTheme: ThemeData.dark(),
+            // theme: ThemeData.dark(),
+            home: Scaffold(
+                body: PerformancePage()),
+          );
+        },
       ),
     );
   }

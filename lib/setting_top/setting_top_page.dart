@@ -17,7 +17,7 @@ class SettingTopPage extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             elevation: 0,
-            backgroundColor: Colors.white,
+            backgroundColor: Colors.transparent,
             title: Opacity(
               opacity: 0.95,
               child: Row(
