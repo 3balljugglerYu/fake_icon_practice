@@ -114,12 +114,12 @@ class SplashPage extends StatelessWidget {
                         : DecorationImage(image: FileImage(Utils.splashBackgroundImageFile!,), fit: BoxFit.fill),
                   ),
                 ),
+              const NotchDisplay(),
               //起動アニメーションが終了。ロゴは存在している。ロゴは戻ってきていない。
               if (model.isAnimationFinish &&
                   model.isLogoVisibility &&
                   !model.isComeBackLogo)
               //ロゴを動かすアニメーション
-              const NotchDisplay(),
               Positioned(
                 left: model.logoPosition.x,
                 top: model.logoPosition.y,
