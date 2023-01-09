@@ -45,7 +45,7 @@ class SplashPage extends StatelessWidget {
                   model.isAnimationFinish = true;
                   model.notifyListeners();
                 },
-                curve: Curves.easeInOutQuart,
+                curve: Curves.easeInOut,
                 duration: const Duration(milliseconds: 500),
                 padding: EdgeInsets.only( //isSetUpFinishがtrueになったとき、paddingが0になる。
                   top: !model.isSetUpFinish ? Utils.splashPosition.y : 0,
@@ -60,18 +60,47 @@ class SplashPage extends StatelessWidget {
                         ? const DecorationImage(image: AssetImage("images/line-background.png"), fit: BoxFit.fill,)
                         : DecorationImage(image: FileImage(Utils.splashBackgroundImageFile!,), fit: BoxFit.fill),
                   ),
-                  child: Center(
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        image: Utils.splashLogoImageFile == null
-                            ? const DecorationImage(image: AssetImage("images/line-logo.png"), fit: BoxFit.fill,)
-                            : DecorationImage(image: FileImage(Utils.splashLogoImageFile!,), fit: BoxFit.fill),
-                      ),
-                      height: model.logoSize.height,
-                      width: model.logoSize.width,
+                ),
+              ),
+              AnimatedContainer( //splash_screenの動き
+                onEnd: (){
+                  model.isAnimationFinish = true;
+                  model.notifyListeners();
+                },
+                curve: Curves.ease,
+                duration: const Duration(milliseconds: 500),
+                padding: EdgeInsets.only( //isSetUpFinishがtrueになったとき、paddingが0になる。
+                  top: !model.isSetUpFinish ? Utils.splashPosition.y : 0,
+                  left: !model.isSetUpFinish ? Utils.splashPosition.x : 0,
+                  right: !model.isSetUpFinish ? model.displaySize.width - Utils.splashPosition.x - 60 : 0,
+                  bottom: !model.isSetUpFinish ? model.displaySize.height - Utils.splashPosition.y - 60 : 0,
+                ),
+                child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      image: Utils.splashBackgroundImageFile == null
+                          ? const DecorationImage(image: AssetImage("images/line-background.png"), fit: BoxFit.fill,)
+                          : DecorationImage(image: FileImage(Utils.splashBackgroundImageFile!,), fit: BoxFit.fill),
                     ),
-                  )
+                    child: Center(
+                        child: AnimatedOpacity(
+                          duration: Duration(milliseconds: 500),
+                          opacity: !model.isSetUpFinish ? 0.9 : 1,
+                          child: AnimatedSize(
+                              curve: Curves.ease,
+                              duration: Duration(milliseconds: 500),
+                            child: AnimatedContainer(
+                              curve: Curves.ease,
+                              duration: Duration(milliseconds: 500),
+                              height: !model.isSetUpFinish ? 70 : model.logoSize.height,
+                              width: !model.isSetUpFinish ? 70 : model.logoSize.width,
+                              child: Utils.splashLogoImageFile == null
+                                  ? Image.asset("images/line-logo.png", fit:  BoxFit.fill,)
+                                  : Image.file(Utils.splashLogoImageFile!, fit: BoxFit.fill,),
+                            ),
+                          ),
+                        ),
+                    )
                 ),
               ),
               //起動アニメーションが終了。ロゴは戻ってきていない。
