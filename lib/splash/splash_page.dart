@@ -114,7 +114,6 @@ class SplashPage extends StatelessWidget {
                         : DecorationImage(image: FileImage(Utils.splashBackgroundImageFile!,), fit: BoxFit.fill),
                   ),
                 ),
-              const NotchDisplay(),
               //起動アニメーションが終了。ロゴは存在している。ロゴは戻ってきていない。
               if (model.isAnimationFinish &&
                   model.isLogoVisibility &&
@@ -132,7 +131,9 @@ class SplashPage extends StatelessWidget {
                       await Future.delayed(
                         Duration(seconds: Utils.transitionSecond - Utils.notifySecond),
                       ).then((value) => HapticFeedback.heavyImpact());
-                      await Future.delayed(Duration(seconds: Utils.transitionSecond));
+                      await Future.delayed(
+                        Duration(seconds: Utils.notifySecond)
+                      );
                       // ignore: use_build_context_synchronously
                       model.transitionScreen(context);
                     }
@@ -160,6 +161,7 @@ class SplashPage extends StatelessWidget {
                   ),
                 ),
               ),
+              const NotchDisplay(),
             ],
           );
         },
