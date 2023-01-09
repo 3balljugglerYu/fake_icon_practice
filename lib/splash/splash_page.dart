@@ -8,7 +8,7 @@ import 'package:fake_icon_practice/utils.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({Key? key}) : super(key: key);
-
+  static const iconAnimation = Curves.easeOutCubic;
   @override
   Widget build(BuildContext context) {
     final Size displaySize = MediaQuery.of(context).size;
@@ -45,7 +45,7 @@ class SplashPage extends StatelessWidget {
                   model.isAnimationFinish = true;
                   model.notifyListeners();
                 },
-                curve: Curves.easeInOut,
+                curve: iconAnimation,
                 duration: const Duration(milliseconds: 500),
                 padding: EdgeInsets.only( //isSetUpFinishがtrueになったとき、paddingが0になる。
                   top: !model.isSetUpFinish ? Utils.splashPosition.y : 0,
@@ -62,12 +62,12 @@ class SplashPage extends StatelessWidget {
                   ),
                 ),
               ),
-              AnimatedContainer( //splash_screenの動き
+              AnimatedContainer(//splash_screenの動き
                 onEnd: (){
                   model.isAnimationFinish = true;
                   model.notifyListeners();
                 },
-                curve: Curves.ease,
+                curve: iconAnimation,
                 duration: const Duration(milliseconds: 500),
                 padding: EdgeInsets.only( //isSetUpFinishがtrueになったとき、paddingが0になる。
                   top: !model.isSetUpFinish ? Utils.splashPosition.y : 0,
@@ -84,16 +84,17 @@ class SplashPage extends StatelessWidget {
                     ),
                     child: Center(
                         child: AnimatedOpacity(
+                          curve: iconAnimation,
                           duration: Duration(milliseconds: 500),
                           opacity: !model.isSetUpFinish ? 0.9 : 1,
                           child: AnimatedSize(
-                              curve: Curves.ease,
+                              curve: iconAnimation,
                               duration: Duration(milliseconds: 500),
                             child: AnimatedContainer(
-                              curve: Curves.ease,
+                              curve: iconAnimation,
                               duration: Duration(milliseconds: 500),
-                              height: !model.isSetUpFinish ? 70 : model.logoSize.height,
-                              width: !model.isSetUpFinish ? 70 : model.logoSize.width,
+                              height: !model.isSetUpFinish ? 80 : model.logoSize.height,
+                              width: !model.isSetUpFinish ? 80 : model.logoSize.width,
                               child: Utils.splashLogoImageFile == null
                                   ? Image.asset("images/line-logo.png", fit:  BoxFit.fill,)
                                   : Image.file(Utils.splashLogoImageFile!, fit: BoxFit.fill,),
