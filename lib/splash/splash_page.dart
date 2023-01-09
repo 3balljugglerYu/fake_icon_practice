@@ -119,6 +119,7 @@ class SplashPage extends StatelessWidget {
                   model.isLogoVisibility &&
                   !model.isComeBackLogo)
               //ロゴを動かすアニメーション
+              const NotchDisplay(),
               Positioned(
                 left: model.logoPosition.x,
                 top: model.logoPosition.y,
@@ -128,6 +129,9 @@ class SplashPage extends StatelessWidget {
                     if (model.isLogoVisibility == false) {
                       // ignore: use_build_context_synchronously
                       await model.comeBackLogo(context);
+                      await Future.delayed(
+                        Duration(seconds: Utils.transitionSecond - Utils.notifySecond),
+                      ).then((value) => HapticFeedback.heavyImpact());
                       await Future.delayed(Duration(seconds: Utils.transitionSecond));
                       // ignore: use_build_context_synchronously
                       model.transitionScreen(context);
@@ -156,7 +160,6 @@ class SplashPage extends StatelessWidget {
                   ),
                 ),
               ),
-              const NotchDisplay(),
             ],
           );
         },
