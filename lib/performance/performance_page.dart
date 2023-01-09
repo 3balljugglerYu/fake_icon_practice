@@ -30,6 +30,7 @@ class PerformancePage extends StatelessWidget {
                       ? Image.asset('images/performance-page.jpg', fit: BoxFit.fill,)
                       : Image.file(Utils.backgroundImageFile!, fit: BoxFit.fill,),
                 ),
+                const NotchDisplay(),
                 Positioned(
                   left: Utils.splashPosition.x,
                   top: Utils.splashPosition.y,
@@ -115,7 +116,6 @@ class PerformancePage extends StatelessWidget {
                     ),
                   ),
                 ),
-                const NotchDisplay(),
               ],
             );
           },
