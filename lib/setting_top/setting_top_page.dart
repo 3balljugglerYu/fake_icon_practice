@@ -6,6 +6,7 @@ import 'package:fake_icon_practice/utils.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fake_icon_practice/setting_put_icon/setting_put_icon_page.dart';
 import 'package:fake_icon_practice/setting_splash/setting_splash_page.dart';
+import 'package:fake_icon_practice/shared_preference_method.dart';
 
 class SettingTopPage extends StatelessWidget {
   @override
@@ -244,7 +245,9 @@ class SettingTopPage extends StatelessWidget {
                         height: 45.0,
                         width: 250.0,
                         child: ElevatedButton(
-                          onPressed: (){
+                          onPressed: () async {
+                            await SharedPreferenceMethod.saveBackgroundImageFile();
+                            // ignore: use_build_context_synchronously
                             Navigator.pop(context);
                           },
                           style: ElevatedButton.styleFrom(
