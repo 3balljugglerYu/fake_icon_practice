@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:fake_icon_practice/position_model.dart';
 import 'package:fake_icon_practice/utils.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -18,6 +19,38 @@ class SharedPreferenceMethod{
       Utils.splashLogoImageFile = File(splashLogoImageFilePath);
     }
 
+    final splashBackgroundImageFilePath = prefs.getString('splashBackgroundImageFilePath');
+    if(splashBackgroundImageFilePath != null){
+      Utils.splashBackgroundImageFile = File(splashBackgroundImageFilePath);
+    }
+
+    final fakeBackgroundImageFilePath = prefs.getString('fakeBackgroundImageFilePath');
+    if(fakeBackgroundImageFilePath != null){
+      Utils.fakeBackgroundImageFile = File(fakeBackgroundImageFilePath);
+    }
+    
+    Utils.frequencyNumber = prefs.getInt('frequencyNumber') ?? 1;
+    Utils.comeBackSecond = prefs.getInt('comeBackSecond') ?? 1;
+    Utils.transitionSecond = prefs.getInt('transitionSecond') ?? 1;
+    Utils.notifySecond = prefs.getInt('notifySecond') ?? 0;
+
+    final splashIconPositionX = prefs.getDouble('splashIconPositionX');
+    final splashIconPositionY = prefs.getDouble('splashIconPositionY');
+    if(prefs.getDouble('splashIconPositionX') != null ){
+      Utils.splashPosition = Position(
+          x: splashIconPositionX!,
+          y: splashIconPositionY!
+      );
+    }
+
+    final settingIconPositionX = prefs.getDouble('settingIconPositionX');
+    final settingIconPositionY = prefs.getDouble('settingIconPositionY');
+    if(prefs.getDouble('settingIconPositionX') != null ) {
+      Utils.settingPosition = Position(
+          x: settingIconPositionX!,
+          y: settingIconPositionY!
+      );
+    }
   }
 
   static Future<void> saveBackgroundImageFile() async {
@@ -27,10 +60,31 @@ class SharedPreferenceMethod{
     }
   }
 
-  static Future<void> saveSplashLogoImageFile() async {
+  static Future<void> saveSplashSettingElement() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
+
     if(Utils.splashLogoImageFile != null){
-      prefs.setString('splashLogoImageFilePath', Utils.splashLogoImageFile!.path);
+      await prefs.setString('splashLogoImageFilePath', Utils.splashLogoImageFile!.path);
     }
+
+    if(Utils.splashBackgroundImageFile != null){
+      await prefs.setString('splashBackgroundImageFilePath', Utils.splashBackgroundImageFile!.path);
+    }
+
+    if(Utils.fakeBackgroundImageFile != null){
+      await prefs.setString('fakeBackgroundImageFilePath', Utils.fakeBackgroundImageFile!.path);
+    }
+    await prefs.setInt('frequencyNumber', Utils.frequencyNumber);
+    await prefs.setInt('comeBackSecond', Utils.comeBackSecond);
+    await prefs.setInt('transitionSecond', Utils.transitionSecond);
+    await prefs.setInt('notifySecond', Utils.notifySecond);
+  }
+
+  static Future<void> saveSettingIconPosition() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setDouble('splashIconPositionX', Utils.splashPosition.x);
+    await prefs.setDouble('splashIconPositionY', Utils.splashPosition.y);
+    await prefs.setDouble('settingIconPositionX', Utils.settingPosition.x);
+    await prefs.setDouble('settingIconPositionY', Utils.settingPosition.y);
   }
 }

@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:fake_icon_practice/notchDisplay.dart';
 import 'package:fake_icon_practice/setting_put_icon/setting_put_icon_model.dart';
+import 'package:fake_icon_practice/shared_preference_method.dart';
 import 'package:fake_icon_practice/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:fake_icon_practice/position_model.dart';
@@ -131,7 +132,8 @@ class SettingPutIconPage extends StatelessWidget {
                     const SizedBox(
                       width: 15.0,
                     ),
-                    TextButton(onPressed: () {
+                    TextButton(onPressed: () async {
+                      await SharedPreferenceMethod.saveSettingIconPosition();
                       Navigator.pop(context);
                       },
                         child: const Text(

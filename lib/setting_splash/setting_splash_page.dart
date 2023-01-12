@@ -288,11 +288,11 @@ class SettingSplashPage extends StatelessWidget {
                               Utils.transitionSecond <= Utils.notifySecond){
                             await _showDialog2(context);
                           } else {
-                            await SharedPreferenceMethod.saveSplashLogoImageFile();
+                            await SharedPreferenceMethod.saveSplashSettingElement();
                             Navigator.pop(context);
                           }
                         } else {
-                          await SharedPreferenceMethod.saveSplashLogoImageFile();
+                          await SharedPreferenceMethod.saveSplashSettingElement();
                           Navigator.pop(context);
                         }
                       },
