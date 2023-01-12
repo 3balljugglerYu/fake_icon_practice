@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:fake_icon_practice/shared_preference_method.dart';
 // import 'package:flutter_switch/flutter_switch.dart';
 
 
@@ -287,9 +288,11 @@ class SettingSplashPage extends StatelessWidget {
                               Utils.transitionSecond <= Utils.notifySecond){
                             await _showDialog2(context);
                           } else {
+                            await SharedPreferenceMethod.saveSplashLogoImageFile();
                             Navigator.pop(context);
                           }
                         } else {
+                          await SharedPreferenceMethod.saveSplashLogoImageFile();
                           Navigator.pop(context);
                         }
                       },
@@ -430,7 +433,7 @@ class SettingNumSec extends StatelessWidget {
                                       style: TextStyle(
                                         color: Colors.blueGrey
                                       ),),
-                                      onPressed: (){
+                                      onPressed: () {
                                         Navigator.pop(context);
                                       },
                                     ),

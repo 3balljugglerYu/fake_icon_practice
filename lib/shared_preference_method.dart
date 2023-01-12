@@ -12,12 +12,25 @@ class SharedPreferenceMethod{
     if(backgroundImageFilePath != null ){
       Utils.backgroundImageFile = File(backgroundImageFilePath);
     }
+
+    final splashLogoImageFilePath = prefs.getString('splashLogoImageFilePath');
+    if(splashLogoImageFilePath != null){
+      Utils.splashLogoImageFile = File(splashLogoImageFilePath);
+    }
+
   }
 
   static Future<void> saveBackgroundImageFile() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     if(Utils.backgroundImageFile != null){
       prefs.setString('backgroundImageFilePath', Utils.backgroundImageFile!.path);
+    }
+  }
+
+  static Future<void> saveSplashLogoImageFile() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    if(Utils.splashLogoImageFile != null){
+      prefs.setString('splashLogoImageFilePath', Utils.splashLogoImageFile!.path);
     }
   }
 }
