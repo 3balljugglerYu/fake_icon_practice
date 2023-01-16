@@ -248,6 +248,7 @@ class SettingTopPage extends StatelessWidget {
                           onPressed: () async {
                             await SharedPreferenceMethod.saveBackgroundImageFile();
                             // ignore: use_build_context_synchronously
+                            Utils.setUpNumber = 0;
                             Navigator.pop(context);
                           },
                           style: ElevatedButton.styleFrom(
