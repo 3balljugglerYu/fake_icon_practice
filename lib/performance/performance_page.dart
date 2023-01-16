@@ -105,12 +105,6 @@ class PerformancePage extends StatelessWidget {
                               ),
                             ),
                           ),
-                          // style: ElevatedButton.styleFrom(
-                          //   backgroundColor: Colors.red,
-                          //   shape: RoundedRectangleBorder(
-                          //       borderRadius: BorderRadius.circular(10)
-                          //   ),
-                          // ),
                           child: const Text(''),
                           onPressed: () async {
                             await Navigator.of(context).push(MaterialPageRoute(builder: (context) => SettingTopPage()));
@@ -122,7 +116,7 @@ class PerformancePage extends StatelessWidget {
                   ),
                 ],
               );
-    },
+              },
             );
           },
           ),
