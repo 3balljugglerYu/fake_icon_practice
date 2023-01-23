@@ -36,7 +36,7 @@ class SettingPutIconPage extends StatelessWidget {
           height: double.infinity,
           width: double.infinity,
           child: Utils.backgroundImageFile == null
-              ? Image.asset("images/performance-page.jpg", fit: BoxFit.fill,)
+              ? Image.asset("images/top_default_image.png", fit: BoxFit.fill,)
               : Image.file(Utils.backgroundImageFile!, fit: BoxFit.fill,)
         ),
         BackdropFilter(
@@ -67,6 +67,7 @@ class SettingPutIconPage extends StatelessWidget {
           iconBackgroundColor: Colors.black,
           onDragEnd: (dragDetails){
             model.dragEnd(dragDetails, Utils.settingPosition);
+            print(Utils.settingPosition.y);
             },
         ),
         Positioned(

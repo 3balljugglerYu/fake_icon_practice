@@ -35,7 +35,7 @@ class FakePage extends StatelessWidget {
                 SizedBox(
                   height: double.infinity,
                   width: double.infinity,
-                  child: Utils.backgroundImageFile == null ? Image.asset('images/performance-page.jpg',
+                  child: Utils.backgroundImageFile == null ? Image.asset('images/top_default_image.png',
                   fit: BoxFit.fill,
                   ) : Image.file(Utils.backgroundImageFile!,
                   fit: BoxFit.fill,

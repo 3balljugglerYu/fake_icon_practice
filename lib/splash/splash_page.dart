@@ -36,7 +36,7 @@ class SplashPage extends StatelessWidget {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
                     image: Utils.backgroundImageFile == null
-                        ? const DecorationImage(image: AssetImage("images/performance-page.jpg"), fit: BoxFit.fill,)
+                        ? const DecorationImage(image: AssetImage("images/top_default_image.png"), fit: BoxFit.fill,)
                         : DecorationImage(image: FileImage(Utils.backgroundImageFile!,), fit: BoxFit.fill),
                   ),
               ),
@@ -83,21 +83,26 @@ class SplashPage extends StatelessWidget {
                           : DecorationImage(image: FileImage(Utils.splashBackgroundImageFile!,), fit: BoxFit.fill),
                     ),
                     child: Center(
-                        child: AnimatedOpacity(
-                          curve: iconAnimation,
-                          duration: Duration(milliseconds: 500),
-                          opacity: !model.isSetUpFinish ? 0.9 : 1,
-                          child: AnimatedSize(
-                              curve: iconAnimation,
-                              duration: Duration(milliseconds: 500),
-                            child: AnimatedContainer(
-                              curve: iconAnimation,
-                              duration: Duration(milliseconds: 500),
-                              height: !model.isSetUpFinish ? 80 : model.logoSize.height,
-                              width: !model.isSetUpFinish ? 80 : model.logoSize.width,
-                              child: Utils.splashLogoImageFile == null
-                                  ? Image.asset("images/line-logo.png", fit:  BoxFit.fill,)
-                                  : Image.file(Utils.splashLogoImageFile!, fit: BoxFit.fill,),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: AnimatedOpacity(
+                            curve: iconAnimation,
+                            duration: Duration(milliseconds: 500),
+                            opacity: !model.isSetUpFinish ? 0.9 : 1,
+                            child: AnimatedSize(
+                                curve: iconAnimation,
+                                duration: Duration(milliseconds: 500),
+                              child: AnimatedContainer(
+                                curve: iconAnimation,
+                                duration: Duration(milliseconds: 500),
+                                height: !model.isSetUpFinish ? 80 : model.logoSize.height,
+                                width: !model.isSetUpFinish ? 80 : model.logoSize.width,
+                                child: Utils.splashLogoImageFile == null
+                                    ? Image.asset("images/line-logo.png", fit:  BoxFit.fill,)
+                                    : Image.file(Utils.splashLogoImageFile!, fit: BoxFit.fill,),
+                              ),
                             ),
                           ),
                         ),
