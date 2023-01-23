@@ -240,6 +240,7 @@ class SettingSplashPage extends StatelessWidget {
                                 listNum: model.freNum,
                                 unit: "回",
                                 setNum: Utils.frequencyNumber,
+                                cupertinoPickerInitialNum: Utils.frequencyNumber,
                                 explain: "普通のアプリであることを伝えるために、アプリを起動したり落としたりを繰り返すための回数を設定します。",
                               ),
                               SettingNumSec(
@@ -249,6 +250,7 @@ class SettingSplashPage extends StatelessWidget {
                                 listNum: model.comSec,
                                 unit: "秒",
                                 setNum: Utils.comeBackSecond,
+                                cupertinoPickerInitialNum: Utils.comeBackSecond,
                                 explain: "設定したロゴを画面外に動かした後、指定した秒数後にロゴが元の場所に戻ります。その秒数を設定します。",
                               ),
                               SettingNumSec(
@@ -258,6 +260,7 @@ class SettingSplashPage extends StatelessWidget {
                                 listNum: model.traSec,
                                 unit: "秒",
                                 setNum: Utils.transitionSecond,
+                                cupertinoPickerInitialNum: Utils.transitionSecond,
                                 explain: "ロゴが元の位置に戻った後、指定した起動後の画面に移ります。この起動後の画面に移るまでの秒数を設定します。",
                               ),
                               SettingNumSec(
@@ -267,6 +270,7 @@ class SettingSplashPage extends StatelessWidget {
                                 listNum: model.setSec,
                                 unit: "秒",
                                 setNum: Utils.notifySecond,
+                                cupertinoPickerInitialNum: Utils.notifySecond,
                                 explain: "「お知らせタイマー」は、「ロゴ消失後の復帰時間」や「復帰後からの画面遷移時間」よりも、秒数を短く設定してください。",
                               ),
                             ],
@@ -361,6 +365,7 @@ class SettingNumSec extends StatelessWidget {
       required this.unit,
       required this.setNum,
       required this.explain,
+      required this.cupertinoPickerInitialNum,
     });
 
     final String title;
@@ -370,6 +375,8 @@ class SettingNumSec extends StatelessWidget {
     final String unit;
     final int setNum;
     final String explain;
+    final int cupertinoPickerInitialNum;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -442,7 +449,9 @@ class SettingNumSec extends StatelessWidget {
                                 const Divider(),
                                 Expanded(
                                   child: CupertinoPicker(
-                                    scrollController: FixedExtentScrollController(),
+                                    scrollController: FixedExtentScrollController(
+                                      initialItem: cupertinoPickerInitialNum,
+                                    ),
                                     looping: false,
                                     itemExtent: 50,
                                     onSelectedItemChanged: (int value){
