@@ -273,6 +273,39 @@ class SettingSplashPage extends StatelessWidget {
                                 cupertinoPickerInitialNum: Utils.notifySecond,
                                 explain: "「お知らせタイマー」は、「ロゴ消失後の復帰時間」や「復帰後からの画面遷移時間」よりも、秒数を短く設定してください。",
                               ),
+                              Column(
+                                children: [
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      SwitchListTile.adaptive(
+                                        contentPadding: EdgeInsets.zero,
+                                        title: const Text(
+                                          "ノッチの表示",
+                                          style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.grey,
+                                          ),
+                                        ),
+                                        subtitle: const Text(
+                                          "ノッチの表示非表示を設定します。",
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.grey,
+                                          ),
+                                        ),
+                                        value: Utils.addNotch,
+                                        onChanged: model.switchOnChanged,
+                                      ),
+                                    ],
+                                  ),
+                                  const Divider(
+                                    thickness: 0.2,
+                                    color: Colors.grey,
+                                  ),
+                                ],
+                              ),
                             ],
                           ),
                         ),
@@ -354,6 +387,77 @@ class SettingSplashPage extends StatelessWidget {
   }
 
 }
+
+class SettingSwitch extends StatelessWidget {
+  SettingSwitch({
+    super.key,
+    required this.title,
+    // required this.setList,
+    // required this.selectedItemChange,
+    // required this.listNum,
+    // required this.unit,
+    // required this.setNum,
+    required this.explain,
+    // required this.cupertinoPickerInitialNum,
+    required this.value,
+    // required this.onChangedSwitchListTile,
+    required this.onChanged,
+  });
+
+  final String title;
+  // dynamic setList;
+  // dynamic selectedItemChange;
+  // dynamic listNum;
+  // final String unit;
+  // final int setNum;
+  final String explain;
+  // final int cupertinoPickerInitialNum;
+  final bool value;
+  // final bool onChangedSwitchListTile;
+
+  final void Function(bool?) onChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  title,
+                  style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.grey,
+                  ),
+                ),
+                SwitchListTile.adaptive(
+                    value: value,
+                    onChanged: onChanged,
+                )
+              ],
+            ),
+            Text(
+              explain,
+              style: const TextStyle(
+                color: Colors.grey,
+              ),
+            ),
+            const Divider(
+              thickness: 0.2,
+              color: Colors.grey,
+            ),
+          ],
+        )
+      ],
+    );
+  }
+}
+
 
 class SettingNumSec extends StatelessWidget {
   SettingNumSec({

@@ -15,6 +15,13 @@ class SettingSplashModel extends ChangeNotifier {
   List<Center> traSec = [];
   List<Center> setSec = [];
 
+  switchOnChanged(bool? value){
+    if(value != null){
+      Utils.addNotch = value;
+      notifyListeners();
+    }
+  }
+
   freNumToStr() {
     freNum = frequencyNum.map((number) => Center(child: Text(number))).toList();
   }
