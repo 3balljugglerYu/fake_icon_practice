@@ -22,4 +22,6 @@ class Utils{
   static int transitionSecond = 2;
   //お知らせタイマー
   static int notifySecond = 1;
+  //ノッチの表示非表示
+  static bool addNotch = true;
 }

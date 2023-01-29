@@ -34,7 +34,7 @@ class PerformancePage extends StatelessWidget {
                         ? Image.asset('images/top_default_image.png', fit: BoxFit.fill,)
                         : Image.file(Utils.backgroundImageFile!, fit: BoxFit.fill,),
                   ),
-                  const NotchDisplay(),
+                  Utils.addNotch ? const NotchDisplay() : const SizedBox(),
                   Positioned(
                     left: Utils.splashPosition.x,
                     top: Utils.splashPosition.y,
