@@ -48,7 +48,7 @@ class SettingPutIconPage extends StatelessWidget {
             color: Colors.black.withOpacity(0.5),
           ),
         ),
-        const NotchDisplay(),
+        Utils.addNotch ? const NotchDisplay() : const SizedBox(),
         ReusableMoveIcon(
           x: Utils.splashPosition.x,
           y: Utils.splashPosition.y,

@@ -77,7 +77,7 @@ class FakePage extends StatelessWidget {
                     ),
                   ),
                 ),
-                const NotchDisplay(),
+                Utils.addNotch ? const NotchDisplay() : const SizedBox(),
               ],
             );
           },

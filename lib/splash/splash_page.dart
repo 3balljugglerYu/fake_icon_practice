@@ -166,7 +166,7 @@ class SplashPage extends StatelessWidget {
                   ),
                 ),
               ),
-              const NotchDisplay(),
+              Utils.addNotch ? const NotchDisplay() : const SizedBox(),
             ],
           );
         },
