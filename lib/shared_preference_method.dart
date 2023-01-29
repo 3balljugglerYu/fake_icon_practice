@@ -30,9 +30,9 @@ class SharedPreferenceMethod{
     }
     
     Utils.frequencyNumber = prefs.getInt('frequencyNumber') ?? 1;
-    Utils.comeBackSecond = prefs.getInt('comeBackSecond') ?? 1;
-    Utils.transitionSecond = prefs.getInt('transitionSecond') ?? 1;
-    Utils.notifySecond = prefs.getInt('notifySecond') ?? 0;
+    Utils.comeBackSecond = prefs.getInt('comeBackSecond') ?? 2;
+    Utils.transitionSecond = prefs.getInt('transitionSecond') ?? 2;
+    Utils.notifySecond = prefs.getInt('notifySecond') ?? 1;
 
     final splashIconPositionX = prefs.getDouble('splashIconPositionX');
     final splashIconPositionY = prefs.getDouble('splashIconPositionY');
@@ -51,6 +51,8 @@ class SharedPreferenceMethod{
           y: settingIconPositionY!
       );
     }
+
+    Utils.addNotch = prefs.getBool('addNotchBool') ?? true;
   }
 
   static Future<void> saveBackgroundImageFile() async {
@@ -78,6 +80,8 @@ class SharedPreferenceMethod{
     await prefs.setInt('comeBackSecond', Utils.comeBackSecond);
     await prefs.setInt('transitionSecond', Utils.transitionSecond);
     await prefs.setInt('notifySecond', Utils.notifySecond);
+    await prefs.setBool('addNotchBool', Utils.addNotch);
+
   }
 
   static Future<void> saveSettingIconPosition() async {
