@@ -19,7 +19,7 @@ class PerformancePage extends StatelessWidget {
     if(!Position.isChange) Position.defaultPosition(context);
     return Scaffold(
       body: ChangeNotifierProvider(
-        create: (BuildContext context) => PerformanceModel(),
+        create: (_) => PerformanceModel(),
         child: Consumer<PerformanceModel>(
           builder: (BuildContext context, model, Widget? child) {
             return FutureBuilder(
