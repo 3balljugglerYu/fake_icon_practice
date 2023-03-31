@@ -556,6 +556,7 @@ class SettingNumSec extends StatelessWidget {
                                     scrollController: FixedExtentScrollController(
                                       initialItem: cupertinoPickerInitialNum,
                                     ),
+                                    backgroundColor: Colors.grey,
                                     looping: false,
                                     itemExtent: 50,
                                     onSelectedItemChanged: (int value){
