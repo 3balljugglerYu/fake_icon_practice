@@ -33,3 +33,7 @@ flutter:
   uses-material-design: true
   assets:
     - images/
+  fonts:
+    - family: Delicious_Handrawn
+      fonts:
+        - asset: assets/fonts/Delicious_Handrawn/DeliciousHandrawn-Regular.ttf
