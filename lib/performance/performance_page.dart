@@ -10,6 +10,11 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:fake_icon_practice/position_model.dart';
 import 'package:fake_icon_practice/notchDisplay.dart';
+import 'package:fake_icon_practice/tutorial_icon.dart';
+import 'package:dotted_border/dotted_border.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import '../reusable_move_icon.dart';
 
 class PerformancePage extends StatelessWidget {
   const PerformancePage({Key? key}) : super(key: key);
@@ -31,10 +36,55 @@ class PerformancePage extends StatelessWidget {
                     height: double.infinity,
                     width: double.infinity,
                     child: Utils.backgroundImageFile == null
-                        ? Image.asset('images/top_default_image.png', fit: BoxFit.fill,)
+                        ? Container(color: Colors.white,)
                         : Image.file(Utils.backgroundImageFile!, fit: BoxFit.fill,),
                   ),
                   Utils.addNotch ? const NotchDisplay() : const SizedBox(),
+                  TutorialIcon(
+                      x: Utils.splashPosition.x-100,
+                      y: Utils.splashPosition.y-200,
+                      icon: Icons.camera_alt,
+                  ),
+                  TutorialIcon(
+                    x: Utils.splashPosition.x,
+                    y: Utils.splashPosition.y-200,
+                    icon: Icons.calendar_month,
+                  ),
+                  TutorialIcon(
+                    x: Utils.splashPosition.x+100,
+                    y: Utils.splashPosition.y-200,
+                    icon: Icons.collections_outlined,
+                  ),
+                  TutorialIcon(
+                    x: Utils.splashPosition.x-100,
+                    y: Utils.splashPosition.y-100,
+                    icon: Icons.mail,
+                  ),
+                  TutorialIcon(
+                    x: Utils.splashPosition.x,
+                    y: Utils.splashPosition.y-100,
+                    icon: Icons.map_outlined,
+                  ),
+                  TutorialIcon(
+                    x: Utils.splashPosition.x+100,
+                    y: Utils.splashPosition.y-100,
+                    icon: Icons.live_tv,
+                  ),
+                  TutorialIcon(
+                    x: Utils.splashPosition.x-100,
+                    y: Utils.splashPosition.y,
+                    icon: Icons.library_music,
+                  ),
+                  TutorialIcon(
+                    x: Utils.splashPosition.x,
+                    y: Utils.splashPosition.y,
+                    icon: Icons.phone,
+                  ),
+                  TutorialIcon(
+                    x: Utils.splashPosition.x+100,
+                    y: Utils.splashPosition.y,
+                    icon: Icons.menu_book,
+                  ),
                   Positioned(
                     left: Utils.splashPosition.x,
                     top: Utils.splashPosition.y,
