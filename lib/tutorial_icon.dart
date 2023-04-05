@@ -7,11 +7,17 @@ class TutorialIcon extends StatelessWidget {
         required this.x,
         required this.y,
         required this.icon,
+        required this.iconSize,
+        required this.contColor,
+        required this.iconColor,
       }) : super(key: key);
 
   final double x;
   final double y;
   final IconData icon;
+  final double iconSize;
+  final Color contColor;
+  final Color iconColor;
 
   @override
   Widget build(BuildContext context) {
@@ -23,12 +29,12 @@ class TutorialIcon extends StatelessWidget {
         height: 65,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.0),
-          color: Utils.backgroundImageFile == null ? Colors.black12 : Colors.white.withOpacity(0),
+          color: Utils.backgroundImageFile == null ? contColor : Colors.white.withOpacity(0),
         ),
         child: Icon(
           icon,
-          size: 40,
-          color: Utils.backgroundImageFile == null ? Colors.black54 : Colors.white.withOpacity(0),
+          size: iconSize,
+          color: Utils.backgroundImageFile == null ? iconColor : Colors.white.withOpacity(0),
         ),
       ),
     );

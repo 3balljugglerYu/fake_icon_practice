@@ -5,6 +5,8 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:fake_icon_practice/splash/splash_model.dart';
 import 'package:fake_icon_practice/utils.dart';
+import 'package:fake_icon_practice/tutorial_icon.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -15,7 +17,6 @@ class SplashPage extends StatelessWidget {
     return Scaffold(
       body: Consumer<SplashModel>(
         builder: (BuildContext context, model, Widget? child,){
-
           model.measureDisplaySize(displaySize);
 
           if(!model.isSetUpFinish) {
@@ -40,28 +41,29 @@ class SplashPage extends StatelessWidget {
                         : DecorationImage(image: FileImage(Utils.backgroundImageFile!,), fit: BoxFit.fill),
                   ),
               ),
-              AnimatedContainer( //splash_screenの動き
-                onEnd: (){
-                  model.isAnimationFinish = true;
-                  model.notifyListeners();
-                },
-                curve: iconAnimation,
-                duration: const Duration(milliseconds: 500),
-                padding: EdgeInsets.only( //isSetUpFinishがtrueになったとき、paddingが0になる。
-                  top: !model.isSetUpFinish ? Utils.splashPosition.y : 0,
-                  left: !model.isSetUpFinish ? Utils.splashPosition.x : 0,
-                  right: !model.isSetUpFinish ? model.displaySize.width - Utils.splashPosition.x - 60 : 0,
-                  bottom: !model.isSetUpFinish ? model.displaySize.height - Utils.splashPosition.y - 60 : 0,
-                ),
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    image: Utils.splashBackgroundImageFile == null
-                        ? const DecorationImage(image: AssetImage("images/line-background.png"), fit: BoxFit.fill,)
-                        : DecorationImage(image: FileImage(Utils.splashBackgroundImageFile!,), fit: BoxFit.fill),
-                  ),
-                ),
-              ),
+              // AnimatedContainer( //splash_screenの動き
+              //   onEnd: (){
+              //     model.isAnimationFinish = true;
+              //     model.notifyListeners();
+              //   },
+              //   curve: iconAnimation,
+              //   duration: const Duration(milliseconds: 500),
+              //   padding: EdgeInsets.only( //isSetUpFinishがtrueになったとき、paddingが0になる。
+              //     top: !model.isSetUpFinish ? Utils.splashPosition.y : 0,
+              //     left: !model.isSetUpFinish ? Utils.splashPosition.x : 0,
+              //     right: !model.isSetUpFinish ? model.displaySize.width - Utils.splashPosition.x - 60 : 0,
+              //     bottom: !model.isSetUpFinish ? model.displaySize.height - Utils.splashPosition.y - 60 : 0,
+              //   ),
+              //   child: Container(
+              //     decoration: BoxDecoration(
+              //       color: const Color(0xFFD8DFFF),
+              //       borderRadius: BorderRadius.circular(15),
+              //       image: Utils.splashBackgroundImageFile == null
+              //           ? null
+              //           : DecorationImage(image: FileImage(Utils.splashBackgroundImageFile!,), fit: BoxFit.fill),
+              //     ),
+              //   ),
+              // ),
               AnimatedContainer(//splash_screenの動き
                 onEnd: (){
                   model.isAnimationFinish = true;
@@ -77,9 +79,10 @@ class SplashPage extends StatelessWidget {
                 ),
                 child: Container(
                     decoration: BoxDecoration(
+                      color: const Color(0xFFD8DFFF),
                       borderRadius: BorderRadius.circular(15),
                       image: Utils.splashBackgroundImageFile == null
-                          ? const DecorationImage(image: AssetImage("images/line-background.png"), fit: BoxFit.fill,)
+                          ? null
                           : DecorationImage(image: FileImage(Utils.splashBackgroundImageFile!,), fit: BoxFit.fill),
                     ),
                     child: Center(
@@ -100,7 +103,7 @@ class SplashPage extends StatelessWidget {
                                 height: !model.isSetUpFinish ? 80 : model.logoSize.height,
                                 width: !model.isSetUpFinish ? 80 : model.logoSize.width,
                                 child: Utils.splashLogoImageFile == null
-                                    ? Image.asset("images/line-logo.png", fit:  BoxFit.fill,)
+                                    ? Image.asset("images/logo-dove.png", fit:  BoxFit.fill,)
                                     : Image.file(Utils.splashLogoImageFile!, fit: BoxFit.fill,),
                               ),
                             ),
@@ -113,9 +116,10 @@ class SplashPage extends StatelessWidget {
               if (model.isAnimationFinish && !model.isComeBackLogo)
                 Container(
                   decoration: BoxDecoration(
+                    color: const Color(0xFFD8DFFF),
                     borderRadius: BorderRadius.circular(15),
                     image: Utils.splashBackgroundImageFile == null
-                        ? const DecorationImage(image: AssetImage("images/line-background.png"), fit: BoxFit.fill,)
+                        ? null
                         : DecorationImage(image: FileImage(Utils.splashBackgroundImageFile!,), fit: BoxFit.fill),
                   ),
                 ),
@@ -148,7 +152,7 @@ class SplashPage extends StatelessWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
                       image: Utils.splashLogoImageFile == null
-                          ? const DecorationImage(image: AssetImage("images/line-logo.png"), fit: BoxFit.fill,)
+                          ? const DecorationImage(image: AssetImage("images/logo-dove.png"), fit: BoxFit.fill,)
                           : DecorationImage(image: FileImage(Utils.splashLogoImageFile!,), fit: BoxFit.fill),
                     ),
                     height: model.logoSize.height,
@@ -158,7 +162,7 @@ class SplashPage extends StatelessWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
                       image: Utils.splashLogoImageFile == null
-                          ? const DecorationImage(image: AssetImage("images/line-logo.png"), fit: BoxFit.fill,)
+                          ? const DecorationImage(image: AssetImage("images/logo-dove.png"), fit: BoxFit.fill,)
                           : DecorationImage(image: FileImage(Utils.splashLogoImageFile!,), fit: BoxFit.fill),
                     ),
                     height: model.logoSize.height,
@@ -166,11 +170,97 @@ class SplashPage extends StatelessWidget {
                   ),
                 ),
               ),
+              Utils.splashLogoImageFile != null ? Container(color: Colors.white.withOpacity(0),) : const TutorialSplash(),
               Utils.addNotch ? const NotchDisplay() : const SizedBox(),
             ],
           );
         },
       ),
     );
+  }
+}
+
+class TutorialSplash extends StatelessWidget {
+  const TutorialSplash({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    if (Utils.setUpNumber < Utils.frequencyNumber) {
+      return Stack(
+        children: [Container()],
+      );
+    } else {
+      return Stack(
+        children: [
+          Container(
+            alignment: Alignment.topCenter,
+            child: const Padding(
+              padding: EdgeInsets.all(100.0),
+              child: Text("Tutorial   3 / 5",
+                style: TextStyle(
+                  color: Colors.red,
+                  fontSize: 40,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Delicious_Handrawn',
+                ),
+              ),
+            ),
+          ),
+          TutorialIcon(
+            x: Utils.splashPosition.x,
+            y: Utils.splashPosition.y + 100,
+            icon: FontAwesomeIcons.arrowRightLong,
+            iconSize: 80,
+            contColor: Colors.black12.withOpacity(0),
+            iconColor: Colors.red,
+          ),
+          TutorialIcon(
+            x: Utils.splashPosition.x,
+            y: Utils.splashPosition.y + 150,
+            icon: FontAwesomeIcons.handPointer,
+            iconSize: 80,
+            contColor: Colors.black12.withOpacity(0),
+            iconColor: Colors.red,
+          ),
+          TutorialIcon(
+            x: Utils.splashPosition.x,
+            y: Utils.splashPosition.y + 270,
+            icon: FontAwesomeIcons.mobileScreen,
+            iconSize: 50,
+            contColor: Colors.black12.withOpacity(0),
+            iconColor: Colors.blue,
+          ),
+          TutorialIcon(
+            x: Utils.splashPosition.x+20,
+            y: Utils.splashPosition.y + 270,
+            icon: FontAwesomeIcons.arrowRightLong,
+            iconSize: 50,
+            contColor: Colors.black12.withOpacity(0),
+            iconColor: Colors.blue,
+          ),
+          TutorialIcon(
+            x: Utils.splashPosition.x+70,
+            y: Utils.splashPosition.y + 270,
+            icon: FontAwesomeIcons.dove,
+            iconSize: 30,
+            contColor: Colors.black12.withOpacity(0),
+            iconColor: Colors.blue,
+          ),
+          Positioned(
+            left: Utils.splashPosition.x,
+            top: Utils.splashPosition.y + 350,
+            child: Utils.backgroundImageFile == null ? const Text(
+              "Drag!!",
+              style: TextStyle(
+                  color: Colors.blue,
+                  fontSize: 40,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Delicious_Handrawn'
+              ),
+            ) : const Text(""),
+          ),
+        ],
+      );
+    }
   }
 }

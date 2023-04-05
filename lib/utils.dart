@@ -2,6 +2,7 @@ import 'dart:io';
 import 'position_model.dart';
 
 class Utils{
+  static int tutorialCount = 0;
   static File? backgroundImageFile;
   static File? splashLogoImageFile;
   static File? splashBackgroundImageFile;
@@ -23,5 +24,5 @@ class Utils{
   //お知らせタイマー
   static int notifySecond = 1;
   //ノッチの表示非表示
-  static bool addNotch = true;
+  static bool addNotch = false;
 }

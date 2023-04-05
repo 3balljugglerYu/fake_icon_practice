@@ -40,51 +40,7 @@ class PerformancePage extends StatelessWidget {
                         : Image.file(Utils.backgroundImageFile!, fit: BoxFit.fill,),
                   ),
                   Utils.addNotch ? const NotchDisplay() : const SizedBox(),
-                  TutorialIcon(
-                      x: Utils.splashPosition.x-100,
-                      y: Utils.splashPosition.y-200,
-                      icon: Icons.camera_alt,
-                  ),
-                  TutorialIcon(
-                    x: Utils.splashPosition.x,
-                    y: Utils.splashPosition.y-200,
-                    icon: Icons.calendar_month,
-                  ),
-                  TutorialIcon(
-                    x: Utils.splashPosition.x+100,
-                    y: Utils.splashPosition.y-200,
-                    icon: Icons.collections_outlined,
-                  ),
-                  TutorialIcon(
-                    x: Utils.splashPosition.x-100,
-                    y: Utils.splashPosition.y-100,
-                    icon: Icons.mail,
-                  ),
-                  TutorialIcon(
-                    x: Utils.splashPosition.x,
-                    y: Utils.splashPosition.y-100,
-                    icon: Icons.map_outlined,
-                  ),
-                  TutorialIcon(
-                    x: Utils.splashPosition.x+100,
-                    y: Utils.splashPosition.y-100,
-                    icon: Icons.live_tv,
-                  ),
-                  TutorialIcon(
-                    x: Utils.splashPosition.x-100,
-                    y: Utils.splashPosition.y,
-                    icon: Icons.library_music,
-                  ),
-                  TutorialIcon(
-                    x: Utils.splashPosition.x,
-                    y: Utils.splashPosition.y,
-                    icon: Icons.phone,
-                  ),
-                  TutorialIcon(
-                    x: Utils.splashPosition.x+100,
-                    y: Utils.splashPosition.y,
-                    icon: Icons.menu_book,
-                  ),
+                  Utils.backgroundImageFile != null ? Container() : const TutorialScreen(),
                   Positioned(
                     left: Utils.splashPosition.x,
                     top: Utils.splashPosition.y,
@@ -174,3 +130,384 @@ class PerformancePage extends StatelessWidget {
     );
   }
 }
+
+class TutorialScreen extends StatelessWidget {
+  const TutorialScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+      if (Utils.tutorialCount == 0) {
+        return Stack(
+          children: [
+            Container(
+              alignment: Alignment.topCenter,
+              child: const Padding(
+                padding: EdgeInsets.all(100.0),
+                child: Text("Tutorial   1 / 5",
+                  style: TextStyle(
+                    color: Colors.red,
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Delicious_Handrawn',
+                  ),
+                ),
+              ),
+            ),
+            TutorialIcon(
+              x: Utils.splashPosition.x,
+              y: Utils.splashPosition.y + 50,
+              icon: FontAwesomeIcons.handPointer,
+              iconSize: 80,
+              contColor: Colors.black12.withOpacity(0),
+              iconColor: Colors.red,
+            ),
+            Positioned(
+              left: Utils.splashPosition.x,
+              top: Utils.splashPosition.y + 135,
+              child: const Text(
+                "Tap!!",
+                style: TextStyle(
+                    color: Colors.red,
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Delicious_Handrawn'
+                ),
+              ),
+            ),
+            TutorialIcon(
+              x: Utils.splashPosition.x - 100,
+              y: Utils.splashPosition.y - 200,
+              icon: Icons.camera_alt,
+              iconSize: 40,
+              contColor: Colors.black12,
+              iconColor: Colors.black54,
+            ),
+            TutorialIcon(
+              x: Utils.splashPosition.x,
+              y: Utils.splashPosition.y - 200,
+              icon: Icons.calendar_month,
+              iconSize: 40,
+              contColor: Colors.black12,
+              iconColor: Colors.black54,
+            ),
+            TutorialIcon(
+              x: Utils.splashPosition.x + 100,
+              y: Utils.splashPosition.y - 200,
+              icon: Icons.collections_outlined,
+              iconSize: 40,
+              contColor: Colors.black12,
+              iconColor: Colors.black54,
+            ),
+            TutorialIcon(
+              x: Utils.splashPosition.x - 100,
+              y: Utils.splashPosition.y - 100,
+              icon: Icons.mail,
+              iconSize: 40,
+              contColor: Colors.black12,
+              iconColor: Colors.black54,
+            ),
+            TutorialIcon(
+              x: Utils.splashPosition.x,
+              y: Utils.splashPosition.y - 100,
+              icon: Icons.map_outlined,
+              iconSize: 40,
+              contColor: Colors.black12,
+              iconColor: Colors.black54,
+            ),
+            TutorialIcon(
+              x: Utils.splashPosition.x + 100,
+              y: Utils.splashPosition.y - 100,
+              icon: Icons.live_tv,
+              iconSize: 40,
+              contColor: Colors.black12,
+              iconColor: Colors.black54,
+            ),
+            TutorialIcon(
+              x: Utils.splashPosition.x - 100,
+              y: Utils.splashPosition.y,
+              icon: Icons.library_music,
+              iconSize: 40,
+              contColor: Colors.black12,
+              iconColor: Colors.black54,
+            ),
+            TutorialIcon(
+              x: Utils.splashPosition.x,
+              y: Utils.splashPosition.y,
+              icon: FontAwesomeIcons.dove,
+              iconSize: 40,
+              contColor: Colors.black12,
+              iconColor: Colors.black54,
+            ),
+            TutorialIcon(
+              x: Utils.splashPosition.x + 100,
+              y: Utils.splashPosition.y,
+              icon: Icons.menu_book,
+              iconSize: 40,
+              contColor: Colors.black12,
+              iconColor: Colors.black54,
+            ),
+          ],
+        );
+      } else if (Utils.tutorialCount == 1) {
+        return Stack(
+          children: [
+            Container(
+              alignment: Alignment.topCenter,
+              child: const Padding(
+                padding: EdgeInsets.all(100.0),
+                child: Text("Tutorial   3 / 5",
+                  style: TextStyle(
+                    color: Colors.red,
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Delicious_Handrawn',
+                  ),
+                ),
+              ),
+            ),
+            TutorialIcon(
+              x: Utils.splashPosition.x,
+              y: Utils.splashPosition.y + 50,
+              icon: FontAwesomeIcons.handPointer,
+              iconSize: 80,
+              contColor: Colors.black12.withOpacity(0),
+              iconColor: Colors.red,
+            ),
+            Positioned(
+              left: Utils.splashPosition.x,
+              top: Utils.splashPosition.y + 135,
+              child: const Text(
+                "Tap Again!!",
+                style: TextStyle(
+                    color: Colors.red,
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Delicious_Handrawn'
+                ),
+              ),
+            ),
+            TutorialIcon(
+              x: Utils.splashPosition.x - 100,
+              y: Utils.splashPosition.y - 200,
+              icon: Icons.camera_alt,
+              iconSize: 40,
+              contColor: Colors.black12,
+              iconColor: Colors.black54,
+            ),
+            TutorialIcon(
+              x: Utils.splashPosition.x,
+              y: Utils.splashPosition.y - 200,
+              icon: Icons.calendar_month,
+              iconSize: 40,
+              contColor: Colors.black12,
+              iconColor: Colors.black54,
+            ),
+            TutorialIcon(
+              x: Utils.splashPosition.x + 100,
+              y: Utils.splashPosition.y - 200,
+              icon: Icons.collections_outlined,
+              iconSize: 40,
+              contColor: Colors.black12,
+              iconColor: Colors.black54,
+            ),
+            TutorialIcon(
+              x: Utils.splashPosition.x - 100,
+              y: Utils.splashPosition.y - 100,
+              icon: Icons.mail,
+              iconSize: 40,
+              contColor: Colors.black12,
+              iconColor: Colors.black54,
+            ),
+            TutorialIcon(
+              x: Utils.splashPosition.x,
+              y: Utils.splashPosition.y - 100,
+              icon: Icons.map_outlined,
+              iconSize: 40,
+              contColor: Colors.black12,
+              iconColor: Colors.black54,
+            ),
+            TutorialIcon(
+              x: Utils.splashPosition.x + 100,
+              y: Utils.splashPosition.y - 100,
+              icon: Icons.live_tv,
+              iconSize: 40,
+              contColor: Colors.black12,
+              iconColor: Colors.black54,
+            ),
+            TutorialIcon(
+              x: Utils.splashPosition.x - 100,
+              y: Utils.splashPosition.y,
+              icon: Icons.library_music,
+              iconSize: 40,
+              contColor: Colors.black12,
+              iconColor: Colors.black54,
+            ),
+            TutorialIcon(
+              x: Utils.splashPosition.x,
+              y: Utils.splashPosition.y,
+              icon: FontAwesomeIcons.dove,
+              iconSize: 40,
+              contColor: Colors.black12,
+              iconColor: Colors.black54,
+            ),
+            TutorialIcon(
+              x: Utils.splashPosition.x + 100,
+              y: Utils.splashPosition.y,
+              icon: Icons.menu_book,
+              iconSize: 40,
+              contColor: Colors.black12,
+              iconColor: Colors.black54,
+            ),
+          ],
+        );
+      } else {
+        return Stack(
+          children: [
+            Container(
+              alignment: Alignment.topCenter,
+              child: const Padding(
+                padding: EdgeInsets.all(100.0),
+                child: Text("Tutorial   5 / 5\n　Nice!👏👏",
+                  style: TextStyle(
+                    color: Colors.red,
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Delicious_Handrawn',
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              alignment: Alignment.topCenter,
+              child: const Padding(
+                padding: EdgeInsets.all(100.0),
+                child: Text("",
+                  style: TextStyle(
+                    color: Colors.red,
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Delicious_Handrawn',
+                  ),
+                ),
+              ),
+            ),
+            TutorialIcon(
+              x: Utils.splashPosition.x - 100,
+              y: Utils.splashPosition.y - 200,
+              icon: Icons.camera_alt,
+              iconSize: 40,
+              contColor: Colors.black12.withOpacity(0.1),
+              iconColor: Colors.white,
+            ),
+            TutorialIcon(
+              x: Utils.splashPosition.x,
+              y: Utils.splashPosition.y - 200,
+              icon: Icons.calendar_month,
+              iconSize: 40,
+              contColor: Colors.black12.withOpacity(0.1),
+              iconColor: Colors.white,
+            ),
+            TutorialIcon(
+              x: Utils.splashPosition.x + 100,
+              y: Utils.splashPosition.y - 200,
+              icon: Icons.collections_outlined,
+              iconSize: 40,
+              contColor: Colors.black12.withOpacity(0.1),
+              iconColor: Colors.white,
+            ),
+            TutorialIcon(
+              x: Utils.splashPosition.x - 100,
+              y: Utils.splashPosition.y - 100,
+              icon: Icons.mail,
+              iconSize: 40,
+              contColor: Colors.black12.withOpacity(0.1),
+              iconColor: Colors.white,
+            ),
+            TutorialIcon(
+              x: Utils.splashPosition.x,
+              y: Utils.splashPosition.y - 100,
+              icon: Icons.map_outlined,
+              iconSize: 40,
+              contColor: Colors.black12.withOpacity(0.1),
+              iconColor: Colors.white,
+            ),
+            TutorialIcon(
+              x: Utils.splashPosition.x + 100,
+              y: Utils.splashPosition.y - 100,
+              icon: Icons.live_tv,
+              iconSize: 40,
+              contColor: Colors.black12.withOpacity(0.1),
+              iconColor: Colors.white,
+            ),
+            TutorialIcon(
+              x: Utils.splashPosition.x - 100,
+              y: Utils.splashPosition.y,
+              icon: Icons.library_music,
+              iconSize: 40,
+              contColor: Colors.black12.withOpacity(0.1),
+              iconColor: Colors.white,
+            ),
+            TutorialIcon(
+              x: Utils.splashPosition.x,
+              y: Utils.splashPosition.y,
+              icon: FontAwesomeIcons.dove,
+              iconSize: 40,
+              contColor: Colors.black12.withOpacity(0.1),
+              iconColor: Colors.white,
+            ),
+            TutorialIcon(
+              x: Utils.splashPosition.x + 100,
+              y: Utils.splashPosition.y,
+              icon: Icons.menu_book,
+              iconSize: 40,
+              contColor: Colors.black12.withOpacity(0.1),
+              iconColor: Colors.white,
+            ),
+            TutorialIcon(
+              x: Utils.settingPosition.x,
+              y: Utils.settingPosition.y,
+              icon: Icons.settings,
+              iconSize: 40,
+              contColor: Colors.black12,
+              iconColor: Colors.black54,
+            ),
+            TutorialIcon(
+              x: Utils.settingPosition.x,
+              y: Utils.settingPosition.y + 50,
+              icon: FontAwesomeIcons.handPointer,
+              iconSize: 80,
+              contColor: Colors.black12.withOpacity(0),
+              iconColor: Colors.blue,
+            ),
+            Positioned(
+              left: Utils.settingPosition.x / 3,
+              top: Utils.settingPosition.y - 100,
+              child: const Text(
+                "Next Setting Tutorial",
+                style: TextStyle(
+                    color: Colors.blue,
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Delicious_Handrawn'
+                ),
+              ),
+            ),
+            Positioned(
+              left: Utils.settingPosition.x,
+              top: Utils.settingPosition.y + 135,
+              child: const Text(
+                "Tap!!",
+                style: TextStyle(
+                    color: Colors.blue,
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Delicious_Handrawn'
+                ),
+              ),
+            ),
+          ],
+        );
+      }
+  }
+}
+
