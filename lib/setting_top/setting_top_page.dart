@@ -61,8 +61,7 @@ class SettingTopPage extends StatelessWidget {
                       height: double.infinity,
                       width: double.infinity,
                       child: Utils.backgroundImageFile == null
-                          ? Image.asset(
-                        "images/top_default_image.png", fit: BoxFit.fill,)
+                          ? Container()
                           : Image.file(
                         Utils.backgroundImageFile!, fit: BoxFit.fill,
                       ),
@@ -85,7 +84,7 @@ class SettingTopPage extends StatelessWidget {
                           SizedBox(
                             height: 150,
                             child: Card(
-                              color: Colors.black87,
+                              color: Colors.white,
                               shadowColor: Colors.blueGrey,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10.0),
@@ -122,13 +121,13 @@ class SettingTopPage extends StatelessWidget {
                                       leading: Icon(
                                         FontAwesomeIcons.mobile,
                                         size: 35,
-                                        color: Colors.grey,
+                                        color: Colors.black45,
                                       ),
                                       title: Text(
                                         "背景画像設定",
                                         style: TextStyle(
                                           fontSize: 18.0,
-                                          color: Colors.grey,
+                                          color: Colors.black54,
                                         ),
 
                                       ),
@@ -136,7 +135,7 @@ class SettingTopPage extends StatelessWidget {
                                         "アプリを立ち上げた時、最初に表示される画面を設定します。自分が使用しているスマートフォンのスクリーンショットを用意することをお勧めします。",
                                         style: TextStyle(
                                           fontSize: 13.0,
-                                          color: Colors.grey,
+                                          color: Colors.black54,
                                         ),
                                       ),
                                     )
@@ -148,7 +147,7 @@ class SettingTopPage extends StatelessWidget {
                           SizedBox(
                             height: 150,
                             child: Card(
-                              color: Colors.black87,
+                              color: Colors.white,
                               shadowColor: Colors.blueGrey,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10.0),
@@ -171,22 +170,22 @@ class SettingTopPage extends StatelessWidget {
                                     ),
                                     ListTile(
                                       leading: Icon(
-                                        FontAwesomeIcons.icons,
+                                        FontAwesomeIcons.arrowsUpDownLeftRight,
                                         size: 35,
-                                        color: Colors.grey,
+                                        color: Colors.black45,
                                       ),
                                       title: Text(
                                         "アイコンの配置変更",
                                         style: TextStyle(
                                           fontSize: 18.0,
-                                          color: Colors.grey,
+                                          color: Colors.black54,
                                         ),
                                       ),
                                       subtitle: Text(
                                         "背景画像の設定後、アイコンの位置を決める設定を行います。任意の位置に配置することが可能です。",
                                         style: TextStyle(
                                           fontSize: 13.0,
-                                          color: Colors.grey,
+                                          color: Colors.black54,
                                         ),
                                       ),
                                     )
@@ -198,7 +197,7 @@ class SettingTopPage extends StatelessWidget {
                           SizedBox(
                             height: 150,
                             child: Card(
-                              color: Colors.black87,
+                              color: Colors.white,
                               shadowColor: Colors.blueGrey,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10.0),
@@ -223,20 +222,20 @@ class SettingTopPage extends StatelessWidget {
                                       leading: Icon(
                                         FontAwesomeIcons.ship,
                                         size: 35,
-                                        color: Colors.grey,
+                                        color: Colors.black45,
                                       ),
                                       title: Text(
                                         "Splash App 設定",
                                         style: TextStyle(
                                           fontSize: 18.0,
-                                          color: Colors.grey,
+                                          color: Colors.black54,
                                         ),
                                       ),
                                       subtitle: Text(
                                         "ロゴや背景画像の変更、ロゴを消失させた後に表示させるタイミング等を設定することができます。",
                                         style: TextStyle(
                                           fontSize: 13.0,
-                                          color: Colors.grey,
+                                          color: Colors.black54,
                                         ),
                                       ),
                                     )
@@ -260,14 +259,14 @@ class SettingTopPage extends StatelessWidget {
                                 Navigator.pop(context);
                               },
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.black,
+                                backgroundColor: Colors.white,
                                 foregroundColor: Colors.white,
                               ),
                               child: const Text('完了',
                                 style: TextStyle(
                                   fontSize: 20.0,
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.grey,
+                                  color: Colors.black54,
                                 ),
                               ),
                             ),
