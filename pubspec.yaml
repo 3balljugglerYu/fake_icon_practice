@@ -33,7 +33,34 @@ flutter:
   uses-material-design: true
   assets:
     - images/
+    - images/tutorial-background-change.gif
+    - images/tutorial-icon-change.gif
+    - images/tutorial-splash-demo.gif
   fonts:
     - family: Delicious_Handrawn
       fonts:
         - asset: assets/fonts/Delicious_Handrawn/DeliciousHandrawn-Regular.ttf
+    - family: mogihaPen
+      fonts:
+        - asset: assets/fonts/mogihaPen_ver120/mogihaPen.ttf
+    - family: Noto_Sans_JP
+      fonts:
+        - asset: assets/fonts/Noto_Sans_JP/static/NotoSansJP-Thin.ttf
+          weight: 100
+        - asset: assets/fonts/Noto_Sans_JP/static/NotoSansJP-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/Noto_Sans_JP/static/NotoSansJP-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Noto_Sans_JP/static/NotoSansJP-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Noto_Sans_JP/static/NotoSansJP-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Noto_Sans_JP/static/NotoSansJP-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Noto_Sans_JP/static/NotoSansJP-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Noto_Sans_JP/static/NotoSansJP-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/Noto_Sans_JP/static/NotoSansJP-Black.ttf
+          weight: 900
+
