@@ -1,4 +1,3 @@
-import 'package:fake_icon_practice/fake/fake_page.dart';
 import 'package:fake_icon_practice/performance/performance_model.dart';
 import 'package:fake_icon_practice/setting_top/setting_top_page.dart';
 import 'package:fake_icon_practice/shared_preference_method.dart';
@@ -6,18 +5,15 @@ import 'package:fake_icon_practice/splash/splash_model.dart';
 import 'package:fake_icon_practice/splash/splash_page.dart';
 import 'package:fake_icon_practice/utils.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:fake_icon_practice/position_model.dart';
 import 'package:fake_icon_practice/notchDisplay.dart';
 import 'package:fake_icon_practice/tutorial_icon.dart';
-import 'package:dotted_border/dotted_border.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-import '../reusable_move_icon.dart';
 
 class PerformancePage extends StatelessWidget {
   const PerformancePage({Key? key}) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
@@ -58,20 +54,21 @@ class PerformancePage extends StatelessWidget {
                         duration: const Duration(milliseconds: 200),
                         child: TextButton(
                           child:
-                          Text(''),
+                          const Text(''),
                           onPressed: () async {
                             await model.onPressed();
+                            // ignore: use_build_context_synchronously
                             Navigator.of(context).push(
                                 PageRouteBuilder(
                                     pageBuilder: (context, animation, secondaryAnimation){
                                       return ChangeNotifierProvider<SplashModel>(
                                           create: (context) => SplashModel(),
-                                        child: SplashPage(),
+                                        child: const SplashPage(),
                                       );
                                     },
                                   transitionsBuilder: (context, animation, secondaryAnimation, child){
-                                      final double begin = 0.0;
-                                      final double end = 1.0;
+                                      const double begin = 0.0;
+                                      const double end = 1.0;
                                       final Animatable<double> tween =
                                           Tween(begin: begin, end: end).chain(
                                             CurveTween(
@@ -85,7 +82,6 @@ class PerformancePage extends StatelessWidget {
                                   },
                                 ),
                             );
-                            // Navigator.push(context, MaterialPageRoute(builder: (context) => FakePage()));
                           },
                         ),
                       ),
@@ -113,9 +109,47 @@ class PerformancePage extends StatelessWidget {
                           ),
                           child: const Text(''),
                           onPressed: () async {
-                            await Navigator.of(context).push(MaterialPageRoute(builder: (context) => SettingTopPage()));
+                            await Navigator.of(context).push(MaterialPageRoute(builder: (context) => const SettingTopPage()));
+                            // ignore: invalid_use_of_visible_for_testing_member, invalid_use_of_protected_member
                             model.notifyListeners();
                           },
+                        ),
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: AnimatedOpacity(
+                      opacity: model.showDialog ? 1.0 : 0,
+                      duration: const Duration(milliseconds: 1000),
+                      curve: Curves.easeOutCirc,
+                      child: Visibility(
+                        visible: model.showDialog,
+                        child: Visibility(
+                          visible: Utils.isPerformancePagePopupVisible,
+                          child: SizedBox(
+                            height: MediaQuery.of(context).size.height,
+                            width: MediaQuery.of(context).size.width,
+                            child: AlertDialog(
+                              shape: const RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.all(Radius.circular(10.0))
+                              ),
+                              icon: const Icon(FontAwesomeIcons.splotch),
+                              iconColor: Colors.green,
+                              backgroundColor: Colors.amberAccent,
+                              title: const Text('Thank you!!'),
+                              content: const Text('『FakeIcon』をインストールして頂き、ありがとうございます!\nまずは、チュートリアルに沿って操作してみてくださいね！'),
+                              actions: [
+                                ElevatedButton(
+                                  onPressed: () async {
+                                    model.hidePopup();
+                                    await SharedPreferenceMethod.saveIsPerformancePagePopupVisible();
+                                  },
+                                  style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
+                                  child: const Text('閉じる',style: TextStyle(color: Colors.white),),
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
                       ),
                     ),
@@ -141,15 +175,26 @@ class TutorialScreen extends StatelessWidget {
           children: [
             Container(
               alignment: Alignment.topCenter,
-              child: const Padding(
-                padding: EdgeInsets.all(100.0),
-                child: Text("Tutorial   1 / 5",
-                  style: TextStyle(
-                    color: Colors.red,
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'Delicious_Handrawn',
-                  ),
+              child: Padding(
+                padding: const EdgeInsets.only(top: 80.0,left: 10.0,right: 10.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Icon(
+                      FontAwesomeIcons.kiwiBird,
+                      color: Colors.green,
+                      size: 30,
+                    ),
+                    SizedBox(width: 10,),
+                    Text("チュートリアル 1/5",
+                      style: TextStyle(
+                        color: Colors.green,
+                        fontSize: 30,
+                        fontWeight: FontWeight.w500,
+                        fontFamily: 'Noto_Sans_JP',
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -159,18 +204,18 @@ class TutorialScreen extends StatelessWidget {
               icon: FontAwesomeIcons.handPointer,
               iconSize: 80,
               contColor: Colors.black12.withOpacity(0),
-              iconColor: Colors.red,
+              iconColor: Colors.green,
             ),
             Positioned(
-              left: Utils.splashPosition.x,
+              left: Utils.splashPosition.x - 20,
               top: Utils.splashPosition.y + 135,
               child: const Text(
-                "Tap!!",
+                "タップ！",
                 style: TextStyle(
-                    color: Colors.red,
+                    color: Colors.green,
                     fontSize: 40,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'Delicious_Handrawn'
+                    fontWeight: FontWeight.w900,
+                    fontFamily: 'Noto_Sans_JP'
                 ),
               ),
             ),
@@ -254,13 +299,13 @@ class TutorialScreen extends StatelessWidget {
             Container(
               alignment: Alignment.topCenter,
               child: const Padding(
-                padding: EdgeInsets.all(100.0),
-                child: Text("Tutorial   3 / 5",
+                padding: EdgeInsets.only(top: 80.0,left: 10.0,right: 10.0),
+                child: Text("チュートリアル 3/5",
                   style: TextStyle(
-                    color: Colors.red,
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'Delicious_Handrawn',
+                    color: Colors.green,
+                    fontSize: 30,
+                    fontWeight: FontWeight.w500,
+                    fontFamily: 'Noto_Sans_JP',
                   ),
                 ),
               ),
@@ -271,16 +316,16 @@ class TutorialScreen extends StatelessWidget {
               icon: FontAwesomeIcons.handPointer,
               iconSize: 80,
               contColor: Colors.black12.withOpacity(0),
-              iconColor: Colors.red,
+              iconColor: Colors.green,
             ),
             Positioned(
-              left: Utils.splashPosition.x,
+              left: Utils.splashPosition.x-100,
               top: Utils.splashPosition.y + 135,
               child: const Text(
-                "Tap Again!!",
+                "もう一度タップして！",
                 style: TextStyle(
-                    color: Colors.red,
-                    fontSize: 40,
+                    color: Colors.green,
+                    fontSize: 30,
                     fontWeight: FontWeight.bold,
                     fontFamily: 'Delicious_Handrawn'
                 ),
@@ -366,13 +411,13 @@ class TutorialScreen extends StatelessWidget {
             Container(
               alignment: Alignment.topCenter,
               child: const Padding(
-                padding: EdgeInsets.all(100.0),
-                child: Text("Tutorial   5 / 5\n　Nice!👏👏",
+                padding: EdgeInsets.only(top: 80.0,left: 10.0,right: 10.0),
+                child: Text("チュートリアル 5/5 🎉",
                   style: TextStyle(
-                    color: Colors.red,
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'Delicious_Handrawn',
+                    color: Colors.green,
+                    fontSize: 30,
+                    fontWeight: FontWeight.w500,
+                    fontFamily: 'Noto_Sans_JP',
                   ),
                 ),
               ),
@@ -380,13 +425,13 @@ class TutorialScreen extends StatelessWidget {
             Container(
               alignment: Alignment.topCenter,
               child: const Padding(
-                padding: EdgeInsets.all(100.0),
-                child: Text("",
+                padding: EdgeInsets.only(top: 130.0,left: 10.0,right: 10.0),
+                child: Text("お疲れ様でした！",
                   style: TextStyle(
-                    color: Colors.red,
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'Delicious_Handrawn',
+                    color: Colors.green,
+                    fontSize: 30,
+                    fontWeight: FontWeight.w500,
+                    fontFamily: 'Noto_Sans_JP',
                   ),
                 ),
               ),
@@ -482,26 +527,36 @@ class TutorialScreen extends StatelessWidget {
             Positioned(
               left: Utils.settingPosition.x / 3,
               top: Utils.settingPosition.y - 100,
-              child: const Text(
-                "Next Setting Tutorial",
-                style: TextStyle(
-                    color: Colors.blue,
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'Delicious_Handrawn'
+              child: Container(
+                alignment: Alignment.topCenter,
+                child: const Padding(
+                  padding: EdgeInsets.only(top:10.0, left: 10.0,right: 10.0),
+                  child: Text("最後に、設定を見ていきましょう！",
+                    style: TextStyle(
+                      color: Colors.blueAccent,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
+                      fontFamily: 'Noto_Sans_JP',
+                    ),
+                  ),
                 ),
               ),
             ),
             Positioned(
-              left: Utils.settingPosition.x,
+              left: Utils.settingPosition.x-50,
               top: Utils.settingPosition.y + 135,
-              child: const Text(
-                "Tap!!",
-                style: TextStyle(
-                    color: Colors.blue,
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'Delicious_Handrawn'
+              child: Container(
+                alignment: Alignment.topCenter,
+                child: const Padding(
+                  padding: EdgeInsets.only(top:10.0, left: 10.0,right: 10.0),
+                  child: Text("タップして下さい！",
+                    style: TextStyle(
+                      color: Colors.blueAccent,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
+                      fontFamily: 'Noto_Sans_JP',
+                    ),
+                  ),
                 ),
               ),
             ),
