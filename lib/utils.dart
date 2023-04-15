@@ -12,6 +12,10 @@ class Utils{
   static Position splashPosition = Position(x: 0, y: 0);
   static Position completeButton = Position(x: 120, y: 150);
 
+  static bool isPerformancePagePopupVisible = true;
+  static bool isFakePagePopupVisible = true;
+  static bool isSplashPagePopupVisible = true;
+
   //改めた回数をカウント
   static int setUpNumber = 0;
 
