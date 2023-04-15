@@ -1,6 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'dart:math';
 import 'package:flutter/cupertino.dart';
+import 'package:fake_icon_practice/utils.dart';
 
 class FakeModel extends ChangeNotifier {
   int imageAnimationDuration = 0;
@@ -106,5 +109,28 @@ class FakeModel extends ChangeNotifier {
       1.0 - currentDragPosition.distance * 0.002,
       0.6,
     );
+  }
+  void hidePopup() {
+    Utils.isFakePagePopupVisible = false;
+    showDialog = false;
+    notifyListeners();
+  }
+
+  late Timer timer;
+  bool showDialog = false;
+
+  FakeModel() {
+    timer = Timer(const Duration(seconds: 1), showAlertDialog);
+  }
+
+  void showAlertDialog() {
+    showDialog = true;
+    notifyListeners();
+  }
+
+  @override
+  void dispose() {
+    timer.cancel();
+    super.dispose();
   }
 }

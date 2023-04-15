@@ -6,6 +6,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:fake_icon_practice/fake/fake_model.dart';
 import 'package:fake_icon_practice/performance/performance_page.dart';
+import 'package:fake_icon_practice/shared_preference_method.dart';
+
 
 class FakePage extends StatelessWidget {
   const FakePage({super.key});
@@ -79,6 +81,92 @@ class FakePage extends StatelessWidget {
                   ),
                 ),
                 Utils.addNotch ? const NotchDisplay() : const SizedBox(),
+                Center(
+                  child: AnimatedOpacity(
+                    opacity: model.showDialog ? 1.0 : 0,
+                    duration: const Duration(milliseconds: 2000),
+                    curve: Curves.easeOutCirc,
+                    child: Visibility(
+                      visible: model.showDialog,
+                      child: Visibility(
+                        visible: Utils.isFakePagePopupVisible,
+                        child: SizedBox(
+                          height: MediaQuery.of(context).size.height,
+                          width: MediaQuery.of(context).size.width,
+                          child: AlertDialog(
+                            shape: const RoundedRectangleBorder(
+                                borderRadius: BorderRadius.all(Radius.circular(10.0))
+                            ),
+                            icon: const Icon(FontAwesomeIcons.splotch),
+                            iconColor: Colors.green,
+                            backgroundColor: Colors.amberAccent,
+                            title: const Text('アプリを落とすイメージで！'),
+                            content: SizedBox(
+                              height: 500,
+                              child: Column(
+                                children: const [
+                                  Text(' ここはアプリ起動後の擬似的なユーザー操作画面です。\n アプリを落とすイメージで画面のやや下から少し上にドラッグし、アプリスイッチャー画面にして下さい。\n 最後に画面の外に出すイメージでスワイプして見てホーム画面に戻りましょう！'),
+                                  SizedBox(height: 20,),
+                                  SizedBox(
+                                    height: 300,
+                                    width: 300,
+                                    child: Image(
+                                      image: AssetImage('images/tutorial-splash-demo.gif'),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            actions: [
+                              ElevatedButton(
+                                onPressed: () async {
+                                  model.hidePopup();
+                                  await SharedPreferenceMethod.saveIsFakePagePopupVisible();
+                                },
+                                style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
+                                child: const Text('閉じる',style: TextStyle(color: Colors.white),),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                // if(Utils.isFakePagePopupVisible)
+                //   AlertDialog(
+                //     shape: const RoundedRectangleBorder(
+                //         borderRadius: BorderRadius.all(Radius.circular(10.0))
+                //     ),
+                //     icon: const Icon(FontAwesomeIcons.splotch),
+                //     iconColor: Colors.green,
+                //     backgroundColor: Colors.amberAccent.withOpacity(0.9),
+                //     title: const Text('Attention!!'),
+                //     content: SizedBox(
+                //       height: 350,
+                //       child: Column(
+                //         children: const [
+                //           Text('アプリを落とすイメージで操作してみて下さい！'),
+                //           SizedBox(
+                //             height: 300,
+                //             // width: 300,
+                //             child: Image(
+                //               image: AssetImage('images/tutorial-splash-demo.gif'),
+                //             ),
+                //           ),
+                //         ],
+                //       ),
+                //     ),
+                //     actions: [
+                //       ElevatedButton(
+                //         onPressed: () async {
+                //           model.hidePopup();
+                //           await SharedPreferenceMethod.saveIsFakePagePopupVisible();
+                //         },
+                //         child: const Text('閉じる'),
+                //       ),
+                //     ],
+                //   ),
               ],
             );
           },
@@ -203,7 +291,12 @@ class TutorialFake extends StatelessWidget {
                                 child: SizedBox(
                                   width: 300,
                                   height: 400,
-                                  child: Image.asset("images/tutorial-screen.png", fit: BoxFit.fill,),
+                                  child: Image.asset(
+                                    "images/tutorial-screen.png",
+                                    fit: BoxFit.fill,
+                                    color: Colors.white,
+                                    colorBlendMode: BlendMode.saturation,
+                                  ),
                                 ),
                               ),
                               SizedBox(
@@ -236,30 +329,44 @@ class TutorialFake extends StatelessWidget {
                               )
                             ],
                           ),
-
                         ],
-                      ),
-                    ),
-                    Container(
-                      alignment: Alignment.topCenter,
-                      child: const Padding(
-                        padding: EdgeInsets.all(40.0),
-                        child: Text(
-                          "Move it as before.",
-                          style: TextStyle(
-                              color: Colors.red,
-                              fontSize: 40,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'Delicious_Handrawn'
-                          ),
-                        ),
                       ),
                     ),
                   ],
                 ),
               ],
             ),
-          )
+          ),
+          Container(
+            alignment: Alignment.topCenter,
+            child: Padding(
+              padding: EdgeInsets.all(50.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: const [
+                  Icon(
+                    FontAwesomeIcons.arrowUp,
+                    color: Colors.green,
+                    size: 100,
+                  ),
+                  Icon(
+                    FontAwesomeIcons.handPointer,
+                    color: Colors.green,
+                    size: 100,
+                  ),
+                  SizedBox(height: 10,),
+                  Text("もう一度お願いします！",
+                    style: TextStyle(
+                      color: Colors.green,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
+                      fontFamily: 'Noto_Sans_JP',
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
         ],
       );
     } else {
@@ -372,7 +479,12 @@ class TutorialFake extends StatelessWidget {
                                 child: SizedBox(
                                   width: 300,
                                   height: 400,
-                                  child: Image.asset("images/tutorial-screen.png", fit: BoxFit.fill,),
+                                  child: Image.asset(
+                                    "images/tutorial-screen.png",
+                                    fit: BoxFit.fill,
+                                    color: Colors.white,
+                                    colorBlendMode: BlendMode.saturation,
+                                  ),
                                 ),
                               ),
                               SizedBox(
@@ -405,45 +517,35 @@ class TutorialFake extends StatelessWidget {
                               )
                             ],
                           ),
-
                         ],
-                      ),
-                    ),
-                    Container(
-                      alignment: Alignment.topCenter,
-                      child: const Padding(
-                        padding: EdgeInsets.only(top: 40.0),
-                        child: Text(
-                          "Tutorial   2 / 5",
-                          style: TextStyle(
-                              color: Colors.red,
-                              fontSize: 40,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'Delicious_Handrawn'
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      alignment: Alignment.topCenter,
-                      child: const Padding(
-                        padding: EdgeInsets.all(5.0),
-                        child: Text(
-                          "Behavior like closing an application.",
-                          style: TextStyle(
-                              color: Colors.red,
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'Delicious_Handrawn'
-                          ),
-                        ),
                       ),
                     ),
                   ],
                 ),
               ],
             ),
-          )
+          ),
+          Container(
+            alignment: Alignment.topCenter,
+            child: Padding(
+              padding: EdgeInsets.all(30.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: const [
+                  Icon(
+                    FontAwesomeIcons.arrowUp,
+                    color: Colors.green,
+                    size: 100,
+                  ),
+                  Icon(
+                    FontAwesomeIcons.handPointer,
+                    color: Colors.green,
+                    size: 100,
+                  ),
+                ],
+              ),
+            ),
+          ),
         ],
       );
     }
