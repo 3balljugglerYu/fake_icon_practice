@@ -8,6 +8,8 @@ import 'package:fake_icon_practice/utils.dart';
 import 'package:fake_icon_practice/tutorial_icon.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../shared_preference_method.dart';
+
 class SplashPage extends StatelessWidget {
   const SplashPage({Key? key}) : super(key: key);
   static const iconAnimation = Curves.easeOutCubic;
@@ -37,33 +39,10 @@ class SplashPage extends StatelessWidget {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
                     image: Utils.backgroundImageFile == null
-                        ? const DecorationImage(image: AssetImage("images/top_default_image.png"), fit: BoxFit.fill,)
+                        ? const DecorationImage(image: AssetImage("images/tutorial-default-bg.png"), fit: BoxFit.fill,)
                         : DecorationImage(image: FileImage(Utils.backgroundImageFile!,), fit: BoxFit.fill),
                   ),
               ),
-              // AnimatedContainer( //splash_screenの動き
-              //   onEnd: (){
-              //     model.isAnimationFinish = true;
-              //     model.notifyListeners();
-              //   },
-              //   curve: iconAnimation,
-              //   duration: const Duration(milliseconds: 500),
-              //   padding: EdgeInsets.only( //isSetUpFinishがtrueになったとき、paddingが0になる。
-              //     top: !model.isSetUpFinish ? Utils.splashPosition.y : 0,
-              //     left: !model.isSetUpFinish ? Utils.splashPosition.x : 0,
-              //     right: !model.isSetUpFinish ? model.displaySize.width - Utils.splashPosition.x - 60 : 0,
-              //     bottom: !model.isSetUpFinish ? model.displaySize.height - Utils.splashPosition.y - 60 : 0,
-              //   ),
-              //   child: Container(
-              //     decoration: BoxDecoration(
-              //       color: const Color(0xFFD8DFFF),
-              //       borderRadius: BorderRadius.circular(15),
-              //       image: Utils.splashBackgroundImageFile == null
-              //           ? null
-              //           : DecorationImage(image: FileImage(Utils.splashBackgroundImageFile!,), fit: BoxFit.fill),
-              //     ),
-              //   ),
-              // ),
               AnimatedContainer(//splash_screenの動き
                 onEnd: (){
                   model.isAnimationFinish = true;
@@ -103,7 +82,7 @@ class SplashPage extends StatelessWidget {
                                 height: !model.isSetUpFinish ? 80 : model.logoSize.height,
                                 width: !model.isSetUpFinish ? 80 : model.logoSize.width,
                                 child: Utils.splashLogoImageFile == null
-                                    ? Image.asset("images/logo-dove.png", fit:  BoxFit.fill,)
+                                    ? Image.asset("images/tutorial-splash-logo.png", fit:  BoxFit.fill,)
                                     : Image.file(Utils.splashLogoImageFile!, fit: BoxFit.fill,),
                               ),
                             ),
@@ -123,6 +102,7 @@ class SplashPage extends StatelessWidget {
                         : DecorationImage(image: FileImage(Utils.splashBackgroundImageFile!,), fit: BoxFit.fill),
                   ),
                 ),
+              Utils.splashLogoImageFile != null ? Container(color: Colors.white.withOpacity(0),) : const TutorialSplash(),
               //起動アニメーションが終了。ロゴは存在している。ロゴは戻ってきていない。
               if (model.isAnimationFinish &&
                   model.isLogoVisibility &&
@@ -152,7 +132,7 @@ class SplashPage extends StatelessWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
                       image: Utils.splashLogoImageFile == null
-                          ? const DecorationImage(image: AssetImage("images/logo-dove.png"), fit: BoxFit.fill,)
+                          ? const DecorationImage(image: AssetImage("images/tutorial-splash-logo.png"), fit: BoxFit.fill,)
                           : DecorationImage(image: FileImage(Utils.splashLogoImageFile!,), fit: BoxFit.fill),
                     ),
                     height: model.logoSize.height,
@@ -162,7 +142,7 @@ class SplashPage extends StatelessWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
                       image: Utils.splashLogoImageFile == null
-                          ? const DecorationImage(image: AssetImage("images/logo-dove.png"), fit: BoxFit.fill,)
+                          ? const DecorationImage(image: AssetImage("images/tutorial-splash-logo.png"), fit: BoxFit.fill,)
                           : DecorationImage(image: FileImage(Utils.splashLogoImageFile!,), fit: BoxFit.fill),
                     ),
                     height: model.logoSize.height,
@@ -170,8 +150,44 @@ class SplashPage extends StatelessWidget {
                   ),
                 ),
               ),
-              Utils.splashLogoImageFile != null ? Container(color: Colors.white.withOpacity(0),) : const TutorialSplash(),
               Utils.addNotch ? const NotchDisplay() : const SizedBox(),
+              Center(
+                child: AnimatedOpacity(
+                  opacity: model.showDialog ? 1.0 : 0,
+                  duration: const Duration(milliseconds: 2000),
+                  curve: Curves.easeOutCirc,
+                  child: Visibility(
+                    visible: model.showDialog,
+                    child: Visibility(
+                      visible: Utils.isSplashPagePopupVisible,
+                      child: SizedBox(
+                        height: MediaQuery.of(context).size.height,
+                        width: MediaQuery.of(context).size.width,
+                        child: AlertDialog(
+                          shape: const RoundedRectangleBorder(
+                              borderRadius: BorderRadius.all(Radius.circular(10.0))
+                          ),
+                          icon: const Icon(FontAwesomeIcons.splotch),
+                          iconColor: Colors.green,
+                          backgroundColor: Colors.amberAccent,
+                          title: const Text('スプラッシュスクリーンで\n止まりました!!'),
+                          content: const Text('アプリ起動時に一瞬ロゴが表示される画面のことをスプラッシュスクリーンと言います。\nロゴをドラッグで動かすことができるので、動かしてみましょう！'),
+                          actions: [
+                            ElevatedButton(
+                              onPressed: () async {
+                                model.hidePopup();
+                                await SharedPreferenceMethod.saveIsSplashPagePopupVisible();
+                              },
+                              style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
+                              child: const Text('閉じる',style: TextStyle(color: Colors.white),),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             ],
           );
         },
@@ -195,13 +211,13 @@ class TutorialSplash extends StatelessWidget {
           Container(
             alignment: Alignment.topCenter,
             child: const Padding(
-              padding: EdgeInsets.all(100.0),
-              child: Text("Tutorial   3 / 5",
+              padding: EdgeInsets.only(top: 80.0,left: 10.0,right: 10.0),
+              child: Text("チュートリアル 4/5",
                 style: TextStyle(
-                  color: Colors.red,
-                  fontSize: 40,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'Delicious_Handrawn',
+                  color: Colors.green,
+                  fontSize: 30,
+                  fontWeight: FontWeight.w500,
+                  fontFamily: 'Noto_Sans_JP',
                 ),
               ),
             ),
@@ -212,7 +228,7 @@ class TutorialSplash extends StatelessWidget {
             icon: FontAwesomeIcons.arrowRightLong,
             iconSize: 80,
             contColor: Colors.black12.withOpacity(0),
-            iconColor: Colors.red,
+            iconColor: Colors.green,
           ),
           TutorialIcon(
             x: Utils.splashPosition.x,
@@ -220,7 +236,7 @@ class TutorialSplash extends StatelessWidget {
             icon: FontAwesomeIcons.handPointer,
             iconSize: 80,
             contColor: Colors.black12.withOpacity(0),
-            iconColor: Colors.red,
+            iconColor: Colors.green,
           ),
           TutorialIcon(
             x: Utils.splashPosition.x,
@@ -247,17 +263,31 @@ class TutorialSplash extends StatelessWidget {
             iconColor: Colors.blue,
           ),
           Positioned(
-            left: Utils.splashPosition.x,
+            left: Utils.splashPosition.x-60,
             top: Utils.splashPosition.y + 350,
-            child: Utils.backgroundImageFile == null ? const Text(
-              "Drag!!",
-              style: TextStyle(
-                  color: Colors.blue,
-                  fontSize: 40,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'Delicious_Handrawn'
-              ),
-            ) : const Text(""),
+            child: Utils.backgroundImageFile == null
+                ? Column(
+                    children: const [
+                       Text(
+                        "アイコンを",
+                        style: TextStyle(
+                            color: Colors.blue,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Delicious_Handrawn'
+                        ),
+                      ),
+                       Text(
+                        "画面の外へドラッグ！",
+                        style: TextStyle(
+                          color: Colors.blue,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Delicious_Handrawn'
+                        ),
+                      ),
+                    ],
+                ) : const Text(""),
           ),
         ],
       );

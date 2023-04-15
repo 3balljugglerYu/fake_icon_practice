@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:fake_icon_practice/fake/fake_page.dart';
 import 'package:flutter/material.dart';
 import 'package:fake_icon_practice/position_model.dart';
@@ -176,5 +178,29 @@ class SplashModel extends ChangeNotifier {
 
   void measureDisplaySize(Size size) async {
     displaySize = size;
+  }
+
+  void hidePopup() {
+    Utils.isSplashPagePopupVisible = false;
+    showDialog = false;
+    notifyListeners();
+  }
+
+  late Timer timer;
+  bool showDialog = false;
+
+  SplashModel() {
+    timer = Timer(const Duration(seconds: 2), showAlertDialog);
+  }
+
+  void showAlertDialog() {
+    showDialog = true;
+    notifyListeners();
+  }
+
+  @override
+  void dispose() {
+    timer.cancel();
+    super.dispose();
   }
 }
