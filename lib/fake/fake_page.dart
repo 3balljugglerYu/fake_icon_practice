@@ -111,7 +111,7 @@ class FakePage extends StatelessWidget {
                                     height: 300,
                                     width: 300,
                                     child: Image(
-                                      image: AssetImage('images/tutorial-splash-demo.gif'),
+                                      image: AssetImage('images/tutorial-fake-page.gif'),
                                     ),
                                   ),
                                 ],
