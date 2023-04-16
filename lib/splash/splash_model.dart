@@ -190,7 +190,7 @@ class SplashModel extends ChangeNotifier {
   bool showDialog = false;
 
   SplashModel() {
-    timer = Timer(const Duration(seconds: 2), showAlertDialog);
+    timer = Timer(const Duration(seconds: 3), showAlertDialog);
   }
 
   void showAlertDialog() {

@@ -210,16 +210,16 @@ class TutorialSplash extends StatelessWidget {
         children: [
           Container(
             alignment: Alignment.topCenter,
-            child: const Padding(
-              padding: EdgeInsets.only(top: 80.0,left: 10.0,right: 10.0),
-              child: Text("チュートリアル 4/5",
+            child: Padding(
+              padding: const EdgeInsets.only(top: 80.0,left: 10.0,right: 10.0),
+              child: Utils.backgroundImageFile == null ? const Text("チュートリアル 4/5",
                 style: TextStyle(
                   color: Colors.green,
                   fontSize: 30,
                   fontWeight: FontWeight.w500,
                   fontFamily: 'Noto_Sans_JP',
                 ),
-              ),
+              ) : const Text(""),
             ),
           ),
           TutorialIcon(
