@@ -17,6 +17,15 @@ dependencies:
   flutter_launcher_icons: ^0.11.0
   shared_preferences: ^2.0.15
   dotted_border: ^2.0.0+3
+  flutter_native_splash: ^2.1.3+1
+
+flutter_native_splash:
+  color: '#FFFFFF'
+  image: 'images/fake-icon-logo.png'
+  fullscreen: true
+  android_12:
+    icon_background_color: '#add8e6'
+    image: 'images/fake-icon-logo-L.png'
 
 flutter_icons:
   image_path: "images/fakeIcon-icon.jpg"
