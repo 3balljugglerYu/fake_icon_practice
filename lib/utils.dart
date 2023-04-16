@@ -15,6 +15,7 @@ class Utils{
   static bool isPerformancePagePopupVisible = true;
   static bool isFakePagePopupVisible = true;
   static bool isSplashPagePopupVisible = true;
+  static bool isSettingTopPagePopupVisible = true;
 
   //改めた回数をカウント
   static int setUpNumber = 0;
