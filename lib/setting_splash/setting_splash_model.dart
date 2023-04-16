@@ -85,4 +85,10 @@ class SettingSplashModel extends ChangeNotifier {
     Utils.fakeBackgroundImageFile = File(pickedFile!.path);
     notifyListeners();
   }
+
+  bool tutorialSplashImageCreate = false;
+  void tutorialSplashCreate(){
+    tutorialSplashImageCreate = !tutorialSplashImageCreate;
+    notifyListeners();
+  }
 }
