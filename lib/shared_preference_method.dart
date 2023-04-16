@@ -61,6 +61,8 @@ class SharedPreferenceMethod {
         prefs.getBool('isFakePagePopupVisible') ?? true;
     Utils.isSplashPagePopupVisible =
         prefs.getBool('isSplashPagePopupVisible') ?? true;
+    Utils.isSettingTopPagePopupVisible =
+        prefs.getBool('isSettingTopPagePopupVisible') ?? true;
   }
 
   static Future<void> saveBackgroundImageFile() async {
@@ -117,5 +119,10 @@ class SharedPreferenceMethod {
   static Future<void> saveIsSplashPagePopupVisible() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setBool('isSplashPagePopupVisible', Utils.isSplashPagePopupVisible);
+  }
+
+  static Future<void> saveIsSettingTopPagePopupVisible() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('isSettingTopPagePopupVisible', Utils.isSettingTopPagePopupVisible);
   }
 }

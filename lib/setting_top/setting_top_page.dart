@@ -7,8 +7,11 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fake_icon_practice/setting_put_icon/setting_put_icon_page.dart';
 import 'package:fake_icon_practice/setting_splash/setting_splash_page.dart';
 import 'package:fake_icon_practice/shared_preference_method.dart';
+import 'package:fake_icon_practice/tutorial_icon.dart';
 
 class SettingTopPage extends StatelessWidget {
+  const SettingTopPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     //データが変わったことを知りWidgetを作り直す。ChangeNotifierProvider
@@ -113,17 +116,26 @@ class SettingTopPage extends StatelessWidget {
                                   }
                                 },
                                 child: Column(
-                                  children: const [
-                                    SizedBox(
+                                  children: [
+                                    const SizedBox(
                                       height: 10.0,
                                     ),
                                     ListTile(
-                                      leading: Icon(
+                                      leading: const Icon(
                                         FontAwesomeIcons.mobile,
                                         size: 35,
                                         color: Colors.black45,
                                       ),
-                                      title: Text(
+                                      trailing: IconButton(
+                                        iconSize: 30,
+                                        onPressed: (){model.tutorialBgChange();},
+                                        icon: const Icon(
+                                          Icons.info_outline,
+                                          size: 30,
+                                          color: Colors.black45,
+                                        ),
+                                      ),
+                                      title: const Text(
                                         "背景画像設定",
                                         style: TextStyle(
                                           fontSize: 18.0,
@@ -131,8 +143,8 @@ class SettingTopPage extends StatelessWidget {
                                         ),
 
                                       ),
-                                      subtitle: Text(
-                                        "アプリを立ち上げた時、最初に表示される画面を設定します。自分が使用しているスマートフォンのスクリーンショットを用意することをお勧めします。",
+                                      subtitle: const Text(
+                                        "アプリ起動時の画面を設定します。自身のホーム画面のスクショを設定して下さい。",
                                         style: TextStyle(
                                           fontSize: 13.0,
                                           color: Colors.black54,
@@ -164,25 +176,34 @@ class SettingTopPage extends StatelessWidget {
                                           SettingPutIconPage()));
                                 },
                                 child: Column(
-                                  children: const [
-                                    SizedBox(
+                                  children: [
+                                    const SizedBox(
                                       height: 10.0,
                                     ),
                                     ListTile(
-                                      leading: Icon(
+                                      leading: const Icon(
                                         FontAwesomeIcons.arrowsUpDownLeftRight,
                                         size: 35,
                                         color: Colors.black45,
                                       ),
-                                      title: Text(
+                                      trailing: IconButton(
+                                        iconSize: 30,
+                                        onPressed: (){model.tutorialIconChange();},
+                                        icon: const Icon(
+                                          Icons.info_outline,
+                                          size: 30,
+                                          color: Colors.black45,
+                                        ),
+                                      ),
+                                      title: const Text(
                                         "アイコンの配置変更",
                                         style: TextStyle(
                                           fontSize: 18.0,
                                           color: Colors.black54,
                                         ),
                                       ),
-                                      subtitle: Text(
-                                        "背景画像の設定後、アイコンの位置を決める設定を行います。任意の位置に配置することが可能です。",
+                                      subtitle: const Text(
+                                        "アイコンの位置を変更します。背景画像設定で設定した画像のアイコンに合わせましょう。",
                                         style: TextStyle(
                                           fontSize: 13.0,
                                           color: Colors.black54,
@@ -211,27 +232,36 @@ class SettingTopPage extends StatelessWidget {
                                 onTap: () {
                                   Navigator.push(context, MaterialPageRoute(
                                       builder: (context) =>
-                                          SettingSplashPage()));
+                                          const SettingSplashPage()));
                                 },
                                 child: Column(
-                                  children: const [
-                                    SizedBox(
+                                  children: [
+                                    const SizedBox(
                                       height: 10.0,
                                     ),
                                     ListTile(
-                                      leading: Icon(
+                                      leading: const Icon(
                                         FontAwesomeIcons.ship,
                                         size: 35,
                                         color: Colors.black45,
                                       ),
-                                      title: Text(
+                                      trailing: IconButton(
+                                        iconSize: 30,
+                                        onPressed: (){model.tutorialSplashDemo();},
+                                        icon: const Icon(
+                                          Icons.info_outline,
+                                          size: 30,
+                                          color: Colors.black45,
+                                        ),
+                                      ),
+                                      title: const Text(
                                         "Splash App 設定",
                                         style: TextStyle(
                                           fontSize: 18.0,
                                           color: Colors.black54,
                                         ),
                                       ),
-                                      subtitle: Text(
+                                      subtitle: const Text(
                                         "ロゴや背景画像の変更、ロゴを消失させた後に表示させるタイミング等を設定することができます。",
                                         style: TextStyle(
                                           fontSize: 13.0,
@@ -254,8 +284,8 @@ class SettingTopPage extends StatelessWidget {
                               onPressed: () async {
                                 await SharedPreferenceMethod
                                     .saveBackgroundImageFile();
-                                // ignore: use_build_context_synchronously
                                 Utils.setUpNumber = 0;
+                                // ignore: use_build_context_synchronously
                                 Navigator.pop(context);
                               },
                               style: ElevatedButton.styleFrom(
@@ -272,6 +302,181 @@ class SettingTopPage extends StatelessWidget {
                             ),
                           ),
                         ],
+                      ),
+                    ),
+                    AnimatedPositioned(
+                      duration: const Duration(milliseconds: 500),
+                      curve: Curves.easeInOut,
+                      top: MediaQuery.of(context).size.height/5,
+                      left: model.tutorialBg ? 0 : MediaQuery.of(context).size.width,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          decoration: BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.9),
+                                  spreadRadius: 3,
+                                  blurRadius: 5,
+                                  offset: const Offset(10,10),
+                                ),
+                              ],
+                          color: Colors.blueGrey.withOpacity(0.9),
+                          ),
+                          height: 500,
+                          width: MediaQuery.of(context).size.width,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: model.tutorialBg ? const Image(
+                                  image: AssetImage('images/tutorial-background-change.gif'),
+                                ) : null,
+                              ),
+                              IconButton(
+                                iconSize:  150,
+                                onPressed: (){model.tutorialBgChange();},
+                                icon: const Icon(
+                                  Icons.play_arrow_sharp,
+                                  size: 50,
+                                  color: Colors.black45,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    AnimatedPositioned(
+                      duration: const Duration(milliseconds: 500),
+                      curve: Curves.easeInOut,
+                      top: MediaQuery.of(context).size.height/5,
+                      left: model.tutorialIcon ? 0 : MediaQuery.of(context).size.width,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.9),
+                                spreadRadius: 3,
+                                blurRadius: 5,
+                                offset: const Offset(10,10),
+                              ),
+                            ],
+                            color: Colors.blueGrey.withOpacity(0.9),
+                          ),
+                          height: 500,
+                          width: MediaQuery.of(context).size.width,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: model.tutorialIcon ? const Image(
+                                  image: AssetImage('images/tutorial-icon-change.gif'),
+                                ) : null,
+                              ),
+                              IconButton(
+                                iconSize:  150,
+                                onPressed: (){model.tutorialIconChange();},
+                                icon: const Icon(
+                                  Icons.play_arrow_sharp,
+                                  size: 50,
+                                  color: Colors.black45,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    AnimatedPositioned(
+                      duration: const Duration(milliseconds: 500),
+                      curve: Curves.easeInOut,
+                      top: MediaQuery.of(context).size.height/5,
+                      left: model.tutorialSplash ? 0 : MediaQuery.of(context).size.width,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.9),
+                                spreadRadius: 3,
+                                blurRadius: 5,
+                                offset: const Offset(10,10),
+                              ),
+                            ],
+                            color: Colors.blueGrey.withOpacity(0.9),
+                          ),
+                          height: 500,
+                          width: MediaQuery.of(context).size.width,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: model.tutorialSplash ? const Image(
+                                  image: AssetImage('images/tutorial-splash-demo.gif'),
+                                ) : null,
+                              ),
+                              IconButton(
+                                iconSize:  150,
+                                onPressed: (){model.tutorialSplashDemo();},
+                                icon: const Icon(
+                                  Icons.play_arrow_sharp,
+                                  size: 50,
+                                  color: Colors.black45,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    Center(
+                      child: AnimatedOpacity(
+                        opacity: model.showDialog ? 1.0 : 0,
+                        duration: const Duration(milliseconds: 1000),
+                        curve: Curves.easeOutCirc,
+                        child: Visibility(
+                          visible: model.showDialog,
+                          child: Visibility(
+                            visible: Utils.isSettingTopPagePopupVisible,
+                            child: SizedBox(
+                              height: MediaQuery.of(context).size.height,
+                              width: MediaQuery.of(context).size.width,
+                              child: AlertDialog(
+                                shape: const RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.all(Radius.circular(10.0))
+                                ),
+                                icon: const Icon(FontAwesomeIcons.splotch),
+                                iconColor: Colors.green,
+                                backgroundColor: Colors.amberAccent,
+                                title: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(Icons.info_outline),
+                                    Text(' をクリック！'),
+                                  ],
+                                ),
+                                content: const Text('各項目の設定方法を動画で見ることができますので参考にして下さい！\n\nチュートリアルは以上です。マジックのネタの一つとして活用して頂けると嬉しいです！'),
+                                actions: [
+                                  ElevatedButton(
+                                    onPressed: () async {
+                                      model.hidePopup();
+                                      await SharedPreferenceMethod.saveIsSettingTopPagePopupVisible();
+                                    },
+                                    style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
+                                    child: const Text('閉じる',style: TextStyle(color: Colors.white),),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                   ],
