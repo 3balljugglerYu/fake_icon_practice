@@ -18,10 +18,10 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
-              primarySwatch:whiteSwatch,
+              primarySwatch:blackSwatch,
             ),
             darkTheme: ThemeData(
-              primarySwatch:blackSwatch,
+              primarySwatch:whiteSwatch,
             ),
             themeMode: ThemeMode.system,
             // theme: ThemeData.dark(),

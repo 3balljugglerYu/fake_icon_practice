@@ -436,43 +436,46 @@ class SettingTopPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Center(
-                      child: AnimatedOpacity(
-                        opacity: model.showDialog ? 1.0 : 0,
-                        duration: const Duration(milliseconds: 1000),
-                        curve: Curves.easeOutCirc,
-                        child: Visibility(
-                          visible: model.showDialog,
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 150),
+                      child: Center(
+                        child: AnimatedOpacity(
+                          opacity: model.showDialog ? 1.0 : 0,
+                          duration: const Duration(milliseconds: 1000),
+                          curve: Curves.easeOutCirc,
                           child: Visibility(
-                            visible: Utils.isSettingTopPagePopupVisible,
-                            child: SizedBox(
-                              height: MediaQuery.of(context).size.height,
-                              width: MediaQuery.of(context).size.width,
-                              child: AlertDialog(
-                                shape: const RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.all(Radius.circular(10.0))
-                                ),
-                                icon: const Icon(FontAwesomeIcons.splotch),
-                                iconColor: Colors.green,
-                                backgroundColor: Colors.amberAccent,
-                                title: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(Icons.info_outline),
-                                    Text(' をクリック！'),
+                            visible: model.showDialog,
+                            child: Visibility(
+                              visible: Utils.isSettingTopPagePopupVisible,
+                              child: SizedBox(
+                                height: MediaQuery.of(context).size.height,
+                                width: MediaQuery.of(context).size.width,
+                                child: AlertDialog(
+                                  shape: const RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(Radius.circular(10.0))
+                                  ),
+                                  icon: const Icon(FontAwesomeIcons.splotch),
+                                  iconColor: Colors.green,
+                                  backgroundColor: Colors.amberAccent,
+                                  title: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: const [
+                                      Icon(Icons.info_outline),
+                                      Text(' をタップ！'),
+                                    ],
+                                  ),
+                                  content: const Text('各項目の設定方法を動画で見ることができますので参考にして下さい！\n\nこれでチュートリアルは終了です！\nマジックのネタの一つとして活用して頂けると嬉しいです！'),
+                                  actions: [
+                                    ElevatedButton(
+                                      onPressed: () async {
+                                        model.hidePopup();
+                                        await SharedPreferenceMethod.saveIsSettingTopPagePopupVisible();
+                                      },
+                                      style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
+                                      child: const Text('閉じる',style: TextStyle(color: Colors.white),),
+                                    ),
                                   ],
                                 ),
-                                content: const Text('各項目の設定方法を動画で見ることができますので参考にして下さい！\n\nチュートリアルは以上です。マジックのネタの一つとして活用して頂けると嬉しいです！'),
-                                actions: [
-                                  ElevatedButton(
-                                    onPressed: () async {
-                                      model.hidePopup();
-                                      await SharedPreferenceMethod.saveIsSettingTopPagePopupVisible();
-                                    },
-                                    style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
-                                    child: const Text('閉じる',style: TextStyle(color: Colors.white),),
-                                  ),
-                                ],
                               ),
                             ),
                           ),

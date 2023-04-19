@@ -253,7 +253,7 @@ class SettingSplashPage extends StatelessWidget {
                                     unit: "回",
                                     setNum: Utils.frequencyNumber,
                                     cupertinoPickerInitialNum: Utils.frequencyNumber,
-                                    explain: "普通のアプリであることを伝えるために、アプリを起動したり落としたりを繰り返すための回数を設定します。",
+                                    explain: "スプラッシュスクリーンで止めるまでの回数です。\n通常のアプリだと思わせる為に設定します。",
                                   ),
                                   SettingNumSec(
                                     title: "ロゴの復帰時間",
@@ -263,7 +263,7 @@ class SettingSplashPage extends StatelessWidget {
                                     unit: "秒",
                                     setNum: Utils.comeBackSecond,
                                     cupertinoPickerInitialNum: Utils.comeBackSecond,
-                                    explain: "設定したロゴを画面外に動かした後、指定した秒数後にロゴが元の場所に戻ります。その秒数を設定します。",
+                                    explain: "ロゴを画面外に出した後の戻ってくるまでの時間を設定します。",
                                   ),
                                   SettingNumSec(
                                     title: "ロゴ復帰後からの遷移時間",
@@ -273,17 +273,17 @@ class SettingSplashPage extends StatelessWidget {
                                     unit: "秒",
                                     setNum: Utils.transitionSecond,
                                     cupertinoPickerInitialNum: Utils.transitionSecond,
-                                    explain: "ロゴが元の位置に戻った後、指定した起動後の画面に移ります。この起動後の画面に移るまでの秒数を設定します。",
+                                    explain: "ロゴが戻ってから上記で設定した『起動後の画面』に移るまでの時間を設定します。",
                                   ),
                                   SettingNumSec(
                                     title: "お知らせタイマー",
                                     setList: model.setSecToStr(),
                                     selectedItemChange: model.onSelectedNotifyNumChanged,
                                     listNum: model.setSec,
-                                    unit: "秒",
+                                    unit: "秒前",
                                     setNum: Utils.notifySecond,
                                     cupertinoPickerInitialNum: Utils.notifySecond,
-                                    explain: "「お知らせタイマー」は、「ロゴ消失後の復帰時間」や「復帰後からの画面遷移時間」よりも、秒数を短く設定してください。",
+                                    explain: "『ロゴの復帰時間』や『復帰後からの画面遷移時間』に移る時にバイブでお知らせしてくれます。\n『ロゴの復帰時間』や『復帰後からの画面遷移時間』よりも短く設定する必要があります。",
                                   ),
                                   Column(
                                     children: [
@@ -301,7 +301,7 @@ class SettingSplashPage extends StatelessWidget {
                                               ),
                                             ),
                                             subtitle: const Text(
-                                              "ノッチの表示非表示を設定します。",
+                                              "パフォーマンスの画面上部にあるノッチの表示・非表示を設定します。\nスクショの画像ですと時刻やバッテリー残量まで画像として保存される為、隠す目的で使用します。",
                                               style: TextStyle(
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.grey,

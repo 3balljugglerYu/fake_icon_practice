@@ -36,7 +36,7 @@ class SettingPutIconPage extends StatelessWidget {
           height: double.infinity,
           width: double.infinity,
           child: Utils.backgroundImageFile == null
-              ? Image.asset("images/top_default_image.png", fit: BoxFit.fill,)
+              ? Image.asset("images/tutorial-default-bg.png", fit: BoxFit.fill,)
               : Image.file(Utils.backgroundImageFile!, fit: BoxFit.fill,)
         ),
         BackdropFilter(
