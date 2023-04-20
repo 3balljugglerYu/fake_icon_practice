@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'dart:math';
 import 'package:flutter/cupertino.dart';
-import 'package:fake_icon_practice/utils.dart';
+import 'package:fake_icon/utils.dart';
 
 class FakeModel extends ChangeNotifier {
   int imageAnimationDuration = 0;

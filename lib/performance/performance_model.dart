@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:fake_icon_practice/utils.dart';
+import 'package:fake_icon/utils.dart';
 
 class PerformanceModel extends ChangeNotifier {
   Future<void> onPressed() async {

@@ -1,4 +1,4 @@
-import 'package:fake_icon_practice/utils.dart';
+import 'package:fake_icon/utils.dart';
 import 'package:flutter/cupertino.dart';
 
 class Position {

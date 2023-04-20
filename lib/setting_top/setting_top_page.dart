@@ -2,12 +2,12 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'setting_top_model.dart';
-import 'package:fake_icon_practice/utils.dart';
+import 'package:fake_icon/utils.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:fake_icon_practice/setting_put_icon/setting_put_icon_page.dart';
-import 'package:fake_icon_practice/setting_splash/setting_splash_page.dart';
-import 'package:fake_icon_practice/shared_preference_method.dart';
-import 'package:fake_icon_practice/tutorial_icon.dart';
+import 'package:fake_icon/setting_put_icon/setting_put_icon_page.dart';
+import 'package:fake_icon/setting_splash/setting_splash_page.dart';
+import 'package:fake_icon/shared_preference_method.dart';
+import 'package:fake_icon/tutorial_icon.dart';
 
 class SettingTopPage extends StatelessWidget {
   const SettingTopPage({super.key});

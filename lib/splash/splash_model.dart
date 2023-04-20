@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:fake_icon_practice/fake/fake_page.dart';
+import 'package:fake_icon/fake/fake_page.dart';
 import 'package:flutter/material.dart';
-import 'package:fake_icon_practice/position_model.dart';
-import 'package:fake_icon_practice/utils.dart';
+import 'package:fake_icon/position_model.dart';
+import 'package:fake_icon/utils.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 

@@ -1,12 +1,12 @@
 import 'dart:ui';
-import 'package:fake_icon_practice/notchDisplay.dart';
-import 'package:fake_icon_practice/utils.dart';
+import 'package:fake_icon/notchDisplay.dart';
+import 'package:fake_icon/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:fake_icon_practice/fake/fake_model.dart';
-import 'package:fake_icon_practice/performance/performance_page.dart';
-import 'package:fake_icon_practice/shared_preference_method.dart';
+import 'package:fake_icon/fake/fake_model.dart';
+import 'package:fake_icon/performance/performance_page.dart';
+import 'package:fake_icon/shared_preference_method.dart';
 
 
 class FakePage extends StatelessWidget {

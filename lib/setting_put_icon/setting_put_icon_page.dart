@@ -1,13 +1,13 @@
 import 'dart:ui';
-import 'package:fake_icon_practice/notchDisplay.dart';
-import 'package:fake_icon_practice/setting_put_icon/setting_put_icon_model.dart';
-import 'package:fake_icon_practice/shared_preference_method.dart';
-import 'package:fake_icon_practice/utils.dart';
+import 'package:fake_icon/notchDisplay.dart';
+import 'package:fake_icon/setting_put_icon/setting_put_icon_model.dart';
+import 'package:fake_icon/shared_preference_method.dart';
+import 'package:fake_icon/utils.dart';
 import 'package:flutter/material.dart';
-import 'package:fake_icon_practice/position_model.dart';
+import 'package:fake_icon/position_model.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:fake_icon_practice/reusable_move_icon.dart';
+import 'package:fake_icon/reusable_move_icon.dart';
 
 class SettingPutIconPage extends StatelessWidget {
   Position settingIconPosition = Utils.settingPosition;

@@ -1,11 +1,11 @@
 import 'dart:ui';
-import 'package:fake_icon_practice/setting_splash/setting_splash_model.dart';
-import 'package:fake_icon_practice/utils.dart';
+import 'package:fake_icon/setting_splash/setting_splash_model.dart';
+import 'package:fake_icon/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:fake_icon_practice/shared_preference_method.dart';
+import 'package:fake_icon/shared_preference_method.dart';
 // import 'package:flutter_switch/flutter_switch.dart';
 
 

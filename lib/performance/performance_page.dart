@@ -1,14 +1,14 @@
-import 'package:fake_icon_practice/performance/performance_model.dart';
-import 'package:fake_icon_practice/setting_top/setting_top_page.dart';
-import 'package:fake_icon_practice/shared_preference_method.dart';
-import 'package:fake_icon_practice/splash/splash_model.dart';
-import 'package:fake_icon_practice/splash/splash_page.dart';
-import 'package:fake_icon_practice/utils.dart';
+import 'package:fake_icon/performance/performance_model.dart';
+import 'package:fake_icon/setting_top/setting_top_page.dart';
+import 'package:fake_icon/shared_preference_method.dart';
+import 'package:fake_icon/splash/splash_model.dart';
+import 'package:fake_icon/splash/splash_page.dart';
+import 'package:fake_icon/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:fake_icon_practice/position_model.dart';
-import 'package:fake_icon_practice/notchDisplay.dart';
-import 'package:fake_icon_practice/tutorial_icon.dart';
+import 'package:fake_icon/position_model.dart';
+import 'package:fake_icon/notchDisplay.dart';
+import 'package:fake_icon/tutorial_icon.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class PerformancePage extends StatelessWidget {

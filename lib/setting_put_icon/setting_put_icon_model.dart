@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fake_icon_practice/position_model.dart';
+import 'package:fake_icon/position_model.dart';
 
 class SettingPutIconModel extends ChangeNotifier {
   Size? displaySize;
