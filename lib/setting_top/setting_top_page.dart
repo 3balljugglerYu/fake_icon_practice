@@ -7,7 +7,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fake_icon/setting_put_icon/setting_put_icon_page.dart';
 import 'package:fake_icon/setting_splash/setting_splash_page.dart';
 import 'package:fake_icon/shared_preference_method.dart';
-import 'package:fake_icon/tutorial_icon.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SettingTopPage extends StatelessWidget {
   const SettingTopPage({super.key});
@@ -32,27 +32,27 @@ class SettingTopPage extends StatelessWidget {
                   children: [
                     IconButton(
                       onPressed: () => Navigator.pop(context),
-                      icon: const Icon(Icons.arrow_back_ios_new_outlined,
+                      icon: Icon(Icons.arrow_back_ios_new_outlined,
                         color: Colors.grey,
-                        size: 30,
+                        size: 30.h,
                       ),
                     ),
                     const Spacer(),
-                    const Icon(
+                    Icon(
                       FontAwesomeIcons.gears,
-                      size: 35,
+                      size: 35.h,
                       color: Colors.grey,
                     ),
-                    const SizedBox(width: 15.0),
-                    const Text(
+                    SizedBox(width: 15.0.w),
+                    Text(
                       '設定',
-                      style: TextStyle(fontSize: 30,
+                      style: TextStyle(fontSize: 30.sp,
                         color: Colors.grey,
                       ),
                     ),
                     const Spacer(),
-                    const SizedBox(
-                      width: 55,
+                    SizedBox(
+                      width: 55.w,
                     )
                   ],
                 ),
@@ -81,11 +81,11 @@ class SettingTopPage extends StatelessWidget {
                     Center(
                       child: Column(
                         children: [
-                          const SizedBox(
-                            height: 20.0,
+                          SizedBox(
+                            height: 20.0.h,
                           ),
                           SizedBox(
-                            height: 150,
+                            height: 150.h,
                             child: Card(
                               color: Colors.white,
                               shadowColor: Colors.blueGrey,
@@ -93,8 +93,8 @@ class SettingTopPage extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(10.0),
                               ),
                               elevation: 10.0,
-                              margin: const EdgeInsets.symmetric(
-                                vertical: 10.0, horizontal: 25.0,
+                              margin: EdgeInsets.symmetric(
+                                vertical: 10.0.h, horizontal: 25.0.w,
                               ),
                               child: InkWell(
                                 splashColor: Colors.blue.withAlpha(30),
@@ -106,10 +106,10 @@ class SettingTopPage extends StatelessWidget {
                                         'Null check operator used on a null value') {
                                       await showDialog(context: context,
                                           builder: (BuildContext context) {
-                                            return const AlertDialog(
-                                              title: Text('写真の設定'),
+                                            return AlertDialog(
+                                              title: Text('写真の設定',style: TextStyle(fontSize: 20.sp),),
                                               content: Text(
-                                                  '画像の設定には端末の設定から写真へのアクセスを許可して下さい。'),
+                                                  '画像の設定には端末の設定から写真へのアクセスを許可して下さい。',style: TextStyle(fontSize: 15.sp),),
                                             );
                                           });
                                     }
@@ -117,36 +117,36 @@ class SettingTopPage extends StatelessWidget {
                                 },
                                 child: Column(
                                   children: [
-                                    const SizedBox(
-                                      height: 10.0,
+                                    SizedBox(
+                                      height: 10.0.h,
                                     ),
                                     ListTile(
-                                      leading: const Icon(
+                                      leading: Icon(
                                         FontAwesomeIcons.mobile,
-                                        size: 35,
+                                        size: 35.h,
                                         color: Colors.black45,
                                       ),
                                       trailing: IconButton(
-                                        iconSize: 30,
+                                        iconSize: 30.h,
                                         onPressed: (){model.tutorialBgChange();},
-                                        icon: const Icon(
+                                        icon: Icon(
                                           Icons.info_outline,
-                                          size: 30,
+                                          size: 30.h,
                                           color: Colors.black45,
                                         ),
                                       ),
-                                      title: const Text(
+                                      title: Text(
                                         "背景画像設定",
                                         style: TextStyle(
-                                          fontSize: 18.0,
+                                          fontSize: 18.0.sp,
                                           color: Colors.black54,
                                         ),
 
                                       ),
-                                      subtitle: const Text(
+                                      subtitle: Text(
                                         "アプリ起動時の画面を設定します。自身のホーム画面のスクショを設定して下さい。",
                                         style: TextStyle(
-                                          fontSize: 13.0,
+                                          fontSize: 13.0.sp,
                                           color: Colors.black54,
                                         ),
                                       ),
@@ -157,7 +157,7 @@ class SettingTopPage extends StatelessWidget {
                             ),
                           ),
                           SizedBox(
-                            height: 150,
+                            height: 150.h,
                             child: Card(
                               color: Colors.white,
                               shadowColor: Colors.blueGrey,
@@ -165,8 +165,8 @@ class SettingTopPage extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(10.0),
                               ),
                               elevation: 10.0,
-                              margin: const EdgeInsets.symmetric(
-                                vertical: 10.0, horizontal: 25.0,
+                              margin: EdgeInsets.symmetric(
+                                vertical: 10.0.h, horizontal: 25.0.w,
                               ),
                               child: InkWell(
                                 splashColor: Colors.blue.withAlpha(30),
@@ -177,35 +177,35 @@ class SettingTopPage extends StatelessWidget {
                                 },
                                 child: Column(
                                   children: [
-                                    const SizedBox(
-                                      height: 10.0,
+                                    SizedBox(
+                                      height: 10.0.h,
                                     ),
                                     ListTile(
-                                      leading: const Icon(
+                                      leading: Icon(
                                         FontAwesomeIcons.arrowsUpDownLeftRight,
-                                        size: 35,
+                                        size: 35.h,
                                         color: Colors.black45,
                                       ),
                                       trailing: IconButton(
-                                        iconSize: 30,
+                                        iconSize: 30.h,
                                         onPressed: (){model.tutorialIconChange();},
-                                        icon: const Icon(
+                                        icon: Icon(
                                           Icons.info_outline,
-                                          size: 30,
+                                          size: 30.h,
                                           color: Colors.black45,
                                         ),
                                       ),
-                                      title: const Text(
+                                      title: Text(
                                         "アイコンの配置変更",
                                         style: TextStyle(
-                                          fontSize: 18.0,
+                                          fontSize: 18.0.sp,
                                           color: Colors.black54,
                                         ),
                                       ),
-                                      subtitle: const Text(
+                                      subtitle: Text(
                                         "アイコンの位置を変更します。背景画像設定で設定した画像のアイコンに合わせましょう。",
                                         style: TextStyle(
-                                          fontSize: 13.0,
+                                          fontSize: 13.0.sp,
                                           color: Colors.black54,
                                         ),
                                       ),
@@ -216,7 +216,7 @@ class SettingTopPage extends StatelessWidget {
                             ),
                           ),
                           SizedBox(
-                            height: 150,
+                            height: 150.h,
                             child: Card(
                               color: Colors.white,
                               shadowColor: Colors.blueGrey,
@@ -224,8 +224,8 @@ class SettingTopPage extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(10.0),
                               ),
                               elevation: 10.0,
-                              margin: const EdgeInsets.symmetric(
-                                vertical: 10.0, horizontal: 25.0,
+                              margin: EdgeInsets.symmetric(
+                                vertical: 10.0.h, horizontal: 25.0.w,
                               ),
                               child: InkWell(
                                 splashColor: Colors.blue.withAlpha(30),
@@ -236,35 +236,35 @@ class SettingTopPage extends StatelessWidget {
                                 },
                                 child: Column(
                                   children: [
-                                    const SizedBox(
-                                      height: 10.0,
+                                    SizedBox(
+                                      height: 10.0.h,
                                     ),
                                     ListTile(
-                                      leading: const Icon(
+                                      leading: Icon(
                                         FontAwesomeIcons.ship,
-                                        size: 35,
+                                        size: 35.h,
                                         color: Colors.black45,
                                       ),
                                       trailing: IconButton(
-                                        iconSize: 30,
+                                        iconSize: 30.h,
                                         onPressed: (){model.tutorialSplashDemo();},
-                                        icon: const Icon(
+                                        icon: Icon(
                                           Icons.info_outline,
-                                          size: 30,
+                                          size: 30.h,
                                           color: Colors.black45,
                                         ),
                                       ),
-                                      title: const Text(
+                                      title: Text(
                                         "Splash App 設定",
                                         style: TextStyle(
-                                          fontSize: 18.0,
+                                          fontSize: 18.0.sp,
                                           color: Colors.black54,
                                         ),
                                       ),
-                                      subtitle: const Text(
+                                      subtitle: Text(
                                         "ロゴや背景画像の変更、ロゴを消失させた後に表示させるタイミング等を設定することができます。",
                                         style: TextStyle(
-                                          fontSize: 13.0,
+                                          fontSize: 13.0.sp,
                                           color: Colors.black54,
                                         ),
                                       ),
@@ -274,12 +274,12 @@ class SettingTopPage extends StatelessWidget {
                               ),
                             ),
                           ),
-                          const SizedBox(
-                            height: 30.0,
+                          SizedBox(
+                            height: 30.0.h,
                           ),
                           SizedBox(
-                            height: 45.0,
-                            width: 250.0,
+                            height: 45.0.h,
+                            width: 250.0.w,
                             child: ElevatedButton(
                               onPressed: () async {
                                 await SharedPreferenceMethod
@@ -292,9 +292,9 @@ class SettingTopPage extends StatelessWidget {
                                 backgroundColor: Colors.white,
                                 foregroundColor: Colors.white,
                               ),
-                              child: const Text('完了',
+                              child: Text('完了',
                                 style: TextStyle(
-                                  fontSize: 20.0,
+                                  fontSize: 20.0.sp,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.black54,
                                 ),
@@ -310,7 +310,7 @@ class SettingTopPage extends StatelessWidget {
                       top: MediaQuery.of(context).size.height/5,
                       left: model.tutorialBg ? 0 : MediaQuery.of(context).size.width,
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: EdgeInsets.only(top: 8.0.h,bottom: 8.0.h,left: 8.0.w,right: 8.0.w),
                         child: Container(
                           decoration: BoxDecoration(
                               boxShadow: [
@@ -323,23 +323,23 @@ class SettingTopPage extends StatelessWidget {
                               ],
                           color: Colors.blueGrey.withOpacity(0.9),
                           ),
-                          height: 500,
+                          height: 500.h,
                           width: MediaQuery.of(context).size.width,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Padding(
-                                padding: const EdgeInsets.all(10.0),
+                                padding: EdgeInsets.only(top: 8.0.h,bottom: 8.0.h,left: 8.0.w,right: 8.0.w),
                                 child: model.tutorialBg ? const Image(
                                   image: AssetImage('images/tutorial-background-change.gif'),
                                 ) : null,
                               ),
                               IconButton(
-                                iconSize:  150,
+                                iconSize:  150.h,
                                 onPressed: (){model.tutorialBgChange();},
-                                icon: const Icon(
+                                icon: Icon(
                                   Icons.play_arrow_sharp,
-                                  size: 50,
+                                  size: 50.h,
                                   color: Colors.black45,
                                 ),
                               ),
@@ -354,7 +354,7 @@ class SettingTopPage extends StatelessWidget {
                       top: MediaQuery.of(context).size.height/5,
                       left: model.tutorialIcon ? 0 : MediaQuery.of(context).size.width,
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: EdgeInsets.only(top: 8.0.h,bottom: 8.0.h,left: 8.0.w,right: 8.0.w),
                         child: Container(
                           decoration: BoxDecoration(
                             boxShadow: [
@@ -367,23 +367,23 @@ class SettingTopPage extends StatelessWidget {
                             ],
                             color: Colors.blueGrey.withOpacity(0.9),
                           ),
-                          height: 500,
+                          height: 500.h,
                           width: MediaQuery.of(context).size.width,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Padding(
-                                padding: const EdgeInsets.all(10.0),
+                                padding: EdgeInsets.only(top: 8.0.h,bottom: 8.0.h,left: 8.0.w,right: 8.0.w),
                                 child: model.tutorialIcon ? const Image(
                                   image: AssetImage('images/tutorial-icon-change.gif'),
                                 ) : null,
                               ),
                               IconButton(
-                                iconSize:  150,
+                                iconSize:  150.h,
                                 onPressed: (){model.tutorialIconChange();},
-                                icon: const Icon(
+                                icon: Icon(
                                   Icons.play_arrow_sharp,
-                                  size: 50,
+                                  size: 50.h,
                                   color: Colors.black45,
                                 ),
                               ),
@@ -398,7 +398,7 @@ class SettingTopPage extends StatelessWidget {
                       top: MediaQuery.of(context).size.height/5,
                       left: model.tutorialSplash ? 0 : MediaQuery.of(context).size.width,
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: EdgeInsets.only(top: 8.0.h,bottom: 8.0.h,left: 8.0.w,right: 8.0.w),
                         child: Container(
                           decoration: BoxDecoration(
                             boxShadow: [
@@ -411,23 +411,23 @@ class SettingTopPage extends StatelessWidget {
                             ],
                             color: Colors.blueGrey.withOpacity(0.9),
                           ),
-                          height: 500,
+                          height: 500.h,
                           width: MediaQuery.of(context).size.width,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Padding(
-                                padding: const EdgeInsets.all(10.0),
+                                padding: EdgeInsets.only(top: 8.0.h,bottom: 8.0.h,left: 8.0.w,right: 8.0.w),
                                 child: model.tutorialSplash ? const Image(
                                   image: AssetImage('images/tutorial-splash-demo.gif'),
                                 ) : null,
                               ),
                               IconButton(
-                                iconSize:  150,
+                                iconSize:  150.h,
                                 onPressed: (){model.tutorialSplashDemo();},
-                                icon: const Icon(
+                                icon: Icon(
                                   Icons.play_arrow_sharp,
-                                  size: 50,
+                                  size: 50.h,
                                   color: Colors.black45,
                                 ),
                               ),
@@ -459,12 +459,21 @@ class SettingTopPage extends StatelessWidget {
                                   backgroundColor: Colors.amberAccent,
                                   title: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    children: const [
-                                      Icon(Icons.info_outline),
-                                      Text(' をタップ！'),
+                                    children: [
+                                      Icon(
+                                        Icons.info_outline,
+                                        size: 30.h,
+                                      ),
+                                      Text(
+                                          ' をタップ！',
+                                        style: TextStyle(fontSize: 20.sp),
+                                      ),
                                     ],
                                   ),
-                                  content: const Text('各項目の設定方法を動画で見ることができますので参考にして下さい！\n\nこれでチュートリアルは終了です！\nマジックのネタの一つとして活用して頂けると嬉しいです！'),
+                                  content: Text(
+                                    '各項目の設定方法を動画で見ることができますので参考にして下さい！\n\nこれでチュートリアルは終了です！\nマジックのネタの一つとして活用して頂けると嬉しいです！',
+                                    style: TextStyle(fontSize: 15.sp),
+                                  ),
                                   actions: [
                                     ElevatedButton(
                                       onPressed: () async {
@@ -472,7 +481,7 @@ class SettingTopPage extends StatelessWidget {
                                         await SharedPreferenceMethod.saveIsSettingTopPagePopupVisible();
                                       },
                                       style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
-                                      child: const Text('閉じる',style: TextStyle(color: Colors.white),),
+                                      child: Text('閉じる',style: TextStyle(color: Colors.white,fontSize: 15.sp),),
                                     ),
                                   ],
                                 ),

@@ -2,12 +2,12 @@ import 'package:fake_icon/notchDisplay.dart';
 import 'package:fake_icon/position_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:fake_icon/splash/splash_model.dart';
 import 'package:fake_icon/utils.dart';
 import 'package:fake_icon/tutorial_icon.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import '../shared_preference_method.dart';
 
 class SplashPage extends StatelessWidget {
@@ -79,8 +79,8 @@ class SplashPage extends StatelessWidget {
                               child: AnimatedContainer(
                                 curve: iconAnimation,
                                 duration: Duration(milliseconds: 500),
-                                height: !model.isSetUpFinish ? 80 : model.logoSize.height,
-                                width: !model.isSetUpFinish ? 80 : model.logoSize.width,
+                                height: !model.isSetUpFinish ? 80.h : model.logoSize.height,
+                                width: !model.isSetUpFinish ? 80.w : model.logoSize.width,
                                 child: Utils.splashLogoImageFile == null
                                     ? Image.asset("images/tutorial-splash-logo.png", fit:  BoxFit.fill,)
                                     : Image.file(Utils.splashLogoImageFile!, fit: BoxFit.fill,),
@@ -119,7 +119,7 @@ class SplashPage extends StatelessWidget {
                       await model.comeBackLogo(context);
                       await Future.delayed(
                         Duration(seconds: Utils.transitionSecond - Utils.notifySecond),
-                      ).then((value) => HapticFeedback.heavyImpact());
+                      ).then((value) => HapticFeedback.mediumImpact());
                       await Future.delayed(
                         Duration(seconds: Utils.notifySecond)
                       );
@@ -211,11 +211,11 @@ class TutorialSplash extends StatelessWidget {
           Container(
             alignment: Alignment.topCenter,
             child: Padding(
-              padding: const EdgeInsets.only(top: 80.0,left: 10.0,right: 10.0),
-              child: Utils.backgroundImageFile == null ? const Text("チュートリアル 4/5",
+              padding: EdgeInsets.only(top: 80.0.sp,left: 10.0.sp,right: 10.0.sp),
+              child: Utils.backgroundImageFile == null ? Text("チュートリアル 4/5",
                 style: TextStyle(
                   color: Colors.green,
-                  fontSize: 30,
+                  fontSize: 30.sp,
                   fontWeight: FontWeight.w500,
                   fontFamily: 'Noto_Sans_JP',
                 ),
@@ -223,56 +223,56 @@ class TutorialSplash extends StatelessWidget {
             ),
           ),
           TutorialIcon(
-            x: Utils.splashPosition.x,
-            y: Utils.splashPosition.y + 100,
+            x: Utils.splashPosition.x.w,
+            y: Utils.splashPosition.y + 100.h,
             icon: FontAwesomeIcons.arrowRightLong,
-            iconSize: 80,
+            iconSize: 80.h,
             contColor: Colors.black12.withOpacity(0),
             iconColor: Colors.green,
           ),
           TutorialIcon(
-            x: Utils.splashPosition.x,
-            y: Utils.splashPosition.y + 150,
+            x: Utils.splashPosition.x.w,
+            y: Utils.splashPosition.y + 150.h,
             icon: FontAwesomeIcons.handPointer,
-            iconSize: 80,
+            iconSize: 80.h,
             contColor: Colors.black12.withOpacity(0),
             iconColor: Colors.green,
           ),
           TutorialIcon(
-            x: Utils.splashPosition.x,
-            y: Utils.splashPosition.y + 270,
+            x: Utils.splashPosition.x.w,
+            y: Utils.splashPosition.y + 270.h,
             icon: FontAwesomeIcons.mobileScreen,
-            iconSize: 50,
+            iconSize: 50.h,
             contColor: Colors.black12.withOpacity(0),
             iconColor: Colors.blue,
           ),
           TutorialIcon(
-            x: Utils.splashPosition.x+20,
-            y: Utils.splashPosition.y + 270,
+            x: Utils.splashPosition.x+20.w,
+            y: Utils.splashPosition.y + 270.h,
             icon: FontAwesomeIcons.arrowRightLong,
-            iconSize: 50,
+            iconSize: 50.h,
             contColor: Colors.black12.withOpacity(0),
             iconColor: Colors.blue,
           ),
           TutorialIcon(
-            x: Utils.splashPosition.x+70,
-            y: Utils.splashPosition.y + 270,
+            x: Utils.splashPosition.x+70.w,
+            y: Utils.splashPosition.y + 270.h,
             icon: FontAwesomeIcons.dove,
-            iconSize: 30,
+            iconSize: 30.h,
             contColor: Colors.black12.withOpacity(0),
             iconColor: Colors.blue,
           ),
           Positioned(
-            left: Utils.splashPosition.x-60,
-            top: Utils.splashPosition.y + 350,
+            left: Utils.splashPosition.x-60.w,
+            top: Utils.splashPosition.y + 350.h,
             child: Utils.backgroundImageFile == null
                 ? Column(
-                    children: const [
+                    children: [
                        Text(
                         "アイコンを",
                         style: TextStyle(
                             color: Colors.blue,
-                            fontSize: 20,
+                            fontSize: 20.sp,
                             fontWeight: FontWeight.bold,
                             fontFamily: 'Delicious_Handrawn'
                         ),
@@ -281,7 +281,7 @@ class TutorialSplash extends StatelessWidget {
                         "画面の外へドラッグ！",
                         style: TextStyle(
                           color: Colors.blue,
-                          fontSize: 20,
+                          fontSize: 20.sp,
                           fontWeight: FontWeight.bold,
                           fontFamily: 'Delicious_Handrawn'
                         ),

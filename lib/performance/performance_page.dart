@@ -10,10 +10,10 @@ import 'package:fake_icon/position_model.dart';
 import 'package:fake_icon/notchDisplay.dart';
 import 'package:fake_icon/tutorial_icon.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PerformancePage extends StatelessWidget {
   const PerformancePage({Key? key}) : super(key: key);
-
 
   @override
   Widget build(BuildContext context) {
@@ -176,20 +176,21 @@ class TutorialScreen extends StatelessWidget {
             Container(
               alignment: Alignment.topCenter,
               child: Padding(
-                padding: const EdgeInsets.only(top: 80.0,left: 10.0,right: 10.0),
+                padding: EdgeInsets.only(top: 60.h),
+
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
+                  children: [
                     Icon(
                       FontAwesomeIcons.kiwiBird,
                       color: Colors.green,
-                      size: 30,
+                      size: 30.sp,
                     ),
-                    SizedBox(width: 10,),
+                    SizedBox(width: 10.sp,),
                     Text("チュートリアル 1/5",
                       style: TextStyle(
                         color: Colors.green,
-                        fontSize: 30,
+                        fontSize: 30.sp,
                         fontWeight: FontWeight.w500,
                         fontFamily: 'Noto_Sans_JP',
                       ),
@@ -209,11 +210,11 @@ class TutorialScreen extends StatelessWidget {
             Positioned(
               left: Utils.splashPosition.x - 20,
               top: Utils.splashPosition.y + 135,
-              child: const Text(
+              child: Text(
                 "タップ！",
                 style: TextStyle(
                     color: Colors.green,
-                    fontSize: 40,
+                    fontSize: 40.sp,
                     fontWeight: FontWeight.w900,
                     fontFamily: 'Noto_Sans_JP'
                 ),
@@ -298,12 +299,12 @@ class TutorialScreen extends StatelessWidget {
           children: [
             Container(
               alignment: Alignment.topCenter,
-              child: const Padding(
-                padding: EdgeInsets.only(top: 80.0,left: 10.0,right: 10.0),
+              child: Padding(
+                padding: EdgeInsets.only(top: 80.0.h,left: 10.0.w,right: 10.0.w),
                 child: Text("チュートリアル 3/5",
                   style: TextStyle(
                     color: Colors.green,
-                    fontSize: 30,
+                    fontSize: 30.sp,
                     fontWeight: FontWeight.w500,
                     fontFamily: 'Noto_Sans_JP',
                   ),
@@ -321,11 +322,11 @@ class TutorialScreen extends StatelessWidget {
             Positioned(
               left: Utils.splashPosition.x-100,
               top: Utils.splashPosition.y + 135,
-              child: const Text(
+              child: Text(
                 "もう一度タップして！",
                 style: TextStyle(
                     color: Colors.green,
-                    fontSize: 30,
+                    fontSize: 30.sp,
                     fontWeight: FontWeight.bold,
                     fontFamily: 'Delicious_Handrawn'
                 ),
@@ -410,12 +411,12 @@ class TutorialScreen extends StatelessWidget {
           children: [
             Container(
               alignment: Alignment.topCenter,
-              child: const Padding(
-                padding: EdgeInsets.only(top: 80.0,left: 10.0,right: 10.0),
+              child: Padding(
+                padding: EdgeInsets.only(top: 60.0.h,left: 10.0.w,right: 10.0.w),
                 child: Text("チュートリアル 5/5 🎉",
                   style: TextStyle(
                     color: Colors.green,
-                    fontSize: 30,
+                    fontSize: 30.sp,
                     fontWeight: FontWeight.w500,
                     fontFamily: 'Noto_Sans_JP',
                   ),
@@ -424,12 +425,12 @@ class TutorialScreen extends StatelessWidget {
             ),
             Container(
               alignment: Alignment.topCenter,
-              child: const Padding(
-                padding: EdgeInsets.only(top: 130.0,left: 10.0,right: 10.0),
+              child: Padding(
+                padding: EdgeInsets.only(top: 110.0.h,left: 10.0.w,right: 10.0.w),
                 child: Text("お疲れ様でした！",
                   style: TextStyle(
                     color: Colors.green,
-                    fontSize: 30,
+                    fontSize: 30.sp,
                     fontWeight: FontWeight.w500,
                     fontFamily: 'Noto_Sans_JP',
                   ),
@@ -518,23 +519,23 @@ class TutorialScreen extends StatelessWidget {
             ),
             TutorialIcon(
               x: Utils.settingPosition.x,
-              y: Utils.settingPosition.y + 50,
+              y: Utils.settingPosition.y + 50.h,
               icon: FontAwesomeIcons.handPointer,
-              iconSize: 80,
+              iconSize: 80.h,
               contColor: Colors.black12.withOpacity(0),
               iconColor: Colors.blue,
             ),
             Positioned(
-              left: Utils.settingPosition.x / 3,
-              top: Utils.settingPosition.y - 100,
+              left: Utils.settingPosition.x / 3.w,
+              top: Utils.settingPosition.y - 100.h,
               child: Container(
                 alignment: Alignment.topCenter,
-                child: const Padding(
-                  padding: EdgeInsets.only(top:10.0, left: 10.0,right: 10.0),
+                child: Padding(
+                  padding: EdgeInsets.only(top:10.0.h, left: 10.0.w,right: 10.0.w),
                   child: Text("最後に、設定を見ていきましょう！",
                     style: TextStyle(
                       color: Colors.blueAccent,
-                      fontSize: 20,
+                      fontSize: 20.sp,
                       fontWeight: FontWeight.w500,
                       fontFamily: 'Noto_Sans_JP',
                     ),
@@ -543,16 +544,16 @@ class TutorialScreen extends StatelessWidget {
               ),
             ),
             Positioned(
-              left: Utils.settingPosition.x-50,
-              top: Utils.settingPosition.y + 135,
+              left: Utils.settingPosition.x-50.w,
+              top: Utils.settingPosition.y + 135.h,
               child: Container(
                 alignment: Alignment.topCenter,
-                child: const Padding(
-                  padding: EdgeInsets.only(top:10.0, left: 10.0,right: 10.0),
+                child: Padding(
+                  padding: EdgeInsets.only(top:10.0.h, left: 10.0.w,right: 10.0.w),
                   child: Text("タップして下さい！",
                     style: TextStyle(
                       color: Colors.blueAccent,
-                      fontSize: 20,
+                      fontSize: 20.h,
                       fontWeight: FontWeight.w500,
                       fontFamily: 'Noto_Sans_JP',
                     ),

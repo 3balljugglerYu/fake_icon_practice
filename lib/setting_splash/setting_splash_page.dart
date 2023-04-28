@@ -1,4 +1,3 @@
-import 'dart:ui';
 import 'package:fake_icon/setting_splash/setting_splash_model.dart';
 import 'package:fake_icon/utils.dart';
 import 'package:flutter/cupertino.dart';
@@ -6,8 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:fake_icon/shared_preference_method.dart';
-// import 'package:flutter_switch/flutter_switch.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SettingSplashPage extends StatelessWidget {
   const SettingSplashPage({Key? key}) : super(key: key);
@@ -31,29 +29,29 @@ class SettingSplashPage extends StatelessWidget {
                 children: [
                   IconButton(
                     onPressed: ()=>Navigator.pop(context),
-                    icon: const Icon(Icons.arrow_back_ios_new_outlined,
+                    icon: Icon(Icons.arrow_back_ios_new_outlined,
                     color: Colors.grey,
-                    size: 30,
+                    size: 30.h,
                     ),
                   ),
                   const Spacer(),
-                  const Icon(
+                  Icon(
                     FontAwesomeIcons.ship,
-                    size: 35,
+                    size: 35.h,
                     color: Colors.grey,
                   ),
-                  const SizedBox(
-                    width: 15.0,
+                  SizedBox(
+                    width: 15.0.w,
                   ),
-                  const Text("SplashApp",
+                  Text("SplashApp",
                     style: TextStyle(
-                      fontSize: 30,
+                      fontSize: 30.sp,
                       color: Colors.grey,
                     ),
                   ),
                   const Spacer(),
-                  const SizedBox(
-                    width: 55,
+                  SizedBox(
+                    width: 55.w,
                   )
                 ],
               ),
@@ -69,8 +67,8 @@ class SettingSplashPage extends StatelessWidget {
                       Expanded(
                         flex: 5,
                         child: Container(
-                          padding: const EdgeInsets.all(10.0),
-                          margin: const EdgeInsets.all(15.0),
+                          padding: EdgeInsets.symmetric(vertical: 10.0.h, horizontal: 10.w),
+                          margin: EdgeInsets.symmetric(vertical: 15.0.h, horizontal: 15.w),
                           decoration: BoxDecoration(
                             border: Border.all(color: Colors.white10)
                           ),
@@ -78,10 +76,10 @@ class SettingSplashPage extends StatelessWidget {
                             children: [
                               Container(
                                 alignment: Alignment.topLeft,
-                                child: const Text(
+                                child: Text(
                                   "画面設定",
                                   style: TextStyle(
-                                    fontSize: 18,
+                                    fontSize: 18.sp,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.grey
                                   ),
@@ -98,15 +96,15 @@ class SettingSplashPage extends StatelessWidget {
                                         ),
                                       ),
                                       SizedBox(
-                                        width: displaySize.width / 4,
-                                        height: displaySize.width / 4,
+                                        width: displaySize.width / 4.w,
+                                        height: displaySize.width / 4.w,
                                         child: Utils.splashLogoImageFile == null
                                             ? Image.asset("images/tutorial-splash-logo.png", fit: BoxFit.fill,)
                                             : Image.file(Utils.splashLogoImageFile!,fit: BoxFit.fill,),
                                       ),
                                       SizedBox(
-                                        width: 90,
-                                        height: 30,
+                                        width: 90.w,
+                                        height: 30.h,
                                         child: Card(
                                           color: Colors.white10,
                                           shadowColor: Colors.black,
@@ -119,10 +117,10 @@ class SettingSplashPage extends StatelessWidget {
                                                 await _showDialog(context);
                                               }
                                             },
-                                            child: const Center(
+                                            child: Center(
                                               child: Text("画面設定",
                                                 style: TextStyle(
-                                                    fontSize: 13,
+                                                    fontSize: 13.sp,
                                                   color: Colors.grey,
                                                 ),
                                               ),
@@ -130,13 +128,13 @@ class SettingSplashPage extends StatelessWidget {
                                           ),
                                         ),
                                       ),
-                                      const SizedBox(height: 10,),
+                                      SizedBox(height: 10.h,),
                                       IconButton(
-                                        iconSize: 30,
+                                        iconSize: 30.h,
                                         onPressed: (){model.tutorialSplashCreate();},
-                                        icon: const Icon(
+                                        icon: Icon(
                                           Icons.info_outline,
-                                          size: 35,
+                                          size: 35.h,
                                           color: Colors.white70,
                                         ),
                                       ),
@@ -150,15 +148,15 @@ class SettingSplashPage extends StatelessWidget {
                                         ),
                                       ),
                                       SizedBox(
-                                        width: displaySize.width / 4,
-                                        height: displaySize.height / 4.2,
+                                        width: displaySize.width / 4.5.w,
+                                        height: displaySize.height / 4.5.h,
                                         child: Utils.splashBackgroundImageFile == null
                                             ? Image.asset("images/tutorial-splash-bg.png", fit: BoxFit.fill,)
                                             : Image.file(Utils.splashBackgroundImageFile!,fit: BoxFit.fill,),
                                       ),
                                       SizedBox(
-                                        width: 90,
-                                        height: 30,
+                                        width: 90.w,
+                                        height: 30.h,
                                         child: Card(
                                           color: Colors.white10,
                                           shadowColor: Colors.black,
@@ -171,10 +169,10 @@ class SettingSplashPage extends StatelessWidget {
                                                 await _showDialog(context);
                                               }
                                             },
-                                            child: const Center(
+                                            child: Center(
                                               child: Text("画面設定",
                                                 style: TextStyle(
-                                                  fontSize: 13,
+                                                  fontSize: 13.sp,
                                                   color: Colors.grey,
                                                 ),
                                               ),
@@ -193,15 +191,15 @@ class SettingSplashPage extends StatelessWidget {
                                         ),
                                       ),
                                       SizedBox(
-                                        width: displaySize.width / 4,
-                                        height: displaySize.height / 4.2,
+                                        width: displaySize.width / 4.5.w,
+                                        height: displaySize.height / 4.5.h,
                                         child: Utils.fakeBackgroundImageFile == null
                                             ? Image.asset("images/tutorial-fake-bg.png", fit: BoxFit.fill,)
                                             : Image.file(Utils.fakeBackgroundImageFile!,fit: BoxFit.fill,),
                                       ),
                                       SizedBox(
-                                        width: 90,
-                                        height: 30,
+                                        width: 90.w,
+                                        height: 30.h,
                                         child: Card(
                                           color: Colors.white10,
                                           shadowColor: Colors.black,
@@ -214,9 +212,9 @@ class SettingSplashPage extends StatelessWidget {
                                                 await _showDialog(context);
                                               }
                                             },
-                                            child: const Center(
+                                            child: Center(
                                               child: Text("画面設定",
-                                                style: TextStyle(fontSize: 13,
+                                                style: TextStyle(fontSize: 13.sp,
                                                   color: Colors.grey,
                                                 ),
                                               ),
@@ -238,8 +236,8 @@ class SettingSplashPage extends StatelessWidget {
                           thumbVisibility: true,
                           child: SingleChildScrollView(
                             child: Container(
-                              padding: const EdgeInsets.only(right: 10.0, left: 10.0),
-                              margin: const EdgeInsets.only(right: 15.0, left: 15.0),
+                              padding: EdgeInsets.only(right: 10.0.w, left: 10.0.w),
+                              margin: EdgeInsets.only(right: 15.0.w, left: 15.0.w),
                               decoration: BoxDecoration(
                                 border: Border.all(color: Colors.white10),
                               ),
@@ -292,10 +290,10 @@ class SettingSplashPage extends StatelessWidget {
                                         children: [
                                           SwitchListTile.adaptive(
                                             contentPadding: EdgeInsets.zero,
-                                            title: const Text(
+                                            title: Text(
                                               "ノッチの表示",
                                               style: TextStyle(
-                                                fontSize: 18,
+                                                fontSize: 18.sp,
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.grey,
                                               ),
@@ -312,8 +310,8 @@ class SettingSplashPage extends StatelessWidget {
                                           ),
                                         ],
                                       ),
-                                      const Divider(
-                                        thickness: 0.2,
+                                      Divider(
+                                        thickness: 0.2.h,
                                         color: Colors.grey,
                                       ),
                                     ],
@@ -324,12 +322,12 @@ class SettingSplashPage extends StatelessWidget {
                           ),
                         ),
                       ),
-                      const SizedBox(
-                        height: 10.0,
+                      SizedBox(
+                        height: 10.0.h,
                       ),
                       SizedBox(
-                        height: 45.0,
-                        width: 250.0,
+                        height: 45.0.h,
+                        width: 250.0.w,
                         child: ElevatedButton(
                           onPressed: () async {
                             if(Utils.notifySecond != 0){
@@ -349,18 +347,18 @@ class SettingSplashPage extends StatelessWidget {
                             backgroundColor: Colors.white10,
                             foregroundColor: Colors.grey,
                           ),
-                          child: const Text(
+                          child: Text(
                             "完了",
                             style: TextStyle(
-                            fontSize: 20.0,
+                            fontSize: 20.0.sp,
                             fontWeight: FontWeight.bold,
                               color: Colors.grey
                             ),
                           ),
                         ),
                       ),
-                      const SizedBox(
-                        height: 40.0,
+                      SizedBox(
+                        height: 40.0.h,
                       )
                     ],
                   ),
@@ -371,7 +369,7 @@ class SettingSplashPage extends StatelessWidget {
                   top: MediaQuery.of(context).size.height/6,
                   left: model.tutorialSplashImageCreate ? 0 : MediaQuery.of(context).size.width,
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding:EdgeInsets.symmetric(vertical: 8.h, horizontal: 8.w),
                     child: Container(
                       decoration: BoxDecoration(
                         boxShadow: [
@@ -384,23 +382,23 @@ class SettingSplashPage extends StatelessWidget {
                         ],
                         color: Colors.blueGrey.withOpacity(0.9),
                       ),
-                      height: 500,
+                      height: 500.h,
                       width: MediaQuery.of(context).size.width,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Padding(
-                            padding: const EdgeInsets.all(10.0),
+                            padding: EdgeInsets.symmetric(vertical: 10.0.h, horizontal: 10.w),
                             child: model.tutorialSplashImageCreate ? const Image(
                               image: AssetImage('images/tutorial-splash-image-create.gif'),
                             ) : null,
                           ),
                           IconButton(
-                            iconSize:  150,
+                            iconSize:  150.h,
                             onPressed: (){model.tutorialSplashCreate();},
-                            icon: const Icon(
+                            icon: Icon(
                               Icons.play_arrow_sharp,
-                              size: 50,
+                              size: 50.h,
                               color: Colors.black45,
                             ),
                           ),
@@ -450,29 +448,14 @@ class SettingSwitch extends StatelessWidget {
   SettingSwitch({
     super.key,
     required this.title,
-    // required this.setList,
-    // required this.selectedItemChange,
-    // required this.listNum,
-    // required this.unit,
-    // required this.setNum,
     required this.explain,
-    // required this.cupertinoPickerInitialNum,
     required this.value,
-    // required this.onChangedSwitchListTile,
     required this.onChanged,
   });
 
   final String title;
-  // dynamic setList;
-  // dynamic selectedItemChange;
-  // dynamic listNum;
-  // final String unit;
-  // final int setNum;
   final String explain;
-  // final int cupertinoPickerInitialNum;
   final bool value;
-  // final bool onChangedSwitchListTile;
-
   final void Function(bool?) onChanged;
 
   @override
@@ -487,8 +470,8 @@ class SettingSwitch extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: const TextStyle(
-                    fontSize: 18,
+                  style: TextStyle(
+                    fontSize: 18.sp,
                     fontWeight: FontWeight.bold,
                     color: Colors.grey,
                   ),
@@ -505,8 +488,8 @@ class SettingSwitch extends StatelessWidget {
                 color: Colors.grey,
               ),
             ),
-            const Divider(
-              thickness: 0.2,
+            Divider(
+              thickness: 0.2.h,
               color: Colors.grey,
             ),
           ],
@@ -551,15 +534,15 @@ class SettingNumSec extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: const TextStyle(
-                    fontSize: 18,
+                  style: TextStyle(
+                    fontSize: 18.sp,
                     fontWeight: FontWeight.bold,
                     color: Colors.grey,
                   ),
                 ),
                 Container(
-                  width: 105,
-                  height: 31,
+                  width: 105.w,
+                  height: 33,
                   decoration: const BoxDecoration(
                     border: Border(
                       bottom: BorderSide(
@@ -574,22 +557,22 @@ class SettingNumSec extends StatelessWidget {
                         context: context,
                         builder: (context){
                           return Container(
-                            height: 300,
+                            height: 300.h,
                             color: Colors.black87,
                             child: Column(
                               children: [
                                 Row(
                                   children: [
                                     Container(
-                                      width: 65,
+                                      width: 65.w,
                                     ),
                                     const Spacer(),
                                     Material(
                                       color: Colors.black87,
                                       child: Text(
                                         title,
-                                        style: const TextStyle(
-                                            fontSize: 20,
+                                        style: TextStyle(
+                                            fontSize: 20.sp,
                                           color: Colors.grey,
 
                                         ),
@@ -616,7 +599,7 @@ class SettingNumSec extends StatelessWidget {
                                     ),
                                     backgroundColor: Colors.grey,
                                     looping: false,
-                                    itemExtent: 50,
+                                    itemExtent: 50.sp,
                                     onSelectedItemChanged: (int value){
                                       selectedItemChange(value);
                                     },
@@ -633,32 +616,32 @@ class SettingNumSec extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const SizedBox(
-                          height: 22,
-                          width: 22,
+                        SizedBox(
+                          height: 22.h,
+                          width: 22.w,
                           child: Center(
                             child: Text(
                               "▼",
                               style: TextStyle(
-                                fontSize: 20.0,
+                                fontSize: 20.0.sp,
                                 color: Colors.grey,
                               ),),
                           ),
                         ),
                         Text(
                           setNum.toString(),
-                          style: const TextStyle(
-                            fontSize: 30,
+                          style: TextStyle(
+                            fontSize: 30.sp,
                             color: Colors.grey,
                           ),
                         ),
                         Container(
                           alignment: Alignment.bottomCenter,
-                          width: 32,
+                          width: 32.w,
                           child: Text(
                             unit,
-                            style: const TextStyle(
-                              fontSize: 13,
+                            style: TextStyle(
+                              fontSize: 13.sp,
                               fontWeight: FontWeight.bold,
                               color: Colors.grey,
                             ),
@@ -677,8 +660,8 @@ class SettingNumSec extends StatelessWidget {
               ),
 
             ),
-            const Divider(
-              thickness: 0.2,
+            Divider(
+              thickness: 0.2.h,
               color: Colors.grey,
             ),
           ],

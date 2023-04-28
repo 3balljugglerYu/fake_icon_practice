@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'utils.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TutorialIcon extends StatelessWidget {
   const TutorialIcon(
@@ -25,8 +26,8 @@ class TutorialIcon extends StatelessWidget {
       left: x,
       top: y,
       child: Container(
-        width: 65,
-        height: 65,
+        width: 65.w,
+        height: 65.w,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.0),
           color: Utils.backgroundImageFile == null ? contColor : Colors.white.withOpacity(0),

@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:fake_icon/notchDisplay.dart';
 import 'package:fake_icon/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:fake_icon/fake/fake_model.dart';
@@ -100,16 +101,22 @@ class FakePage extends StatelessWidget {
                             icon: const Icon(FontAwesomeIcons.splotch),
                             iconColor: Colors.green,
                             backgroundColor: Colors.amberAccent,
-                            title: const Text('アプリを落とすイメージで！'),
+                            title: Text(
+                              'アプリを落とすイメージで！',
+                              style: TextStyle(fontSize: 20.sp),
+                            ),
                             content: SizedBox(
-                              height: 500,
+                              height: 530.h,
                               child: Column(
-                                children: const [
-                                  Text(' ここはアプリ起動後の擬似的なユーザー操作画面です。\n アプリを落とすイメージで画面のやや下から少し上にドラッグし、アプリスイッチャー画面にして下さい。\n 最後に画面の外に出すイメージでスワイプして見てホーム画面に戻りましょう！'),
-                                  SizedBox(height: 20,),
+                                children: [
+                                  Text(
+                                      ' ここはアプリ起動後の擬似的なユーザー操作画面です。\n アプリを落とすイメージで画面のやや下から少し上にドラッグし、アプリスイッチャー画面にして下さい。\n 最後に画面の外に出すイメージでスワイプして見てホーム画面に戻りましょう！',
+                                    style: TextStyle(fontSize: 15.sp),
+                                  ),
+                                  SizedBox(height: 20.h,),
                                   SizedBox(
-                                    height: 300,
-                                    width: 300,
+                                    height: 300.h,
+                                    width: 300.w,
                                     child: Image(
                                       image: AssetImage('images/tutorial-fake-page.gif'),
                                     ),
@@ -124,7 +131,13 @@ class FakePage extends StatelessWidget {
                                   await SharedPreferenceMethod.saveIsFakePagePopupVisible();
                                 },
                                 style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
-                                child: const Text('閉じる',style: TextStyle(color: Colors.white),),
+                                child: Text(
+                                  '閉じる',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 15.sp,
+                                  ),
+                                ),
                               ),
                             ],
                           ),
@@ -133,40 +146,6 @@ class FakePage extends StatelessWidget {
                     ),
                   ),
                 ),
-                // if(Utils.isFakePagePopupVisible)
-                //   AlertDialog(
-                //     shape: const RoundedRectangleBorder(
-                //         borderRadius: BorderRadius.all(Radius.circular(10.0))
-                //     ),
-                //     icon: const Icon(FontAwesomeIcons.splotch),
-                //     iconColor: Colors.green,
-                //     backgroundColor: Colors.amberAccent.withOpacity(0.9),
-                //     title: const Text('Attention!!'),
-                //     content: SizedBox(
-                //       height: 350,
-                //       child: Column(
-                //         children: const [
-                //           Text('アプリを落とすイメージで操作してみて下さい！'),
-                //           SizedBox(
-                //             height: 300,
-                //             // width: 300,
-                //             child: Image(
-                //               image: AssetImage('images/tutorial-splash-demo.gif'),
-                //             ),
-                //           ),
-                //         ],
-                //       ),
-                //     ),
-                //     actions: [
-                //       ElevatedButton(
-                //         onPressed: () async {
-                //           model.hidePopup();
-                //           await SharedPreferenceMethod.saveIsFakePagePopupVisible();
-                //         },
-                //         child: const Text('閉じる'),
-                //       ),
-                //     ],
-                //   ),
               ],
             );
           },
@@ -188,97 +167,98 @@ class TutorialFake extends StatelessWidget {
             color: Colors.black,
             child: Column(
               children: [
-                const SizedBox(height: 70,),
+                SizedBox(height: 70.h,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: const [
+                  children: [
                     Icon(FontAwesomeIcons.circleUser,
-                      size: 50,
+                      size: 50.h,
                       color: Colors.white70,
                     ),
                     Icon(null,
-                      size: 50,
+                      size: 50.h,
                     ),
                     Icon(FontAwesomeIcons.dove,
-                      size: 50,
+                      size: 50.h,
                       color: Colors.blueGrey,
                     ),
                     Icon(null,
                       size: 50,
                     ),
                     Icon(null,
-                      size: 50,
+                      size: 50.h,
                     ),
                   ],
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: 20.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: const [
-                    SizedBox(width: 50),
+                  children: [
+                    SizedBox(width: 50.w),
                     Text("おすすめ",
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 20.sp,
                         color: Colors.white70,
                       ),
                     ),
-                    SizedBox(width: 100,),
+                    SizedBox(width: 100.w,),
                     Text("フォロー中",
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 20.sp,
                         color: Colors.white70,
                       ),
                     ),
-                    SizedBox(width: 50),
+                    SizedBox(width: 50.w),
                   ],
                 ),
-                const Divider(
-                  thickness: 0.4,
+                Divider(
+                  thickness: 0.4.h,
                   color: Colors.white70,
                 ),
                 Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(1.0),
+                      padding: EdgeInsets.only(top: 1.0.h, right: 1.0.w, left: 1.0.w, bottom: 1.0.h),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Icon(FontAwesomeIcons.circleUser,
-                            size: 60,
+                          Icon(FontAwesomeIcons.circleUser,
+                            size: 60.h,
                             color: Colors.white70,
                           ),
-                          const SizedBox(width: 15,),
+                          SizedBox(width: 15.w,),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               SizedBox(
-                                width: 320,
+                                width: 320.w,
                                 child: Row(
-                                  children: const [
+                                  children: [
                                     Text("FakeIcon_user",
                                       style: TextStyle(
-                                          fontSize: 20,
+                                          fontSize: 20.sp,
                                           color: Colors.white70,
                                           fontWeight: FontWeight.bold
                                       ),
                                     ),
-                                    SizedBox(width: 7,),
+                                    SizedBox(width: 7.w,),
                                     Text("@fake_icon･34分",
                                       style: TextStyle(
-                                        fontSize: 20,
+                                        fontSize: 20.sp,
                                         color: Colors.white70,
                                       ),
                                     ),
                                   ],
                                 ),
                               ),
-                              const SizedBox(
-                                width: 300,
+                              SizedBox(
+                                width: 300.w,
                                 child: Text(
                                     "1.少し上にドラッグして下さい。\n　▶︎ 画面が縮小します。\n2.画面の外に出すようにドラッグして下さい\n　▶︎ 最初の画面に戻ります。",
                                     style:TextStyle(
                                       color: Colors.white70,
+                                      fontSize: 15.sp,
                                     )
                                 ),
                               ),
@@ -289,8 +269,8 @@ class TutorialFake extends StatelessWidget {
                                 ),
                                 clipBehavior: Clip.antiAliasWithSaveLayer,
                                 child: SizedBox(
-                                  width: 300,
-                                  height: 400,
+                                  width: 300.w,
+                                  height: 400.h,
                                   child: Image.asset(
                                     "images/tutorial-screen.png",
                                     fit: BoxFit.fill,
@@ -300,28 +280,28 @@ class TutorialFake extends StatelessWidget {
                                 ),
                               ),
                               SizedBox(
-                                width: 300,
+                                width: 300.w,
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: const [
+                                  children: [
                                     Icon(FontAwesomeIcons.comment,
-                                      size: 25,
+                                      size: 25.h,
                                       color: Colors.white70,
                                     ),
                                     Icon(FontAwesomeIcons.retweet,
-                                      size: 25,
+                                      size: 25.h,
                                       color: Colors.white70,
                                     ),
                                     Icon(FontAwesomeIcons.heart,
-                                      size: 25,
+                                      size: 25.h,
                                       color: Colors.white70,
                                     ),
                                     Icon(FontAwesomeIcons.chartColumn,
-                                      size: 25,
+                                      size: 25.h,
                                       color: Colors.white70,
                                     ),
                                     Icon(FontAwesomeIcons.share,
-                                      size: 25,
+                                      size: 25.h,
                                       color: Colors.white70,
                                     ),
                                   ],
@@ -340,25 +320,25 @@ class TutorialFake extends StatelessWidget {
           Container(
             alignment: Alignment.topCenter,
             child: Padding(
-              padding: EdgeInsets.all(50.0),
+              padding: EdgeInsets.only(top: 50.0.h, left: 50.0.w, right: 50.0.w, bottom: 50.0.h),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
-                children: const [
+                children: [
                   Icon(
                     FontAwesomeIcons.arrowUp,
                     color: Colors.green,
-                    size: 100,
+                    size: 100.h,
                   ),
                   Icon(
                     FontAwesomeIcons.handPointer,
                     color: Colors.green,
-                    size: 100,
+                    size: 100.h,
                   ),
-                  SizedBox(height: 10,),
+                  SizedBox(height: 10.h,),
                   Text("もう一度お願いします！",
                     style: TextStyle(
                       color: Colors.green,
-                      fontSize: 20,
+                      fontSize: 20.sp,
                       fontWeight: FontWeight.w500,
                       fontFamily: 'Noto_Sans_JP',
                     ),
@@ -376,97 +356,98 @@ class TutorialFake extends StatelessWidget {
             color: Colors.black,
             child: Column(
               children: [
-                const SizedBox(height: 70,),
+                SizedBox(height: 70.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: const [
+                  children: [
                     Icon(FontAwesomeIcons.circleUser,
-                      size: 50,
+                      size: 50.h,
                       color: Colors.white70,
                     ),
                     Icon(null,
-                      size: 50,
+                      size: 50.h,
                     ),
                     Icon(FontAwesomeIcons.dove,
-                      size: 50,
+                      size: 50.h,
                       color: Colors.blueGrey,
                     ),
                     Icon(null,
-                      size: 50,
+                      size: 50.h,
                     ),
                     Icon(null,
-                      size: 50,
+                      size: 50.h,
                     ),
                   ],
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: 20.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: const [
-                    SizedBox(width: 50),
+                  children: [
+                    SizedBox(width: 50.w),
                     Text("おすすめ",
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 20.sp,
                         color: Colors.white70,
                       ),
                     ),
-                    SizedBox(width: 100,),
+                    SizedBox(width: 100.w,),
                     Text("フォロー中",
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 20.sp,
                         color: Colors.white70,
                       ),
                     ),
-                    SizedBox(width: 50),
+                    SizedBox(width: 50.w),
                   ],
                 ),
-                const Divider(
-                  thickness: 0.4,
+                Divider(
+                  thickness: 0.4.h,
                   color: Colors.white70,
                 ),
                 Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(1.0),
+                      padding: EdgeInsets.only(top: 1.0.h, right: 1.0.w, left: 1.0.w, bottom: 1.0.h),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Icon(FontAwesomeIcons.circleUser,
-                            size: 60,
+                          Icon(FontAwesomeIcons.circleUser,
+                            size: 60.h,
                             color: Colors.white70,
                           ),
-                          const SizedBox(width: 15,),
+                          SizedBox(width: 15.w,),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               SizedBox(
-                                width: 320,
+                                width: 320.w,
                                 child: Row(
-                                  children: const [
+                                  children: [
                                     Text("FakeIcon_user",
                                       style: TextStyle(
-                                          fontSize: 20,
+                                          fontSize: 20.sp,
                                           color: Colors.white70,
                                           fontWeight: FontWeight.bold
                                       ),
                                     ),
-                                    SizedBox(width: 7,),
+                                    SizedBox(width: 7.w,),
                                     Text("@fake_icon･34分",
                                       style: TextStyle(
-                                        fontSize: 20,
+                                        fontSize: 20.sp,
                                         color: Colors.white70,
                                       ),
                                     ),
                                   ],
                                 ),
                               ),
-                              const SizedBox(
-                                width: 300,
+                              SizedBox(
+                                width: 300.w,
                                 child: Text(
                                     "1.少し上にドラッグして下さい。\n　▶︎ 画面が縮小します。\n2.画面の外に出すようにドラッグして下さい\n　▶︎ 最初の画面に戻ります。",
                                     style:TextStyle(
                                       color: Colors.white70,
+                                      fontSize: 15.sp,
                                     )
                                 ),
                               ),
@@ -477,8 +458,8 @@ class TutorialFake extends StatelessWidget {
                                 ),
                                 clipBehavior: Clip.antiAliasWithSaveLayer,
                                 child: SizedBox(
-                                  width: 300,
-                                  height: 400,
+                                  width: 300.w,
+                                  height: 400.h,
                                   child: Image.asset(
                                     "images/tutorial-screen.png",
                                     fit: BoxFit.fill,
@@ -488,28 +469,28 @@ class TutorialFake extends StatelessWidget {
                                 ),
                               ),
                               SizedBox(
-                                width: 300,
+                                width: 300.w,
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: const [
+                                  children: [
                                     Icon(FontAwesomeIcons.comment,
-                                      size: 25,
+                                      size: 25.h,
                                       color: Colors.white70,
                                     ),
                                     Icon(FontAwesomeIcons.retweet,
-                                      size: 25,
+                                      size: 25.h,
                                       color: Colors.white70,
                                     ),
                                     Icon(FontAwesomeIcons.heart,
-                                      size: 25,
+                                      size: 25.h,
                                       color: Colors.white70,
                                     ),
                                     Icon(FontAwesomeIcons.chartColumn,
-                                      size: 25,
+                                      size: 25.h,
                                       color: Colors.white70,
                                     ),
                                     Icon(FontAwesomeIcons.share,
-                                      size: 25,
+                                      size: 25.h,
                                       color: Colors.white70,
                                     ),
                                   ],
@@ -528,19 +509,19 @@ class TutorialFake extends StatelessWidget {
           Container(
             alignment: Alignment.topCenter,
             child: Padding(
-              padding: EdgeInsets.all(30.0),
+              padding: EdgeInsets.only(top: 50.0.h, left: 50.0.w, right: 50.0.w, bottom: 50.0.h),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
-                children: const [
+                children: [
                   Icon(
                     FontAwesomeIcons.arrowUp,
                     color: Colors.green,
-                    size: 100,
+                    size: 100.h,
                   ),
                   Icon(
                     FontAwesomeIcons.handPointer,
                     color: Colors.green,
-                    size: 100,
+                    size: 100.h,
                   ),
                 ],
               ),

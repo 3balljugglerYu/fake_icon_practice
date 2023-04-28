@@ -1,100 +1,10 @@
 import 'dart:async';
-
 import 'package:fake_icon/fake/fake_page.dart';
 import 'package:flutter/material.dart';
 import 'package:fake_icon/position_model.dart';
 import 'package:fake_icon/utils.dart';
 import 'package:flutter/services.dart';
-import 'package:provider/provider.dart';
-
-// class SplashModel extends ChangeNotifier {
-//   Position logoPosition = Position(x: 0, y: 0);
-//   Size displaySize = const Size(0, 0);
-//   Size logoSize = const Size(200, 200);
-//   bool isSetUpFinish = false;
-//   bool isLogoVisibility = true;
-//   bool isAnimationFinish = false;
-//   //   bool isSetUpFinish = false;
-//   //   bool isAnimationFinish = false;
-//   //   bool isLogoVisibility = true;
-//   //   bool isComeBackLogo = false;
-//
-//   void measureDisplaySize(Size size) async {
-//     displaySize = size;
-//   }
-//
-//   Future<void> setUp() async {
-//     logoPosition.x = (displaySize.width - logoSize.width) / 2;
-//     logoPosition.y = (displaySize.height - logoSize.height) / 2;
-//     isSetUpFinish = true;
-//     await Future.delayed(const Duration(seconds: 1));
-//     notifyListeners();
-//   }
-//
-//   Future<void> changeLogoPosition(DraggableDetails details) async {
-//     logoPosition.x = details.offset.dx;
-//     logoPosition.y = details.offset.dy;
-//     logoVisibility();
-//     notifyListeners();
-//   }
-//
-//   void logoVisibility() {
-//     if(logoPosition.x > displaySize.width - (logoSize.width / 2) || logoPosition.x < -(logoSize.width / 2)){
-//       isLogoVisibility = false;
-//     }
-//     if(logoPosition.y < -(logoSize.height / 2) || logoPosition.y > displaySize.height - (logoSize.height /2)){
-//       isLogoVisibility = false;
-//     }
-//   }
-//
-//   Future<void> comeBackLogo() async {
-//     setUp();
-//     await Future.delayed(Duration(seconds: Utils.comeBackSecond));
-//     isLogoVisibility = true;
-//     notifyListeners();
-//   }
-//
-//   void transitionScreen(BuildContext context) async {
-//     // await Future.delayed(Duration(seconds: Utils.transitionSecond));
-//     Navigator.of(context).push(
-//       PageRouteBuilder(
-//           pageBuilder: (context, animation, secondaryAnimation){
-//             return FakePage();
-//           },
-//         transitionsBuilder: (context, animation, secondaryAnimation, child){
-//             const double begin = 0.0;
-//             const double end = 1.0;
-//             final Animatable<double> tween = Tween(begin: begin, end: end).chain(CurveTween(curve: Curves.easeInOut));
-//             final Animation<double> doubleAnimation = animation.drive(tween);
-//             return FadeTransition(
-//               opacity: doubleAnimation,
-//               child: child,
-//             );
-//         }
-//       )
-//     );
-//   }
-//
-//     // Navigator.of(context).push(
-//     //   PageRouteBuilder(
-//     //     pageBuilder: (context, animation, secondaryAnimation) {
-//     //       return FakePage();
-//     //     },
-//     //     transitionsBuilder: (context, animation, secondaryAnimation, child) {
-//     //       const double begin = 0.0;
-//     //       const double end = 1.0;
-//     //       final Animatable<double> tween = Tween(begin: begin, end: end)
-//     //           .chain(CurveTween(curve: Curves.easeInOut));
-//     //       final Animation<double> doubleAnimation = animation.drive(tween);
-//     //       return FadeTransition(
-//     //         opacity: doubleAnimation,
-//     //         child: child,
-//     //       );
-//     //     },
-//     //   ),
-//     // );
-//
-// }
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SplashModel extends ChangeNotifier {
   Position logoPosition = Position(x: 0, y: 0);
@@ -106,7 +16,7 @@ class SplashModel extends ChangeNotifier {
   bool isComeBackLogo = false;  //true=ロゴが戻ってきた
 
   Size displaySize = const Size(0, 0);
-  Size logoSize = const Size(200, 200);
+  Size logoSize = Size(200.h, 200.h);
 
   Future<void> setUp() async {
     logoPosition.x = (displaySize.width - logoSize.width) / 2;
@@ -148,7 +58,7 @@ class SplashModel extends ChangeNotifier {
     await Future.delayed(
         Duration(seconds: Utils.comeBackSecond - Utils.notifySecond))
         .then((value) {
-      HapticFeedback.heavyImpact();
+      HapticFeedback.mediumImpact();
     });
     await Future.delayed(Duration(seconds: Utils.notifySecond));
     isComeBackLogo = true;
