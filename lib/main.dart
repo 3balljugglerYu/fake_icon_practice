@@ -2,9 +2,15 @@ import 'package:fake_icon/performance/performance_model.dart';
 import 'package:flutter/material.dart';
 import 'package:fake_icon/performance/performance_page.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+      ScreenUtilInit(
+        designSize: const Size(428, 926),
+        builder: (BuildContext context, Widget? widget) => const MyApp(),
+      )
+  );
 }
 
 class MyApp extends StatelessWidget {
