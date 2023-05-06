@@ -81,7 +81,7 @@ class FakePage extends StatelessWidget {
                     ),
                   ),
                 ),
-                Utils.addNotch ? const NotchDisplay() : const SizedBox(),
+                // Utils.addNotch ? const NotchDisplay() : const SizedBox(),
                 Center(
                   child: AnimatedOpacity(
                     opacity: model.showDialog ? 1.0 : 0,
@@ -111,7 +111,7 @@ class FakePage extends StatelessWidget {
                                 children: [
                                   Text(
                                       ' ここはアプリ起動後の擬似的なユーザー操作画面です。\n アプリを落とすイメージで画面のやや下から少し上にドラッグし、アプリスイッチャー画面にして下さい。\n 最後に画面の外に出すイメージでスワイプして見てホーム画面に戻りましょう！',
-                                    style: TextStyle(fontSize: 15.sp),
+                                    style: TextStyle(fontSize: 15),
                                   ),
                                   SizedBox(height: 20.h,),
                                   SizedBox(

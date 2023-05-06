@@ -29,5 +29,5 @@ class Utils{
   //お知らせタイマー
   static int notifySecond = 1;
   //ノッチの表示非表示
-  static bool addNotch = false;
+  static bool addNotch = true;
 }

@@ -2,7 +2,9 @@ import 'dart:io';
 import 'package:fake_icon/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_statusbarcolor_ns/flutter_statusbarcolor_ns.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:flutter/scheduler.dart';
 
 class SettingSplashModel extends ChangeNotifier {
   final frequencyNum = List.generate(11, (index) => "$index");
@@ -15,12 +17,31 @@ class SettingSplashModel extends ChangeNotifier {
   List<Center> traSec = [];
   List<Center> setSec = [];
 
-  switchOnChanged(bool? value){
+  bool isLightMode() {
+    var brightness = SchedulerBinding.instance!.window.platformBrightness;
+    return brightness == Brightness.light;
+  }
+
+  void switchOnChanged(bool? value){
     if(value != null){
       Utils.addNotch = value;
+      if (Utils.addNotch) {
+        FlutterStatusbarcolor.setStatusBarColor(Colors.black); // 黒色
+        FlutterStatusbarcolor.setStatusBarWhiteForeground(false); // ステータスバーのアイコンを白に
+      } else {
+          if (isLightMode()) {
+            FlutterStatusbarcolor.setStatusBarColor(Colors.transparent);
+            FlutterStatusbarcolor.setStatusBarWhiteForeground(false);
+          } else {
+            FlutterStatusbarcolor.setStatusBarColor(Colors.transparent);
+            FlutterStatusbarcolor.setStatusBarWhiteForeground(true);
+          }
+      }
       notifyListeners();
     }
   }
+
+
 
   freNumToStr() {
     freNum = frequencyNum.map((number) => Center(child: Text(number))).toList();

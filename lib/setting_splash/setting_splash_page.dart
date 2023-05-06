@@ -16,352 +16,360 @@ class SettingSplashPage extends StatelessWidget {
       create: (_) => SettingSplashModel(),
       builder: (context, snapshot){
         Size displaySize = MediaQuery.of(context).size;
-        return Scaffold(
-          appBar: AppBar(
-            elevation: 0,
-            backgroundColor: Colors.black87,
-            automaticallyImplyLeading: false, //画面左上の戻るボタン非表示
-            title: Opacity(
-              opacity: 0.95,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.baseline,
-                textBaseline: TextBaseline.alphabetic,
-                children: [
-                  IconButton(
-                    onPressed: ()=>Navigator.pop(context),
-                    icon: Icon(Icons.arrow_back_ios_new_outlined,
-                    color: Colors.grey,
-                    size: 30.h,
-                    ),
-                  ),
-                  const Spacer(),
-                  Icon(
-                    FontAwesomeIcons.ship,
-                    size: 35.h,
-                    color: Colors.grey,
-                  ),
-                  SizedBox(
-                    width: 15.0.w,
-                  ),
-                  Text("SplashApp",
-                    style: TextStyle(
-                      fontSize: 30.sp,
-                      color: Colors.grey,
-                    ),
-                  ),
-                  const Spacer(),
-                  SizedBox(
-                    width: 55.w,
-                  )
-                ],
-              ),
-            ),
-          ),
-          body: Consumer<SettingSplashModel>(builder: (context, model, child){
-            return Stack(
+        return Consumer<SettingSplashModel>(builder: (context, model, child){
+          return Scaffold(
+          body: Stack(
               children: [
-                Container(
-                  color: Colors.black87,
-                  child: Column(
-                    children: [
-                      Expanded(
-                        flex: 5,
-                        child: Container(
-                          padding: EdgeInsets.symmetric(vertical: 10.0.h, horizontal: 10.w),
-                          margin: EdgeInsets.symmetric(vertical: 15.0.h, horizontal: 15.w),
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.white10)
+                Column(
+                  children: [
+                    SizedBox(
+                      height: 25.0.h,
+                    ),
+                    Container(
+                      padding: EdgeInsets.symmetric(vertical: 10.0.h, horizontal: 10.w),
+                      margin: EdgeInsets.symmetric(vertical: 15.0.h, horizontal: 15.w),
+                      alignment: Alignment.topLeft,
+                      child: Row(
+                        children: [
+                          Icon(
+                            FontAwesomeIcons.gears,
+                            size: 18.h,
+                            color: Colors.black54,
                           ),
-                          child: Column(
-                            children: [
-                              Container(
-                                alignment: Alignment.topLeft,
-                                child: Text(
-                                  "画面設定",
-                                  style: TextStyle(
-                                    fontSize: 18.sp,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.grey
-                                  ),
-                                ),
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Column(
-                                    children: [
-                                      const Text("ロゴ設定",
-                                        style: TextStyle(
-                                          color: Colors.grey,
-                                        ),
+                          SizedBox(width: 10.w,),
+                          Text(
+                            "画面設定",
+                            style: TextStyle(
+                                fontSize: 18.sp,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black54
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      flex: 6,
+                      child: Container(
+                        padding: EdgeInsets.symmetric(vertical: 1.0.h, horizontal: 10.w),
+                        margin: EdgeInsets.symmetric(vertical: 15.0.h, horizontal: 15.w),
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.white.withOpacity(0))
+                        ),
+                        child: Column(
+                          children: [
+                            // SizedBox(
+                            //   height: 30.0.h,
+                            // ),
+                            // Container(
+                            //   alignment: Alignment.topLeft,
+                            //   child: Row(
+                            //     children: [
+                            //       Icon(
+                            //         FontAwesomeIcons.ship,
+                            //         size: 18.h,
+                            //         color: Colors.black54,
+                            //       ),
+                            //       SizedBox(width: 10.w,),
+                            //       Text(
+                            //         "画面設定",
+                            //         style: TextStyle(
+                            //             fontSize: 18.sp,
+                            //             fontWeight: FontWeight.bold,
+                            //             color: Colors.black54
+                            //         ),
+                            //       ),
+                            //     ],
+                            //   ),
+                            // ),
+                            SizedBox(
+                              height: 10.0.h,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(
+                                  children: [
+                                    Text("ロゴ設定",
+                                      style: TextStyle(
+                                        fontSize: 15.sp,
+                                        color: Colors.black54,
+                                        fontWeight: FontWeight.bold,
                                       ),
-                                      SizedBox(
-                                        width: displaySize.width / 4.w,
-                                        height: displaySize.width / 4.w,
-                                        child: Utils.splashLogoImageFile == null
-                                            ? Image.asset("images/tutorial-splash-logo.png", fit: BoxFit.fill,)
-                                            : Image.file(Utils.splashLogoImageFile!,fit: BoxFit.fill,),
-                                      ),
-                                      SizedBox(
-                                        width: 90.w,
-                                        height: 30.h,
-                                        child: Card(
-                                          color: Colors.white10,
-                                          shadowColor: Colors.black,
-                                          elevation: 5.0,
-                                          child: InkWell(
-                                            onTap: () async {
-                                              try {
-                                                await model.getSplashLogoImageFile();
-                                              } catch (e){
-                                                await _showDialog(context);
-                                              }
-                                            },
-                                            child: Center(
-                                              child: Text("画面設定",
-                                                style: TextStyle(
-                                                    fontSize: 13.sp,
-                                                  color: Colors.grey,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(height: 10.h,),
-                                      IconButton(
-                                        iconSize: 30.h,
-                                        onPressed: (){model.tutorialSplashCreate();},
-                                        icon: Icon(
-                                          Icons.info_outline,
-                                          size: 35.h,
-                                          color: Colors.white70,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Column(
-                                    children: [
-                                      const Text("起動時の画面",
-                                        style: TextStyle(
-                                          color: Colors.grey,
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: displaySize.width / 4.5.w,
-                                        height: displaySize.height / 4.5.h,
-                                        child: Utils.splashBackgroundImageFile == null
-                                            ? Image.asset("images/tutorial-splash-bg.png", fit: BoxFit.fill,)
-                                            : Image.file(Utils.splashBackgroundImageFile!,fit: BoxFit.fill,),
-                                      ),
-                                      SizedBox(
-                                        width: 90.w,
-                                        height: 30.h,
-                                        child: Card(
-                                          color: Colors.white10,
-                                          shadowColor: Colors.black,
-                                          elevation: 5.0,
-                                          child: InkWell(
-                                            onTap: () async {
-                                              try {
-                                                await model.getSplashBackgroundImageFile();
-                                              } catch (e){
-                                                await _showDialog(context);
-                                              }
-                                            },
-                                            child: Center(
-                                              child: Text("画面設定",
-                                                style: TextStyle(
+                                    ),
+                                    SizedBox(
+                                      width: displaySize.width / 4,
+                                      height: displaySize.width / 4,
+                                      child: Utils.splashLogoImageFile == null
+                                          ? Image.asset("images/tutorial-splash-logo.png", fit: BoxFit.fill,)
+                                          : Image.file(Utils.splashLogoImageFile!,fit: BoxFit.fill,),
+                                    ),
+                                    SizedBox(
+                                      width: 90.w,
+                                      height: 35.h,
+                                      child: Card(
+                                        color: Colors.white,
+                                        elevation: 2.0,
+                                        child: InkWell(
+                                          onTap: () async {
+                                            try {
+                                              await model.getSplashLogoImageFile();
+                                            } catch (e){
+                                              await _showDialog(context);
+                                            }
+                                          },
+                                          child: Center(
+                                            child: Text("画面設定",
+                                              style: TextStyle(
                                                   fontSize: 13.sp,
-                                                  color: Colors.grey,
-                                                ),
+                                                color: Colors.black54,
                                               ),
                                             ),
                                           ),
                                         ),
-                                      )
-                                    ],
-                                  ),
-                                  Column(
-                                    children: [
-                                      const Text(
-                                        "起動後の画面",
-                                        style: TextStyle(
-                                          color: Colors.grey,
-                                        ),
                                       ),
-                                      SizedBox(
-                                        width: displaySize.width / 4.5.w,
-                                        height: displaySize.height / 4.5.h,
-                                        child: Utils.fakeBackgroundImageFile == null
-                                            ? Image.asset("images/tutorial-fake-bg.png", fit: BoxFit.fill,)
-                                            : Image.file(Utils.fakeBackgroundImageFile!,fit: BoxFit.fill,),
+                                    ),
+                                    SizedBox(height: 10.h,),
+                                    IconButton(
+                                      iconSize: 30.h,
+                                      onPressed: (){model.tutorialSplashCreate();},
+                                      icon: Icon(
+                                        Icons.info_outline,
+                                        size: 35.h,
+                                        color: Colors.black45,
                                       ),
-                                      SizedBox(
-                                        width: 90.w,
-                                        height: 30.h,
-                                        child: Card(
-                                          color: Colors.white10,
-                                          shadowColor: Colors.black,
-                                          elevation: 5.0,
-                                          child: InkWell(
-                                            onTap: () async {
-                                              try {
-                                                await model.getFakeBackgroundImageFile();
-                                              } catch (e){
-                                                await _showDialog(context);
-                                              }
-                                            },
-                                            child: Center(
-                                              child: Text("画面設定",
-                                                style: TextStyle(fontSize: 13.sp,
-                                                  color: Colors.grey,
-                                                ),
+                                    ),
+                                  ],
+                                ),
+                                Column(
+                                  children: [
+                                    Text("起動時の画面",
+                                      style: TextStyle(
+                                        fontSize: 15.sp,
+                                        color: Colors.black54,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: displaySize.width / 4.5,
+                                      height: displaySize.height / 4.5,
+                                      child: Utils.splashBackgroundImageFile == null
+                                          ? Image.asset("images/tutorial-splash-bg.png", fit: BoxFit.fill,)
+                                          : Image.file(Utils.splashBackgroundImageFile!,fit: BoxFit.fill,),
+                                    ),
+                                    SizedBox(
+                                      width: 90.w,
+                                      height: 35.h,
+                                      child: Card(
+                                        color: Colors.white,
+                                        elevation: 2.0,
+                                        child: InkWell(
+                                          onTap: () async {
+                                            try {
+                                              await model.getSplashBackgroundImageFile();
+                                            } catch (e){
+                                              await _showDialog(context);
+                                            }
+                                          },
+                                          child: Center(
+                                            child: Text("画面設定",
+                                              style: TextStyle(
+                                                fontSize: 13.sp,
+                                                color: Colors.black54,
                                               ),
                                             ),
                                           ),
                                         ),
-                                      )
-                                    ],
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                Column(
+                                  children: [
+                                    Text(
+                                      "起動後の画面",
+                                      style: TextStyle(
+                                        fontSize: 15.sp,
+                                        color: Colors.black54,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: displaySize.width / 4.5,
+                                      height: displaySize.height / 4.5,
+                                      child: Utils.fakeBackgroundImageFile == null
+                                          ? Image.asset("images/tutorial-fake-bg.png", fit: BoxFit.fill,)
+                                          : Image.file(Utils.fakeBackgroundImageFile!,fit: BoxFit.fill,),
+                                    ),
+                                    SizedBox(
+                                      width: 90.w,
+                                      height: 35.h,
+                                      child: Card(
+                                        color: Colors.white,
+                                        elevation: 2.0,
+                                        child: InkWell(
+                                          onTap: () async {
+                                            try {
+                                              await model.getFakeBackgroundImageFile();
+                                            } catch (e){
+                                              await _showDialog(context);
+                                            }
+                                          },
+                                          child: Center(
+                                            child: Text("画面設定",
+                                              style: TextStyle(fontSize: 13.sp,
+                                                color: Colors.black54,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ],
+                            )
+                          ],
                         ),
                       ),
-                      Expanded(
-                        flex: 4,
-                        child: Scrollbar(
-                          thumbVisibility: true,
-                          child: SingleChildScrollView(
-                            child: Container(
-                              padding: EdgeInsets.only(right: 10.0.w, left: 10.0.w),
-                              margin: EdgeInsets.only(right: 15.0.w, left: 15.0.w),
-                              decoration: BoxDecoration(
-                                border: Border.all(color: Colors.white10),
-                              ),
-                              child: Column(
-                                children: [
-                                  SettingNumSec(
-                                    title: "改め回数",
-                                    setList: model.freNumToStr(),
-                                    selectedItemChange: model.onSelectedFrequencyNumChanged,
-                                    listNum: model.freNum,
-                                    unit: "回",
-                                    setNum: Utils.frequencyNumber,
-                                    cupertinoPickerInitialNum: Utils.frequencyNumber,
-                                    explain: "スプラッシュスクリーンで止めるまでの回数です。\n通常のアプリだと思わせる為に設定します。",
-                                  ),
-                                  SettingNumSec(
-                                    title: "ロゴの復帰時間",
-                                    setList: model.comSecToStr(),
-                                    selectedItemChange: model.onSelectedComebackLogoNumChanged,
-                                    listNum: model.comSec,
-                                    unit: "秒",
-                                    setNum: Utils.comeBackSecond,
-                                    cupertinoPickerInitialNum: Utils.comeBackSecond,
-                                    explain: "ロゴを画面外に出した後の戻ってくるまでの時間を設定します。",
-                                  ),
-                                  SettingNumSec(
-                                    title: "ロゴ復帰後からの遷移時間",
-                                    setList: model.traSecToStr(),
-                                    selectedItemChange: model.onSelectedTransitionNumChanged,
-                                    listNum: model.traSec,
-                                    unit: "秒",
-                                    setNum: Utils.transitionSecond,
-                                    cupertinoPickerInitialNum: Utils.transitionSecond,
-                                    explain: "ロゴが戻ってから上記で設定した『起動後の画面』に移るまでの時間を設定します。",
-                                  ),
-                                  SettingNumSec(
-                                    title: "お知らせタイマー",
-                                    setList: model.setSecToStr(),
-                                    selectedItemChange: model.onSelectedNotifyNumChanged,
-                                    listNum: model.setSec,
-                                    unit: "秒前",
-                                    setNum: Utils.notifySecond,
-                                    cupertinoPickerInitialNum: Utils.notifySecond,
-                                    explain: "『ロゴの復帰時間』や『復帰後からの画面遷移時間』に移る時にバイブでお知らせしてくれます。\n『ロゴの復帰時間』や『復帰後からの画面遷移時間』よりも短く設定する必要があります。",
-                                  ),
-                                  Column(
-                                    children: [
-                                      Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          SwitchListTile.adaptive(
-                                            contentPadding: EdgeInsets.zero,
-                                            title: Text(
-                                              "ノッチの表示",
-                                              style: TextStyle(
-                                                fontSize: 18.sp,
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.grey,
-                                              ),
+                    ),
+                    Expanded(
+                      child: Divider(
+                        thickness: 0.2.h,
+                        color: Colors.black54,
+                      ),
+                    ),
+                    Expanded(
+                      flex: 5,
+                      child: Scrollbar(
+                        thumbVisibility: true,
+                        child: SingleChildScrollView(
+                          child: Container(
+                            padding: EdgeInsets.only(right: 10.0.w, left: 10.0.w),
+                            margin: EdgeInsets.only(right: 15.0.w, left: 15.0.w),
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Colors.white.withOpacity(0)),
+                            ),
+                            child: Column(
+                              children: [
+                                SettingNumSec(
+                                  title: "改め回数",
+                                  setList: model.freNumToStr(),
+                                  selectedItemChange: model.onSelectedFrequencyNumChanged,
+                                  listNum: model.freNum,
+                                  unit: "回",
+                                  setNum: Utils.frequencyNumber,
+                                  cupertinoPickerInitialNum: Utils.frequencyNumber,
+                                  explain: "スプラッシュスクリーンで止めるまでの回数です。\n通常のアプリだと思わせる為に設定します。",
+                                ),
+                                SettingNumSec(
+                                  title: "ロゴの復帰時間",
+                                  setList: model.comSecToStr(),
+                                  selectedItemChange: model.onSelectedComebackLogoNumChanged,
+                                  listNum: model.comSec,
+                                  unit: "秒",
+                                  setNum: Utils.comeBackSecond,
+                                  cupertinoPickerInitialNum: Utils.comeBackSecond,
+                                  explain: "ロゴを画面外に出した後の戻ってくるまでの時間を設定します。",
+                                ),
+                                SettingNumSec(
+                                  title: "ロゴ復帰後からの遷移時間",
+                                  setList: model.traSecToStr(),
+                                  selectedItemChange: model.onSelectedTransitionNumChanged,
+                                  listNum: model.traSec,
+                                  unit: "秒",
+                                  setNum: Utils.transitionSecond,
+                                  cupertinoPickerInitialNum: Utils.transitionSecond,
+                                  explain: "ロゴが戻ってから上記で設定した『起動後の画面』に移るまでの時間を設定します。",
+                                ),
+                                SettingNumSec(
+                                  title: "お知らせタイマー",
+                                  setList: model.setSecToStr(),
+                                  selectedItemChange: model.onSelectedNotifyNumChanged,
+                                  listNum: model.setSec,
+                                  unit: "秒前",
+                                  setNum: Utils.notifySecond,
+                                  cupertinoPickerInitialNum: Utils.notifySecond,
+                                  explain: "『ロゴの復帰時間』や『復帰後からの画面遷移時間』に移る時にバイブでお知らせしてくれます。\n『ロゴの復帰時間』や『復帰後からの画面遷移時間』よりも短く設定する必要があります。",
+                                ),
+                                Column(
+                                  children: [
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        SwitchListTile.adaptive(
+                                          contentPadding: EdgeInsets.zero,
+                                          title: Text(
+                                            "ノッチの表示",
+                                            style: TextStyle(
+                                              fontSize: 18.sp,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.black54,
                                             ),
-                                            subtitle: const Text(
-                                              "パフォーマンスの画面上部にあるノッチの表示・非表示を設定します。\nスクショの画像ですと時刻やバッテリー残量まで画像として保存される為、隠す目的で使用します。",
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.grey,
-                                              ),
-                                            ),
-                                            value: Utils.addNotch,
-                                            onChanged: model.switchOnChanged,
                                           ),
-                                        ],
-                                      ),
-                                      Divider(
-                                        thickness: 0.2.h,
-                                        color: Colors.grey,
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
+                                          subtitle: Text(
+                                            "ダークモード推奨です。\nスクショでの背景画像ですと時刻やバッテリー残量まで画像として保存される為、隠す目的で使用します。",
+                                            style: TextStyle(
+                                              color: Colors.black45,
+                                              fontSize: 10.sp
+                                            ),
+                                          ),
+                                          value: Utils.addNotch,
+                                          onChanged: model.switchOnChanged,
+                                        ),
+                                      ],
+                                    ),
+                                    Divider(
+                                      thickness: 0.2.h,
+                                      color: Colors.black54,
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
                           ),
                         ),
                       ),
-                      SizedBox(
-                        height: 10.0.h,
-                      ),
-                      SizedBox(
-                        height: 45.0.h,
-                        width: 250.0.w,
-                        child: ElevatedButton(
-                          onPressed: () async {
-                            if(Utils.notifySecond != 0){
-                              if(Utils.comeBackSecond <= Utils.notifySecond ||
-                                  Utils.transitionSecond <= Utils.notifySecond){
-                                await _showDialog2(context);
-                              } else {
-                                await SharedPreferenceMethod.saveSplashSettingElement();
-                                Navigator.pop(context);
-                              }
+                    ),
+                    SizedBox(
+                      height: 10.0.h,
+                    ),
+                    SizedBox(
+                      height: 45.0.h,
+                      width: 250.0.w,
+                      child: ElevatedButton(
+                        onPressed: () async {
+                          if(Utils.notifySecond != 0){
+                            if(Utils.comeBackSecond <= Utils.notifySecond ||
+                                Utils.transitionSecond <= Utils.notifySecond){
+                              await _showDialog2(context);
                             } else {
                               await SharedPreferenceMethod.saveSplashSettingElement();
                               Navigator.pop(context);
                             }
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.white10,
-                            foregroundColor: Colors.grey,
-                          ),
-                          child: Text(
-                            "完了",
-                            style: TextStyle(
-                            fontSize: 20.0.sp,
-                            fontWeight: FontWeight.bold,
-                              color: Colors.grey
-                            ),
+                          } else {
+                            await SharedPreferenceMethod.saveSplashSettingElement();
+                            Navigator.pop(context);
+                          }
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.white,
+                          foregroundColor: Colors.black54,
+                        ),
+                        child: Text(
+                          "完了",
+                          style: TextStyle(
+                          fontSize: 20.0.sp,
+                          fontWeight: FontWeight.bold,
+                            color: Colors.black54
                           ),
                         ),
                       ),
-                      SizedBox(
-                        height: 40.0.h,
-                      )
-                    ],
-                  ),
+                    ),
+                    SizedBox(
+                      height: 40.0.h,
+                    )
+                  ],
                 ),
                 AnimatedPositioned(
                   duration: const Duration(milliseconds: 500),
@@ -375,17 +383,16 @@ class SettingSplashPage extends StatelessWidget {
                         boxShadow: [
                           BoxShadow(
                             color: Colors.grey.withOpacity(0.9),
-                            spreadRadius: 3,
-                            blurRadius: 5,
-                            offset: const Offset(10,10),
+                            spreadRadius: 10,
+                            blurRadius: 10,
                           ),
                         ],
-                        color: Colors.blueGrey.withOpacity(0.9),
+                        color: Colors.white.withOpacity(0.9),
                       ),
                       height: 500.h,
                       width: MediaQuery.of(context).size.width,
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Padding(
                             padding: EdgeInsets.symmetric(vertical: 10.0.h, horizontal: 10.w),
@@ -393,14 +400,34 @@ class SettingSplashPage extends StatelessWidget {
                               image: AssetImage('images/tutorial-splash-image-create.gif'),
                             ) : null,
                           ),
-                          IconButton(
-                            iconSize:  150.h,
-                            onPressed: (){model.tutorialSplashCreate();},
-                            icon: Icon(
-                              Icons.play_arrow_sharp,
-                              size: 50.h,
-                              color: Colors.black45,
-                            ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              RotatedBox(
+                                quarterTurns: 1,
+                                child: Text(
+                                  " Tutorial",
+                                  style: TextStyle(fontSize: 24.sp),
+                                ),
+                              ),
+                              IconButton(
+                                iconSize:  150.h,
+                                onPressed: (){model.tutorialSplashCreate();},
+                                icon: Icon(
+                                  Icons.play_arrow_sharp,
+                                  size: 50.h,
+                                  color: Colors.black45,
+                                ),
+                              ),
+                              RotatedBox(
+                                quarterTurns: 1,
+                                child: Text(
+                                  "          ",
+                                  style: TextStyle(fontSize: 24.sp),
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
@@ -408,9 +435,9 @@ class SettingSplashPage extends StatelessWidget {
                   ),
                 ),
               ],
-            );
-          },),
-        );
+            ),
+          );
+        },);
       },
     );
   }
@@ -473,7 +500,7 @@ class SettingSwitch extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 18.sp,
                     fontWeight: FontWeight.bold,
-                    color: Colors.grey,
+                    color: Colors.black54,
                   ),
                 ),
                 SwitchListTile.adaptive(
@@ -485,12 +512,12 @@ class SettingSwitch extends StatelessWidget {
             Text(
               explain,
               style: const TextStyle(
-                color: Colors.grey,
+                color: Colors.black54,
               ),
             ),
             Divider(
               thickness: 0.2.h,
-              color: Colors.grey,
+              color: Colors.black54,
             ),
           ],
         )
@@ -537,16 +564,16 @@ class SettingNumSec extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 18.sp,
                     fontWeight: FontWeight.bold,
-                    color: Colors.grey,
+                    color: Colors.black54,
                   ),
                 ),
                 Container(
                   width: 105.w,
-                  height: 33,
+                  height: 50.h,
                   decoration: const BoxDecoration(
                     border: Border(
                       bottom: BorderSide(
-                        color: Colors.white10,
+                        color: Colors.black45,
                       ),
                     ),
                   ),
@@ -558,7 +585,7 @@ class SettingNumSec extends StatelessWidget {
                         builder: (context){
                           return Container(
                             height: 300.h,
-                            color: Colors.black87,
+                            color: Colors.white,
                             child: Column(
                               children: [
                                 Row(
@@ -568,13 +595,13 @@ class SettingNumSec extends StatelessWidget {
                                     ),
                                     const Spacer(),
                                     Material(
-                                      color: Colors.black87,
+                                      color: Colors.white,
                                       child: Text(
                                         title,
                                         style: TextStyle(
-                                            fontSize: 20.sp,
-                                          color: Colors.grey,
-
+                                          fontSize: 20.sp,
+                                          color: Colors.black54,
+                                          fontWeight: FontWeight.bold,
                                         ),
                                       ),
                                     ),
@@ -583,7 +610,7 @@ class SettingNumSec extends StatelessWidget {
                                       child: const Text(
                                           "完了",
                                       style: TextStyle(
-                                        color: Colors.blueGrey
+                                        color: Colors.black54
                                       ),),
                                       onPressed: () {
                                         Navigator.pop(context);
@@ -597,7 +624,7 @@ class SettingNumSec extends StatelessWidget {
                                     scrollController: FixedExtentScrollController(
                                       initialItem: cupertinoPickerInitialNum,
                                     ),
-                                    backgroundColor: Colors.grey,
+                                    backgroundColor: Colors.white,
                                     looping: false,
                                     itemExtent: 50.sp,
                                     onSelectedItemChanged: (int value){
@@ -617,14 +644,14 @@ class SettingNumSec extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         SizedBox(
-                          height: 22.h,
+                          height: 40.h,
                           width: 22.w,
                           child: Center(
                             child: Text(
                               "▼",
                               style: TextStyle(
                                 fontSize: 20.0.sp,
-                                color: Colors.grey,
+                                color: Colors.black54,
                               ),),
                           ),
                         ),
@@ -632,7 +659,7 @@ class SettingNumSec extends StatelessWidget {
                           setNum.toString(),
                           style: TextStyle(
                             fontSize: 30.sp,
-                            color: Colors.grey,
+                            color: Colors.black54,
                           ),
                         ),
                         Container(
@@ -643,7 +670,7 @@ class SettingNumSec extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 13.sp,
                               fontWeight: FontWeight.bold,
-                              color: Colors.grey,
+                              color: Colors.black54,
                             ),
                           ),
                         )
@@ -655,14 +682,15 @@ class SettingNumSec extends StatelessWidget {
             ),
             Text(
               explain,
-              style: const TextStyle(
-                color: Colors.grey,
+              style: TextStyle(
+                color: Colors.black45,
+                fontSize: 10.sp
               ),
 
             ),
             Divider(
               thickness: 0.2.h,
-              color: Colors.grey,
+              color: Colors.black54,
             ),
           ],
         )

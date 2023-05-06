@@ -150,7 +150,7 @@ class SplashPage extends StatelessWidget {
                   ),
                 ),
               ),
-              Utils.addNotch ? const NotchDisplay() : const SizedBox(),
+              // Utils.addNotch ? const NotchDisplay() : const SizedBox(),
               Center(
                 child: AnimatedOpacity(
                   opacity: model.showDialog ? 1.0 : 0,
@@ -171,7 +171,7 @@ class SplashPage extends StatelessWidget {
                           iconColor: Colors.green,
                           backgroundColor: Colors.amberAccent,
                           title: const Text('スプラッシュスクリーンで\n止まりました!!'),
-                          content: const Text('アプリ起動時に一瞬ロゴが表示される画面のことをスプラッシュスクリーンと言います。\nロゴをドラッグで動かすことができるので、動かしてみましょう！'),
+                          content: const Text('アプリ起動時に一瞬ロゴが表示される画面のことをスプラッシュスクリーンと呼びます。\nロゴをドラッグで動かすことができるので、動かしてみましょう！'),
                           actions: [
                             ElevatedButton(
                               onPressed: () async {
@@ -223,7 +223,7 @@ class TutorialSplash extends StatelessWidget {
             ),
           ),
           TutorialIcon(
-            x: Utils.splashPosition.x.w,
+            x: Utils.splashPosition.x.w-5,
             y: Utils.splashPosition.y + 100.h,
             icon: FontAwesomeIcons.arrowRightLong,
             iconSize: 80.h,
@@ -231,7 +231,7 @@ class TutorialSplash extends StatelessWidget {
             iconColor: Colors.green,
           ),
           TutorialIcon(
-            x: Utils.splashPosition.x.w,
+            x: Utils.splashPosition.x.w+5,
             y: Utils.splashPosition.y + 150.h,
             icon: FontAwesomeIcons.handPointer,
             iconSize: 80.h,
@@ -239,7 +239,7 @@ class TutorialSplash extends StatelessWidget {
             iconColor: Colors.green,
           ),
           TutorialIcon(
-            x: Utils.splashPosition.x.w,
+            x: Utils.splashPosition.x-20.w,
             y: Utils.splashPosition.y + 270.h,
             icon: FontAwesomeIcons.mobileScreen,
             iconSize: 50.h,

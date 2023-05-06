@@ -21,43 +21,44 @@ class SettingTopPage extends StatelessWidget {
         return Consumer<SettingTopModel>(
         builder: (context, model, child) {
           return Scaffold(
-            appBar: AppBar(
-              elevation: 0,
-              automaticallyImplyLeading: false,
-              title: Opacity(
-                opacity: 0.95,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.baseline,
-                  textBaseline: TextBaseline.alphabetic,
-                  children: [
-                    IconButton(
-                      onPressed: () => Navigator.pop(context),
-                      icon: Icon(Icons.arrow_back_ios_new_outlined,
-                        color: Colors.grey,
-                        size: 30.h,
-                      ),
-                    ),
-                    const Spacer(),
-                    Icon(
-                      FontAwesomeIcons.gears,
-                      size: 35.h,
-                      color: Colors.grey,
-                    ),
-                    SizedBox(width: 15.0.w),
-                    Text(
-                      '設定',
-                      style: TextStyle(fontSize: 30.sp,
-                        color: Colors.grey,
-                      ),
-                    ),
-                    const Spacer(),
-                    SizedBox(
-                      width: 55.w,
-                    )
-                  ],
-                ),
-              ),
-            ),
+            // appBar: AppBar(
+            //   backgroundColor: Colors.transparent,
+            //   elevation: 0,
+            //   automaticallyImplyLeading: false,
+            //   title: Opacity(
+            //     opacity: 0.95,
+            //     child: Row(
+            //       crossAxisAlignment: CrossAxisAlignment.baseline,
+            //       textBaseline: TextBaseline.alphabetic,
+            //       children: [
+            //         IconButton(
+            //           onPressed: () => Navigator.pop(context),
+            //           icon: Icon(Icons.arrow_back_ios_new_outlined,
+            //             color: Colors.grey,
+            //             size: 30.h,
+            //           ),
+            //         ),
+            //         const Spacer(),
+            //         Icon(
+            //           FontAwesomeIcons.gears,
+            //           size: 35.h,
+            //           color: Colors.grey,
+            //         ),
+            //         SizedBox(width: 15.0.w),
+            //         Text(
+            //           '設定',
+            //           style: TextStyle(fontSize: 30.sp,
+            //             color: Colors.grey,
+            //           ),
+            //         ),
+            //         const Spacer(),
+            //         SizedBox(
+            //           width: 55.w,
+            //         )
+            //       ],
+            //     ),
+            //   ),
+            // ),
             body: Stack(
                   children: [
                     SizedBox(
@@ -82,7 +83,30 @@ class SettingTopPage extends StatelessWidget {
                       child: Column(
                         children: [
                           SizedBox(
-                            height: 20.0.h,
+                            height: 50.0.h,
+                          ),
+                          Container(
+                            padding: EdgeInsets.symmetric(vertical: 10.0.h, horizontal: 10.w),
+                            margin: EdgeInsets.symmetric(vertical: 15.0.h, horizontal: 15.w),
+                            alignment: Alignment.topLeft,
+                            child: Row(
+                              children: [
+                                Icon(
+                                  FontAwesomeIcons.gears,
+                                  size: 18.h,
+                                  color: Colors.black54,
+                                ),
+                                SizedBox(width: 10.w,),
+                                Text(
+                                  "各種設定",
+                                  style: TextStyle(
+                                      fontSize: 18.sp,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black54
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                           SizedBox(
                             height: 150.h,
@@ -316,17 +340,16 @@ class SettingTopPage extends StatelessWidget {
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.grey.withOpacity(0.9),
-                                  spreadRadius: 3,
-                                  blurRadius: 5,
-                                  offset: const Offset(10,10),
+                                  spreadRadius: 10,
+                                  blurRadius: 10,
                                 ),
                               ],
-                          color: Colors.blueGrey.withOpacity(0.9),
+                          color: Colors.white.withOpacity(0.9),
                           ),
                           height: 500.h,
                           width: MediaQuery.of(context).size.width,
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Padding(
                                 padding: EdgeInsets.only(top: 8.0.h,bottom: 8.0.h,left: 8.0.w,right: 8.0.w),
@@ -334,14 +357,34 @@ class SettingTopPage extends StatelessWidget {
                                   image: AssetImage('images/tutorial-background-change.gif'),
                                 ) : null,
                               ),
-                              IconButton(
-                                iconSize:  150.h,
-                                onPressed: (){model.tutorialBgChange();},
-                                icon: Icon(
-                                  Icons.play_arrow_sharp,
-                                  size: 50.h,
-                                  color: Colors.black45,
-                                ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  RotatedBox(
+                                    quarterTurns: 1,
+                                    child: Text(
+                                      " Tutorial",
+                                      style: TextStyle(fontSize: 24.sp),
+                                    ),
+                                  ),
+                                  IconButton(
+                                    iconSize:  150.h,
+                                    onPressed: (){model.tutorialBgChange();},
+                                    icon: Icon(
+                                      Icons.play_arrow_sharp,
+                                      size: 50.h,
+                                      color: Colors.black45,
+                                    ),
+                                  ),
+                                  RotatedBox(
+                                    quarterTurns: 1,
+                                    child: Text(
+                                      "          ",
+                                      style: TextStyle(fontSize: 24.sp),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ],
                           ),
@@ -360,17 +403,16 @@ class SettingTopPage extends StatelessWidget {
                             boxShadow: [
                               BoxShadow(
                                 color: Colors.grey.withOpacity(0.9),
-                                spreadRadius: 3,
-                                blurRadius: 5,
-                                offset: const Offset(10,10),
+                                spreadRadius: 10,
+                                blurRadius: 10,
                               ),
                             ],
-                            color: Colors.blueGrey.withOpacity(0.9),
+                            color: Colors.white.withOpacity(0.9),
                           ),
                           height: 500.h,
                           width: MediaQuery.of(context).size.width,
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Padding(
                                 padding: EdgeInsets.only(top: 8.0.h,bottom: 8.0.h,left: 8.0.w,right: 8.0.w),
@@ -378,14 +420,34 @@ class SettingTopPage extends StatelessWidget {
                                   image: AssetImage('images/tutorial-icon-change.gif'),
                                 ) : null,
                               ),
-                              IconButton(
-                                iconSize:  150.h,
-                                onPressed: (){model.tutorialIconChange();},
-                                icon: Icon(
-                                  Icons.play_arrow_sharp,
-                                  size: 50.h,
-                                  color: Colors.black45,
-                                ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  RotatedBox(
+                                    quarterTurns: 1,
+                                    child: Text(
+                                      " Tutorial",
+                                      style: TextStyle(fontSize: 24.sp),
+                                    ),
+                                  ),
+                                  IconButton(
+                                    iconSize:  150.h,
+                                    onPressed: (){model.tutorialIconChange();},
+                                    icon: Icon(
+                                      Icons.play_arrow_sharp,
+                                      size: 50.h,
+                                      color: Colors.black45,
+                                    ),
+                                  ),
+                                  RotatedBox(
+                                    quarterTurns: 1,
+                                    child: Text(
+                                      "          ",
+                                      style: TextStyle(fontSize: 24.sp),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ],
                           ),
@@ -404,17 +466,16 @@ class SettingTopPage extends StatelessWidget {
                             boxShadow: [
                               BoxShadow(
                                 color: Colors.grey.withOpacity(0.9),
-                                spreadRadius: 3,
-                                blurRadius: 5,
-                                offset: const Offset(10,10),
+                                spreadRadius: 10,
+                                blurRadius: 10,
                               ),
                             ],
-                            color: Colors.blueGrey.withOpacity(0.9),
+                            color: Colors.white.withOpacity(0.9),
                           ),
                           height: 500.h,
                           width: MediaQuery.of(context).size.width,
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Padding(
                                 padding: EdgeInsets.only(top: 8.0.h,bottom: 8.0.h,left: 8.0.w,right: 8.0.w),
@@ -422,14 +483,34 @@ class SettingTopPage extends StatelessWidget {
                                   image: AssetImage('images/tutorial-splash-demo.gif'),
                                 ) : null,
                               ),
-                              IconButton(
-                                iconSize:  150.h,
-                                onPressed: (){model.tutorialSplashDemo();},
-                                icon: Icon(
-                                  Icons.play_arrow_sharp,
-                                  size: 50.h,
-                                  color: Colors.black45,
-                                ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  RotatedBox(
+                                    quarterTurns: 1,
+                                    child: Text(
+                                      " Tutorial",
+                                      style: TextStyle(fontSize: 24.sp),
+                                    ),
+                                  ),
+                                  IconButton(
+                                    iconSize:  150.h,
+                                    onPressed: (){model.tutorialSplashDemo();},
+                                    icon: Icon(
+                                      Icons.play_arrow_sharp,
+                                      size: 50.h,
+                                      color: Colors.black45,
+                                    ),
+                                  ),
+                                  RotatedBox(
+                                    quarterTurns: 1,
+                                    child: Text(
+                                      "          ",
+                                      style: TextStyle(fontSize: 24.sp),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ],
                           ),
@@ -500,3 +581,4 @@ class SettingTopPage extends StatelessWidget {
     );
   }
 }
+
