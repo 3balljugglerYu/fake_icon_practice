@@ -5,31 +5,38 @@ class NotchDisplay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Stack(
       children: [
-        Container(
-          width: double.infinity,
-          height: MediaQuery.of(context).padding.top * 1.1,
-          color: Colors.black,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              height: 100,
-              width: 100,
-              child: CustomPaint(
-                painter: RightPainter(),
+        Positioned(
+          top: 0, left: 0, right: 0,bottom: 0,
+          child: Column(
+            children: [
+              Container(
+                width: double.infinity,
+                height: MediaQuery.of(context).padding.top * 1.1,
+                color: Colors.black54,
               ),
-            ),
-            Container(
-              height: 100,
-              width: 100,
-              child: CustomPaint(
-                painter: LeftPainter(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    height: 100,
+                    width: 100,
+                    child: CustomPaint(
+                      painter: RightPainter(),
+                    ),
+                  ),
+                  Container(
+                    height: 100,
+                    width: 100,
+                    child: CustomPaint(
+                      painter: LeftPainter(),
+                    ),
+                  )
+                ],
               ),
-            )
-          ],
+            ],
+          ),
         ),
       ],
     );
